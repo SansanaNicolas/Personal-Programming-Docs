@@ -51,3 +51,17 @@ The viewport meta tag defines how the content will be displayed on any devide, b
 - ```<title>Web Name</title>```
 The title tag represents the title of our document, it's seen in the browser tab, it's also the text that's seen in search engine results, the title must not exceed 65 characters.
 
+## HTML elements reference
+- ```<html>```
+ The HTML element represents the root (top-level element) of and HTML document, so it's also referred to as the root element. All other elements must be descendants of this element.
+
+
+## Document metadata
+
+- ```<base>```
+The base html element specifies the base URL to use all relative URLs in a document. There can be only one base element in a document.
+
+- ```<head>```
+The head html element contains machine-readable information (metadata) about the document, like its title, scripts and style sheets.
+
+
