@@ -88,9 +88,44 @@ The body html element represents the content of an html document. There can be o
 
 Content sectioning elements allow you to organize the document content into logical pieces. Use the sectioning elements to create a broad outline for your page content, including header and footer navigation, and heading elements to identify sections of content.
 
+
 - ```<address>```
 This element indicates that the enclosed HTML provides contact information for a person or people, or for and organization.
 
+
 - ```<article>```
-This element represents a self-contained composition in a document, page, application or site, which is intended to be independently distributable or reusable. Examples include: a forum post, a magazine or newspaper article, a blog entry, a product card, etc.
+This element represents a self-contained composition in a document, page, application or site, which is intended to be independently distributable or reusable. Examples include: a forum post, a magazine or newspaper article, a blog entry, a product card or any other independent item of content.
+
+
+- ```<aside>```
+This element represents a portion of a ducment whose content is only indirectly related to the document's main content. Asides are frequently presented as sidebars or call-out boxes.
+
+
+- ```<footer>```
+a footer for its nearest ancestor sectioning content or sectioning root element. A footer typically contains information about the author of the section, copyright data or links to related documents.
+
+
+- ```<header>```
+The header element represents introductory content, typically a group of introductory or navigational aids. It may contain some heading elements but also a logo, a search form, an author name, and other elements.
+
+
+- ```<h1>, <h2>, <h3>, <h4>, <h5>, <h6>```
+
+The h1 to h6 html elements represent six levels of section headings. H1 is the highest section level and h6 is the lowest.
+
+
+- ```<main>```
+The main element represents the dominant content of the body of a document. The main content area consists of content that is directly related to or expands upon the central topic of a document, or the central funcionality of an application.
+
+
+- ```<nav>```
+The nav element represents a section of a page whose purpose is to provide navigation links, either within the current document or to others documents. Common examples of navigation sections are menus, tables of contents, and idexes.
+
+
+- ```<section>```
+The section element represents a generic standalone section of a document, which doesn't have a more specific semantic element to represent it. Sections should always have a heading, with very fer exceptions.
+
+
+## Text Content
+
 
