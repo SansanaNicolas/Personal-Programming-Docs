@@ -52,6 +52,7 @@ The viewport meta tag defines how the content will be displayed on any devide, b
 The title tag represents the title of our document, it's seen in the browser tab, it's also the text that's seen in search engine results, the title must not exceed 65 characters.
 
 ## HTML elements reference
+
 - ```<html>```
  The HTML element represents the root (top-level element) of and HTML document, so it's also referred to as the root element. All other elements must be descendants of this element.
 
@@ -64,4 +65,32 @@ The base html element specifies the base URL to use all relative URLs in a docum
 - ```<head>```
 The head html element contains machine-readable information (metadata) about the document, like its title, scripts and style sheets.
 
+- ```<link>```
+The link html element specifies relationships between the current document and an external resource. This element is most commonly used to link to CSS, but is also used to establish site icons (both "favicon" style icons and icons for the home screen and apps on mobile devices) among others things.
+
+- ```<meta>```
+The meta html element represents Metadata that cannot be represented by other HTML meta-related element, like: base, link, script, style or title.
+
+-```<style>```
+The style html element contains style information for a document or part of a document. It contains CSS, which is applied to the contents of the document containing the style element.
+
+-```<title>```
+The title html element defines the document's title that is shown in a browser's title bar or a page's tab. It only contains text; tags within the element are ignored.
+
+
+## Sectioning root
+
+- ```<body>```
+The body html element represents the content of an html document. There can be only one body element in a document.
+
+
+## Content sectioning
+
+Content sectioning elements allow you to organize the document content into logical pieces. Use the sectioning elements to create a broad outline for your page content, including header and footer navigation, and heading elements to identify sections of content.
+
+- ```<address>```
+This element indicates that the enclosed HTML provides contact information for a person or people, or for and organization.
+
+- ```<article>```
+This element represents a self-contained composition in a document, page, application or site, which is intended to be independently distributable or reusable. Examples include: a forum post, a magazine or newspaper article, a blog entry, a product card, etc.
 
