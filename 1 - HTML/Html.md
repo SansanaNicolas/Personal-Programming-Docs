@@ -128,4 +128,15 @@ The section element represents a generic standalone section of a document, which
 
 ## Text Content
 
+Use HTML text content elements to organize blocks or sections of content placed between the opening body and closing body tags. important for accessibility and SEO, these elements identify the purpose or structure of that content.
 
+- ```<blockquote>```
+This element indicates that the enclosed text is an extended quotation. Usually, this is rendered visually by indentation. A URL for the source of the quotation may be given using the cite attribute, while a text representation of the source can be given using the cite element.
+
+
+- ```<dd>```
+This element provides the description, definition or value for the preceding term (dt) in a description list (dl).
+
+
+- ```<div>```
+This element is the generic containner for flow content. It has no effect on the content or layout until styled in some way using CSS.
