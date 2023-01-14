@@ -7,6 +7,9 @@ With these commands you can access different directories and obtain information 
 ### CD
 One of the most essential Windows console commands. It is used to change directories, using the formula *cd < DirectoryPath >* to go to the specific directory or folder that you tell it to, or *cd..* (with a colon) to exit a folder and go to the top level or folder where was staying.
 
+### CD - 
+This command returns you to the folder you were in previously.
+
 ### DIR
 The command lists the contents of the directory or folder where you are, showing all the subfolders or files it contains. With this command you will be able to know if the file you are looking for is there or to which subfolder to navigate.
 
@@ -31,17 +34,25 @@ An improved function that is faster and more efficient, and that allows actions 
 ### MOVE *FILE DESTINY
 Moves the specific file you want from the place or folder where it is to another address that you tell it. It's like copying, but without leaving the file in its original location.
 
-### DEL *FILE/ FOLDER
-Delete the file or folder that you indicate.
-
 ### RENAME FILE
 It allows you to change the name of the file that you consider appropiate, and even including its extension you can also change it.
 
-### MD *FOLDERNAME
+### MKDIR *FOLDERNAME
 Create a folder with the name that you assign it in the direction in which you are at that moment.
 
-### TYPE FILE.EXTENSION
+### DEL 
+Remove a file.
+
+
+### RM -rf
+Remove directories with content.
+
+### TOUCH FILE.EXTENSION
 It allows you to create a file from the command windows itself. This means that you are not only going to create a file, but you can also write a text you want inside it.
+
+### ALIAS
+An alias lets you create a shortcut name for a command, file name, or any shell text. By using aliases, you save a lot of time when doing tasks you do frequently. EX:
+alias hi="touch hola.txt"
 
 ### FORMAT
 Formate a drive.
@@ -105,3 +116,5 @@ It is used to shutdown the computer directly from the Windows command console. Y
 
 ### LOGOFF
 Close the session of the user with whom you are accessing the computer, while keeping the computer on.
+
+

@@ -140,3 +140,40 @@ This element provides the description, definition or value for the preceding ter
 
 - ```<div>```
 This element is the generic containner for flow content. It has no effect on the content or layout until styled in some way using CSS.
+
+
+- ```<dl>```
+This element represents a description list. The element encloses a list of groups of terms (specified using the dt element) and descriptions (provided by dd elements). Common uses for this element are to implement a glossary or to display metadata (a list of key-value pairs).
+
+
+- ```<dt>```
+This element specifies a term in a description or definition list, and as such must be inside a dl element. It's usually followed by a dd element; however, multiple dt elements in a row indicate several terms that are all defined by the inmediate next dd element.
+
+
+- ```<figcaption>```
+The figcaption html element represents a caption or legend describing the rest of the contents of its parent figure element.
+
+- ```<figure>```
+This html element represents self-contained content, potentially with an optional caption, which is specified using the figcaption element. The figure, its caption, and its content are referenced as a single unit.
+
+
+- ```<hr>```
+The hr html element represents a thematic break between paragraph-level elements: for example, a change of scene in a story, or a shift of topin within a section.
+
+- ```<li>```
+The li html element is used to represent an item in a list. It must be contained in a parent element: an ordered list (ol), an unordered list (ul) or a menu (menu). In menus and unordered lists, list items are usually displayed using bullet points. In ordered lists, they are usually displayed with an ascending counter on the left, such as a number or letter.
+
+- ```<ol>```
+The OL html elements represents an ordered list of items, typically rendered as a numbered list.
+
+- ```<ul>```
+The UL html element represents an unordered list of items, typically rendered as a bulleted list.
+
+- ```<menu>```
+The menu html element is described in the Html specification as a semantic alternative to UL, but treated by browsers (and exposed through the accessibility tree) as no different than UL. It represents an unordered list of items (which are represented by LI elements).
+
+- ```<p>```
+The P html elements represents a paragraph. Paragraphs are usually represented in visual media as blocks of text separated from adjacent blocks by blanc lines and/or first-line indentation, but HTML paragraphs can be any structural grouping of related content, such as images or form fields.
+
+- ```<pre>```
+The pre html element represents preformatted text which is to be presented exactly as written int he HTML file. The text is typically rendered using a non-proportional, or monospaced, font. Whitespace inside this element is displayed as written.
