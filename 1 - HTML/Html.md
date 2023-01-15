@@ -177,3 +177,76 @@ The P html elements represents a paragraph. Paragraphs are usually represented i
 
 - ```<pre>```
 The pre html element represents preformatted text which is to be presented exactly as written int he HTML file. The text is typically rendered using a non-proportional, or monospaced, font. Whitespace inside this element is displayed as written.
+
+
+## Inline text semantics.
+
+- ```<a>```
+The a HTML element (or anchor element) with its href attribute creates a hyperlink to web pages, files, email addresses, locations in the same page, or anything else a URL can address.
+
+- ```<abbr>```
+This element represents an abbreviation or acronym. The optional title attribute can amplify or describe the abbreviation. If present, the title attribute must contain the full description and nothing else.
+
+- ```<b>```
+The b HTML element is used to draw the reader's attention to element's contents, which are not otherwise granted special importance. This was formerly known as the Boldface element, and most browsers still draw the text in boldface. You should not use b element for styling text, instead, you should use the CSS font-weight property to create boldface text, or the strong element to indicate that text is of special importance.
+
+- ```<br>```
+The br html element produces a line break in text (carriage-return). It useful for writing a poem or an address, where the division of lines is significant.
+
+
+- ```<cite>```
+The cite html element is used to mark up the title of a cited creative work. The reference may be in an abbreviated from according to context-appopriate conventions related to citation metadata.
+
+- ```<code>```
+This element displays its contents styled in a fashion intended to indicate that the text is a short fragment of computed code. By default, the context text is displayed using the user agent default monospace font.
+
+
+- ```<data>```
+The data html element links a given piece of content with a machine-readable translation. If the content is time- or date- related, the time element must be used.
+
+
+- ```<em>```
+This element marks text that has stress emphasis. The em element can be nested, with each level of nesting indicating a greater degree of emphasis.
+
+
+- ```<i>```
+The i HTML element represents a range of text that is set off from the normal text for some reason, such as idiomatic text, technical terms, taxonomical designations, among others.
+
+- ```<mark>```
+The mark HTML element represents text which is marked or highlighted for reference or notation purposes due to the marked passage's relevance in the enclosing context.
+
+
+- ```<q>```
+This element indicates that the enclosed text is a short inline quotation. Most modern browsers implement this by surrounding the text in quotation marks. This element is intended for short quotations that don't require paragraph breaks, for long quotations use the blockquote element.
+
+
+- ```<s>```
+The s HTML element renders text with a strikethrough or a line through. Use the s element to represent things that are no longer relevant or no longer accurate. However, s element is not appropiate when indicating document edits, for that, use the del and ins elements, as appropiate.
+
+
+- ```<samp>```
+The samp HTML element is used to enclose inline text which represents sample (or quoted) output from a computer program. Its contents are typically rendered using the browser's default monospaced font (such as courier or lucida console).
+
+
+- ```<small>```
+This element represents side-comments and small print, like copyright and legal text, independent of its styled presentation. By default, it renders text within it one font-size smaller, such as from small to x-small.
+
+
+- ```<span>```
+The span HTML element is a generic inline container for phrasing content, which does not inherently represent anything. It can be used to group elements for styling purposes (using the class or id attributes) or because they share atribute values, such as lang. It should be used only when no other semantic element is appropiate. Span is very much like a div element, but div is a block-level element whereas a span is an inline element.
+
+- ```<strong>```
+The strong HTML element indicates that its contents have strong importante, seriousness or urgency. Browsers typically render the contents in bold type.
+
+
+- ```<time>```
+The time HTML element represents a specific period in time. It may include the datetime attribute to translate dates into machine-readable format, allowing for better search engine results or custom features such as reminders.
+
+- ```<u>```
+The u HTML element represents a span of inline text which should be rendered in a way that indicates that it has a non-textual annotation. This is rendered by default as a simple solid underline, but may be altered using CSS.
+
+
+- ```<var>```
+The var HTML element represents the name of a variable in a mathematical expression or a programming context. It's typically presented using an italicized version of the current typeface, although that behavior is browser-dependent.
+
+
