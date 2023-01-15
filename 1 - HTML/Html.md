@@ -250,3 +250,49 @@ The u HTML element represents a span of inline text which should be rendered in 
 The var HTML element represents the name of a variable in a mathematical expression or a programming context. It's typically presented using an italicized version of the current typeface, although that behavior is browser-dependent.
 
 
+
+## Image and multimedia.
+
+- ```<area>```
+The area HTML element defines an area inside an image map that has predefined clickable areas. An image map allows geometric areas on an image to be associated with Hyperlink.
+
+
+- ```<audio>```
+The audio HTML element is used to embed sound content in documents. It may contain one or more audio sources, represented using the src attribute or the source element: the browser will choose the most suitable one. It can also be the destination for streamed media, using a MediaStream.
+
+
+- ```<img>```
+This element embeds an image into the document.
+
+
+- ```<map>```
+This element is used with area elements to define an image map (a clickable link area).
+
+- ```<track>```
+The track HTML element is used as a child of the media elements, audio and vide. It lets you specify timed text tracks (or time-based data), for example to automatically handle subtitles. The tracks are formatted in webVTT form (.vtt files)- Web Video Text Tracks.
+
+- ```<video>```
+The video HTML element embeds a media player which supports video playback into the document. You can use video for audio content as well, but the audio element may provide a more appropiate user experience.
+
+
+## Embedded content
+
+In addition to regular multimedia contnet, HTML can include a variety of other content, even if it's not always easy to interact with.
+
+- ```<embed>```
+The embed HTML element embeds external content at the specified point in the document. This content is provided by an external application of other source of interactive content such as a browser plug-in.
+
+- ```<iframe>```
+The iframe HTML element represents a nested browsing content, embedding another HTML page into the current one.
+
+- ```<object>```
+The object HTML element represents an external resource, which can be treated as an image, a nested browsing context, or a resource to be handled by a plugin.
+
+- ```<picture>```
+The picture HTML element contains zero or more source elements and one img element to offer alternative versions of an image for different display/device scenarios.
+
+- ```<source>```
+The source HTML element specifies multiple media resources for the picture, the audio element, or the video element. It's a void element, meaning that it has no content and does not have a closing tag. It's commonly used to offer the same media content in multiple file formats in order to provide compatibility with a broad range of browsers given their differing support for image file formats and media file formats.
+
+- ```<portal>```
+This element enables the embedding of another HTML page into the current one for the purposes of allowing smoother navigation into new pages.
