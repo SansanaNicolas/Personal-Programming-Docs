@@ -296,3 +296,36 @@ The source HTML element specifies multiple media resources for the picture, the 
 
 - ```<portal>```
 This element enables the embedding of another HTML page into the current one for the purposes of allowing smoother navigation into new pages.
+
+
+## SVG and MathML
+You can embed SVG and MathML content directly into HTML documents, using the svg and math elements.
+
+- ```<svg>```
+This element is a container that defines a new coordinate system and viewport. It's used as the outermost element of SVG documents, but it can also be used to ember an SVG fragment inside an SVG or HTML document.
+
+- ```<math>```
+The top-level element in MathML is math. Every valid MathML instance must be wrapped in math tags. in addition you must not nest a second math element in another, but you can have an arbitrary number of other child elements in it.
+
+
+## Scripting.
+In order to create dynamic content and Web applications, HTML supports the use of scripting languages, most prominently JavaScript. Certain elements supports this capability.
+
+- ```<canvas>```
+Use the HTML canvas element with either the canvas scripting API or the WebGL API to draw graphics and animations.
+
+- ```<noscript>```
+The noscript HTML element defines a section of HTML to be inserted if a script type on the page is unsupported or if scripting is currently turned of in the browser.
+
+- ```<script>```
+The script HTML element is used to embed executable code or data; This is typically used to embed or refer to JavaScript code. The script element can also be used with other languages, such as WebGL's GLSL shader programming language and JSON.
+
+
+## Demarcating edits.
+These elements let you provide indications that specific parts of the text have been altered.
+
+- ```<del>```
+This element represents a range of text that has been deleted from a document. This can be used when rendering "track changes" or source code diff infroamtion, for example. The ins element can be used for the opposite purpose, to indicate text has been added to document.
+
+- ```<ins>```
+The ins HTMl element represents a range of text that has been added to a document. You can use the del element to similarly represent a range of text that has been deleted from the document.
