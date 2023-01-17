@@ -329,3 +329,105 @@ This element represents a range of text that has been deleted from a document. T
 
 - ```<ins>```
 The ins HTMl element represents a range of text that has been added to a document. You can use the del element to similarly represent a range of text that has been deleted from the document.
+
+
+## Tablet Content.
+The elements here are used to create and handle tabular data.
+
+- ```<caption>```
+This element specifies the caption (or title) of a table.
+
+- ```<col>```
+The col HTML element defines a column within a table and is used for defining common semantics on all common cells. It's generally found within a colgroup element.
+
+- ```<colgroup>```
+The colgroup HTML element defines a group of columns within a table.
+
+- ```<table>```
+The table HTML element represents tabular data (information presented in a two-dimensional table comprised of rows and columns of cells containing data).
+
+- ```<tbody>```
+This element encapsulates a set of table rows (tr elements), indicating that they comprise the body of the table (table).
+
+- ```<td>```
+The td HTML element defines a cell of a table that contains data. It participates in the table model.
+
+- ```<tfoot>```
+This element  defines a set of rows summarizing the colums of the table.
+
+- ```<th>```
+The th HTML element defines a cell as header of a group of table cells. The exact nature of this group is defined by the scope and headers attributes.
+
+- ```<thead>```
+This element defines a set of rows defining the head of the columns of the table.
+
+- ```<tr>```
+The tr HTML element defines a row of cells in a table. The row's cells can then be established using a mix of td (data cell) and th (header cell) elements.
+
+
+## Forms
+HTML provides a number of elements which can be used together to create forms which the user can fill out and submit to the website or application.
+
+- ```<button>```
+This element is an interactive element activated by a user mouse, keyboard, finger, voice command or other assistive technology. Once activated, it then performs an action, such as submitting a form or opening a dialog.
+
+- ```<datalist>```
+The datalist HTML element contains a set of option elements that represent the permissible or recommended options available to choose from whitin other controls.
+
+- ```<fieldset>```
+This element is used to group several controls as well as labels within a web form.
+
+- ```<form>```
+The form HTML element represents a document section containing interactive controls for submitting information.
+
+- ```<input>```
+This element is used to create interactive controls for web-based forms in order to accept data from the user; A wide variety of types of input data and control widgets are available, depending on the device and user agent. The input element is one of the most powerful and complex in all of HTML due to the sheer number of combinations of input types and attributes.
+
+- ```<label>```
+Represents a caption for an item in a user interface.
+
+- ```<legend>```
+This element represents a caption for the content of its parent fieldset.
+
+- ```<meter>```
+The meter HTML element represents either a scalar value within a known range or a fractional value.
+
+- ```<optgroup>```
+This element creates a grouping of options within a select element.
+
+- ```<option>```
+The option HTML element is used to define an item contained in a select, an optgroup, or a datalist element. As such, option can represent menu items in popups and other lists of items in an HTML document.
+
+- ```<output>```
+This element is a container element into which a site or app can inject the results of a calculation or the outcome of a user action.
+
+- ```<progress>```
+The progress HTML element displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
+
+- ```<select>```
+The select HTML element represents a control that provides a menu of options.
+
+- ```<textarea>```
+This element represents a multi-line plain-text editing control, useful when you want to allow users to enter a sizeable amount of free-form text, for example a comment on a review or feedback form.
+
+## Interactive elements.
+HTML offers a selection of elements which help to create interative user interface objects.
+
+- ```<details>```
+This element creates a disclosure widget in which information is visible only when the widget is toggled into an "open" state. A summary or label must be provided using the summary element.
+
+- ```<dialog>```
+The dialog HTML element represents a dialog box or other interactive component, such as a dismissible alert, inspector or subwindow.
+
+- ```<summary>```
+This element specifies a summary, caption or legend for a details elements disclosure box. Clicking the summary element toggles the state of the parent details element open and closed.
+
+
+## Web Components.
+Web Components is an HTML-related technology which makes it possible to, essentially, create and use custom elements as if it were regular HTML. In addition, you can create custom versions of standard HTML elements.
+
+- ```<slot>```
+The slot HTML element -part of the web components technology suite- is a placeholder inside a web component that you can fill with your own markup, which lets you create separate DOM trees and present them together.
+
+- ```<template>```
+The template HTML element is a mechanism for holding HTML that is not to be rendered inmediately when a page is loaded but may be instantiated subsequently during runtine using JavaScript.
