@@ -43,3 +43,36 @@ li {
     color: green;
 }
 ```
+
+
+## Changing the default behavior of elements
+
+Browsers have internal stylesheets containing default styles, which they apply to all pages by default, without them all of the text would run together in a clump and we would have to style everything from scratch. All moderno browsers display HTML content by default in pretty much the same way. However, you will often want something other than the choice the browser has made. This can be done by choosing the HTML element that you want to change and using a CSS rule to change the way it looks. A good example is ul, an unordered list. It has list bullets. If you don't want those bullets, you can remove them like so:
+
+```
+li {
+    list-style-type: none;
+}
+```
+
+## Adding a class
+
+We have styled elements based on their HTML element names. This works as long as you want all of the element of that type in your document to look the same. Most of the time that isn't the case and so you will need to find a way to select a subset of the elements without changing the others. The most common way to do this is to add a class to you HTML element and targe that class. In your HTML document, add a class attribute to the second list item. Your list will now look like this:
+
+```
+<ul>
+   <li>Item one</li>
+   <li class="special">Item two</li>
+   <li>Item <em>three</em></li>
+</ul>
+```
+
+In your css you can target the class of "special" by creating a selector that starts with a full stop character. Add the following to your CSS file:
+
+```
+ .special {
+    color: orange;
+    font-weight: bold;
+ }
+```
+Save and refresh to see what the result is.
