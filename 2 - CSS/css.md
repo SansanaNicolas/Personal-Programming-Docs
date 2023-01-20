@@ -76,3 +76,24 @@ In your css you can target the class of "special" by creating a selector that st
  }
 ```
 Save and refresh to see what the result is.
+
+you can apply the class of the special to any element on your page that you want to have the same look as this list item. Sometimes you will see rules with a selector that lists the HTML element selector along with the class: 
+
+```
+li.special {
+    color: orange;
+    font-weight: bold;
+}
+```
+
+This syntax means "target any li element that has a class of special". If you were to do this, then you would no longer be able to apply the class to a span or another element by adding the class to it; you would have to add that element to the list of selectors:
+
+```
+ li.special,
+ span.special {
+    color: orange;
+    font-weight: bold;
+ }
+```
+
+Some classes might be applied to many elements and you don't want to have to keep editing your CSS every time something new needs to take on that style. Therefore, it's sometimes best to bypass the element and refer to the class, unless you know that you want to create some special rules for one element alone, and perhaps want to make sure they are not applied to other things.
