@@ -97,3 +97,46 @@ This syntax means "target any li element that has a class of special". If you we
 ```
 
 Some classes might be applied to many elements and you don't want to have to keep editing your CSS every time something new needs to take on that style. Therefore, it's sometimes best to bypass the element and refer to the class, unless you know that you want to create some special rules for one element alone, and perhaps want to make sure they are not applied to other things.
+
+## Styling things based on their location in a document.
+
+In our document, there are two em elements, one inside a paragraph and other inside a list item. To select only an em that is nested inside an li element, you can use a selector called the descendant combinator, which takes the form of a space between two others selectors.
+
+```
+li em {
+    color: red;
+}
+```
+
+The selector will select any em element that is inside (a descendant of) an li. 
+
+Something else you might like to try is styling a paragraph when it comes directly after a heading at the same hierarchy level in the HTML. To do so, place a + (an adjacent sibling combinator) between the selectors.
+
+```
+h1 + p {
+    font-size: 200%;
+}
+```
+
+
+## Styling things based on state
+
+The final type of styling we shall take a look is the ability to style things based on their state. A straightforward example of this is when styling links. When we style a link, we need to target the a (anchor) element. This has different states depending on whether it is unvisited, visited, being hovered over, focused via the keyboard or in the process of being clicked (activated). You can use CSS to target these different states, the CSS below styles unvisited links pink and visited links green.
+
+```
+ a:link {
+    color: pink;
+ }
+
+  a:visited {
+    color: green;
+  }
+```
+
+You can change the way the link looks when the user hovers over it, for example by removing the underline, which is achieved by the next rule:
+
+```
+ a:hover {
+    text-decoration: none;
+ }
+```
