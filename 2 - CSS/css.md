@@ -140,3 +140,49 @@ You can change the way the link looks when the user hovers over it, for example 
     text-decoration: none;
  }
 ```
+
+## Combining selectors and combinators
+
+It's worth nothing that you can combine multiple selectors and combinators together, for example:
+
+```
+ /* selects any <span> that is inside a <p>, which is inside an <article> */
+ article p span {
+
+ }
+
+ /* selects any <p> that comes directly after a <ul>, which comes directly after an <h1> */ 
+ h1 + ul + p {
+
+ }
+```
+
+You can combine multiple types together too. Try adding the following into your code:
+
+```
+ body h1 + p .special {
+    color: yellow;
+    background-color: black;
+    padding: 5px;
+ }
+
+ /* this will style any element with a class of special, which is inside a <p>, which comes just after an <h1>, which is inside a <body> */
+
+```
+
+
+## Selectors
+
+A selector targets HTML to apply styles to content. If CSS is not applying to content as expected, your selector may not match the way you think it should match.
+Each CSS rule starts with a selector -or a list of selectors- in order to tell the browser which element or elements the rules should apply to. All the examples below are valid selectors or list of selects.
+
+```
+ h1
+ a:link
+ .manythings
+ #onething
+ *
+ .box p
+ .box p:first-child
+ h1, h2, .intro
+```
