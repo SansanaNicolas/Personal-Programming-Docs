@@ -14,6 +14,24 @@ Git is a free and open source distributed version control system designed to han
 
 # Sets the email you want attached to your commit transactions.
 - git config --global user.email "[email address]"
+
+# Assign Vscode as git config editor.
+ - git config --global core.editor "code --wait"
+
+# Open config in VSCode.
+ - git config --global -e
+
+# Standardize line breaks in Windows.
+ - git config --global core.autocrlf true
+
+# Standardize line breaks in Linux/Mac. 
+ - git config --global core.autocrlf input
+
+# View command help in terminal.
+ - git config -h
+
+# View command help in the browser.
+ - git help config
 ```
 
 
@@ -29,7 +47,29 @@ Git is a free and open source distributed version control system designed to han
 ```
 
 ## The .gitignore file
-Sometimes it may be a good idea to exclude files from being tracket with Git. This is tipically done in a special file named .gitignore. You can find helpful templares for .gitignore files at github.com/github/gitignore .
+Sometimes it may be a good idea to exclude files from being tracket with Git. This is tipically done in a special file named .gitignore. You can find helpful templares for .gitignore files at github.com/github/gitignore.
+
+We can create it manually or with gitignore.io
+
+```
+ # This is a comment.
+
+ file.ext
+ folder
+ 
+ # Ignore all files ending in .log
+  *.log
+
+  # except production.log
+ !production.log
+
+ # Ignore all files ending in .txt inside the doc folder, but not in its subfolders.
+ doc/*.txt
+
+ # Ignore all files ending in .txt inside the doc folder and also in its subfolders.
+doc/**/*.txt
+ 
+```
 
 
 ## Branches
@@ -42,6 +82,9 @@ Branches are an important part of working with Git. Any commits you make will be
 
 # Switches to the specified branch and updates the working directory.
 - git checkout [branch-name]
+
+# Creates a new branch and switches you there with a single command.
+- git checkout -b [branch-name]
 
 
 #Combines the specified branch's history into the current branch. This is usually done in pull requests, but is an important Git operation.
@@ -135,3 +178,5 @@ git branch -M main
 git push -u origin main
 
 ```
+
+
