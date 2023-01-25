@@ -62,6 +62,22 @@ Is a text editor program designed specifically for editing source code of comput
 Web development is the work involved in developing a websie for the Internet (WWW) or an intranet (a private network). Web development can range from developing a simple single static page of plain text to complex web applications, electronic businesses, and social network services. A more comprehensive list of tasks to which Web development commonly refers, may include Web engineering, Web desing, Web content development, cliente-side/ server-side scripting, Web server and network security configuration, and e-commerce development.
 Among Web professionals, "Web development" usually refers to the main non-design aspects of building Web sites: writing markup and coding. Web development may use content management systems (CMS) to make content changes easier and available with basic technical skills. For larger organizations and businesses, Web development teams can consist of hundreds of developers and follow standard methods like Agile methodologies while developing Web sites. There are three kinds of Web developer specialization: ***Front-end developer***, ***back-end developer*** and ***full-stack developer***. Front-end devs are responsible for behavior and visuals, that run in the user browser, while back-end devs deal with the servers, data bases and APIs.
 
+## Programming language
+
+A programming language is a system of notation for writing computer programs. Most programming languages are text-based formal languages, but they may also be graphical. They are a kind of computer languange. The description of a programming language is usually split into the two components of syntax (form) and semantics (meaning), which are usually defined by a formal language.
+
+## Programming paradigms
+
+Programming paradigms are a way to classify programming languages based on their features. Languages can be classified into multiple paradigms. Some paradigms are concerned mainly with implications for the execution model of the language, such as allowing side effects, or whether the sequence of operations is defined by the execution model. Other paradigms are concerned mainly with the way that code is organized, such as grouping a code into units along with the state that is modified by the code. Yet others are concerned mainly with the style of syntax and grammar.
+
+## Imperative programming
+
+In computer science, imperative programming is a programming paradigm of software that uses statements that change a program's state. In much the same way that the imperative mood in natural languages expresses commands, an imperative program consists of commands for the computer to perform.
+
+## Declarative programming 
+
+Declarative programming is a programming paradigm that expresses the logic of a computation without describing its control flow. Many languages that apply this style attemp to minimize or eliminate side effects by describing what the program must accomplish in terms of the problem domain, rather than describe how to accomplish it as a sequence of the programming language primitives. This is in contrast with imperative programming, which implements algorithms in explicit steps. Declarative programming ofter considers programs as theories of a formal logic, and computations as deductions in that logic space. Declarative programming may greatly simplify writing parallel programs.
+
 ## Object-oriented programming (OOP)
  
  Is a programming paradigm based on the concept of "objects", which can contain data and code. The data is in the form of fields (often known as attributes or properties), and the code is in the form of procedures (often known as methods). A common feature of objects it that procedures (or methods) are attached to them and can access and modify the object's data fields. In this brand of OOP, there is usually a special name such as this or self used to refer to the current object. In OOP, computer programs are designed by making them out of objects that interact with one another. OOP languages are diverse, but the most popular ones are class-based, meaning that objects are instances of classes, which also determine their types. Many of the most widely used programming languages (such as C++, Java, Python, etc.) are multi-paradigm and they support object-oriented programming to a greater or lesser degree, typically in combination with imperative, procedural programming.
