@@ -49,7 +49,20 @@ In computing, a ***database*** is an organized collection of data stored and acc
 
 A ***database management system (DBMS)*** is the software that interacts with end users, applications, and the database itself to capture and analyze the data. The DBMS software additionally encompasses the core facilities provided to administer the database. The sum total of the database, the DBMS and the associated applications can be referred to as a database system. Often the term "database" is also used loosely to refer to any of the DBMS, the database system or an application associated with the database. 
 
+## IDEs
+
+An integrated development environment or interactive development environment is a computer application that provides comprehensive services to facilitate software development for the developer or programmer. Typically, an IDE consists of a source code editor, automatic build tools, and a debugger. Most IDEs have intelligent code completion (IntelliSense). Some IDEs contain a compiler, an interpreter, or both, such as NetBeans and Eclipse; others don't, like SharpDevelop and Lazarus.
+
+## Source-code editor 
+
+Is a text editor program designed specifically for editing source code of computer programs, it may be a standalone application or it may be built into an integrated development environment (IDE) or web browser. Source-code editors are a fundamental programming tool, as the fundamental job of programmers is to write and edit source code. These editors have characteristics specifically designed to simplify and speed up typing of source code, such as syntax highlighting, indentation, autocomplete and brace matching funcionality, also provide a convenient way to fun a compiler.
+
 ## WEB Development
 
 Web development is the work involved in developing a websie for the Internet (WWW) or an intranet (a private network). Web development can range from developing a simple single static page of plain text to complex web applications, electronic businesses, and social network services. A more comprehensive list of tasks to which Web development commonly refers, may include Web engineering, Web desing, Web content development, cliente-side/ server-side scripting, Web server and network security configuration, and e-commerce development.
 Among Web professionals, "Web development" usually refers to the main non-design aspects of building Web sites: writing markup and coding. Web development may use content management systems (CMS) to make content changes easier and available with basic technical skills. For larger organizations and businesses, Web development teams can consist of hundreds of developers and follow standard methods like Agile methodologies while developing Web sites. There are three kinds of Web developer specialization: ***Front-end developer***, ***back-end developer*** and ***full-stack developer***. Front-end devs are responsible for behavior and visuals, that run in the user browser, while back-end devs deal with the servers, data bases and APIs.
+
+## Object-oriented programming (OOP)
+ 
+ Is a programming paradigm based on the concept of "objects", which can contain data and code. The data is in the form of fields (often known as attributes or properties), and the code is in the form of procedures (often known as methods). A common feature of objects it that procedures (or methods) are attached to them and can access and modify the object's data fields. In this brand of OOP, there is usually a special name such as this or self used to refer to the current object. In OOP, computer programs are designed by making them out of objects that interact with one another. OOP languages are diverse, but the most popular ones are class-based, meaning that objects are instances of classes, which also determine their types. Many of the most widely used programming languages (such as C++, Java, Python, etc.) are multi-paradigm and they support object-oriented programming to a greater or lesser degree, typically in combination with imperative, procedural programming.
+
