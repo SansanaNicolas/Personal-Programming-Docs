@@ -203,3 +203,32 @@ p {
 ```
 
 Suppose that in our HTML document, we have a paragraph with a class of special. Both rules apply. Which selector prevails? The CSS language has rules to control which selector is stronger in the event of a conflict. These rules are called cascade and specificity. In the code block we define two rules for the p selector, but the paragraph text will be blue. This is because the declaration that sets the paragraph text to blue appears later in the stylesheet. Later styles replace conflicting styles that appear earlier in the stylesheet. This is the cascade rule. However, in the case of our earlier example with the conflict between the class selector and the element selector, the class prevails, rendering the paragraph text red. A class is rated as being more specific, as in having more specificity than the element selector, so it cancels the other conflicting style declaration.
+
+## Properties and values
+
+At its most basic level, CSS consists of two components: 
+- Properties: These are human-readable identifiers that indicate which stylist features you want to modify. For example: font-size, width, background- color.
+- Values: Each property is assigned a value. This value indicates how to style the property.
+
+The example below highlights a single property and value. The property name is "color" and the value is "blue".
+
+```
+ h1 {
+    color: blue;
+    background-color: yellow;
+ }
+
+ p {
+    color: red;
+ }
+```
+
+When a property is paired with a value, this pairing is called a CSS declaration. CSS declarations are found within CSS declaration Blocks.
+
+Finally, CSS declaration blocks are paired with selectors to produce CSS rulesets (or CSS rules). The above example contains two rules: one for the h1 selector and one for the p selector.
+
+Setting CSS properties to specific values is the primary way of defining layour and styling for a document. The CSS engine calculates which declarations apply to every single element of a page. 
+
+CSS properties and values are case-insensitive. The property and value in a property-value pair are separated by a colon (:).
+
+## Functions 
