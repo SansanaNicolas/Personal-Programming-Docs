@@ -232,3 +232,52 @@ Setting CSS properties to specific values is the primary way of defining layour 
 CSS properties and values are case-insensitive. The property and value in a property-value pair are separated by a colon (:).
 
 ## Functions 
+
+While most values are relatively simple keywords or numeric values, there are some values that take the form of a function.
+
+The calc() function.
+An example would be calc() function, which can do simple math within CSS:
+
+```
+ <div class="outer"><div class="box">The inner box is 90% - 30px.</div></div>
+```
+```
+ .outer {
+  border: 5px solid black;
+}
+
+.box {
+  padding: 10px;
+  width: calc(90% - 30px);
+  background-color: rebeccapurple;
+  color: white;
+}
+```
+
+this renders as: 
+
+![calc function](/images/calc().png)
+
+A function consists of the function name, and parentheses to enclose the values for the function. In the case of the calc() example above, the values define the width of this box to be 90% of the containing block width, minus 30 pixels. The result of the calculation isn't something that can be computed in advance and entered as a static value.
+
+### Transform functions.
+
+Another example would be the various values for transform, such as rotate().
+
+```
+<div class="box"></div>
+```
+
+```
+.box {
+  margin: 30px;
+  width: 100px;
+  height: 100px;
+  background-color: rebeccapurple;
+  transform: rotate(0.8turn);
+}
+```
+
+The output from the above code looks like this:
+
+![rotate function](/images/rotate().png)
