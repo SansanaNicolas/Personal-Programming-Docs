@@ -281,3 +281,30 @@ Another example would be the various values for transform, such as rotate().
 The output from the above code looks like this:
 
 ![rotate function](/images/rotate().png)
+
+
+## @rules
+
+CSS @rules (pronounced "at-rules") provide instruction for what CSS should perform or how it should behave. Some @rules are simple with just a keyword and a value. For example, @import imports a stylesheet into another CSS stylesheets.
+
+```
+ @import "style2.css";
+```
+
+One common @rule that you are likely to encounter is @media, which is used to create media queries. Media queries use conditional logic for applying CSS styling.
+
+In the example below, the stylesheet, defines a default pink background for the body element. However, a media query follows that defines a blue background if the browser viewport is wider than 30em.
+
+```
+ body {
+    background-color: pink;
+ }
+
+ @media (min-width: 30em) {
+    body {
+        background-color: blue;
+    }
+ }
+```
+
+You will encounter other @rules throughout these tutorials.
