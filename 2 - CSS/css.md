@@ -308,3 +308,143 @@ In the example below, the stylesheet, defines a default pink background for the 
 ```
 
 You will encounter other @rules throughout these tutorials.
+
+
+## Shorthands.
+
+Some properties like ***font, background, padding, border and margin*** are called ***shorthand properties***, this is because shorthand properties set several values in a single line.
+For example: this one line of code:
+
+```
+ /* In 4-value shorthands like padding and margin, the values are applied in the order: top, right, bottom, left (clockwise from the top). There are also other shorthand types, for example 2-value shorthands, which set padding/margin for top/bottom, then left/ right */
+  padding: 10px 15px 15px 5px;
+```
+
+Is equivalent to these four lines of code: 
+
+ ```
+  padding-top: 10px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  padding-left: 5px;
+ ```
+
+ This one line:
+
+ ```
+  background: red url(bg-graphic.png) 10px 10px repeat-x fixed;
+ ```
+
+ Is equivalent to these five lines:
+
+ ```
+ background-color: red;
+ background-image: url(bg-graphic.png);
+ background-position: 10px 10px;
+ background-repeat: repeat-x;
+ background-attachment: fixed;
+ ```
+
+## Comments
+
+As with any coding work, it is best practive to write comments along with CSS. This helps you to remember how the code works as you come back later for fixes or enhancement. It also helps others understand the code. CSS comennts begin with /* and end with */.
+
+"Commenting out" code is also useful for temporarily disabling sections of code for testing. In the example below, the rules for .special are disabled by "commenting out" the code.
+
+```
+ /*.special {
+    color: red;
+ }*/
+
+ p {
+    color: blue;
+ }
+```
+
+## White spaces
+
+White space means actual spaces, tabs and new lines. Just as browsers ignore white space in HTML, browsers ignore white space inside CSS. The value of white space is how it can improve readability.
+
+
+# How does CSS actually work?
+
+When a browser displays a document, it must combine the document's content with its style information. It processes the document in a number of stages, which we've listed below. Bear in mind that this is a very simplified version of what happens when a browser loads a webpage, and that different browsers will handle the process in different ways. But this is roughly what happens.
+
+1. The browser loads the HTML (e.g. receives it from the network).
+2. It converts the HTML into a DOM (Document Object Model). The DOM represents the document in the computer's memory. The DOM is explained in a bit more detail in a few moments.
+3. The browser then fetches most of the resources that are linked to by the HTML document, such as embedded images, videos, and even linked CSS! JavaScript is handled a bit later on in the process, and we won't talk about it here to keep things simpler.
+
+4. The browser parses the fetched CSS, and sorts the different rules by their selector types into different "buckets", e.g. element, class, ID, and so on. Based on the selectors it finds, it works out which rules should be applied to which nodes in the DOM, and attaches style to them as required (this intermediate step is called a render tree)
+.
+5. The render tree is laid out in the structure it should appear in after the rules have been applied to it.
+6. The visual display of the page is shown on the screen (this stage is called painting.)
+
+The following diagram also offers a simple view of the process.
+
+![Css diagram](/images/css%20diagram.png)
+
+## About the DOM
+
+A DOM has a tree-like structure. Each element, attribute, and piece of text in the markup language becomes a DOM node in the tree structure. The nodes are defined by their relationship to other DOM nodes. Some elements are parents of child nides, and child nodes have siblings.
+
+Understanding the DOM helps you design, debug and maintain you CSS because the DOM is where your CSS and the document's content meet up. When you start working with browser DevTools you will be navigating the DOM as you select items in order to see which rules apply.
+
+## A real DOM representation
+
+Let's look at an example to see how a real HTML snippet is converted into a DOM, take the following HTML code:
+
+```
+ <p>
+  Let's use:
+  <span>Cascading</span>
+  <span>Style</span>
+  <span>Sheets</span>
+ </p>
+```
+
+In the DOM, the node corresponding to our p element is a parent. Its children are a text node and the three nodes corresponding to our span elements. The span nodes are also parentsm with text nodes as their childer:
+
+```
+ P
+├─ "Let's use:"
+├─ SPAN
+|  └─ "Cascading"
+├─ SPAN
+|  └─ "Style"
+└─ SPAN
+    └─ "Sheets"
+```
+
+This is how a browser interprets the previous HTML snippet, it renders the above DOM tree and then outputs it in the browser like so:
+
+```
+ Let's use: Cascading Style Sheets
+```
+
+## Applying CSS to the DOM
+
+Let's say we add some CSS to our document, to style it. Again, the HTML is as follows:
+
+```
+ <p>
+  Let's use:
+  <span>Cascading</span>
+  <span>Style</span>
+  <span>Sheets</span>
+</p>
+```
+
+Let's suppose we apply the following CSS to it:
+
+```
+ span {
+  border: 1px solid black;
+  background-color: lime;
+}
+```
+
+The browser parses the HTML and creates a DOM from it. Next, it parses the CSS. Since the only rule available in the CSS has a span selector, the browser sorts the CSS very quickly! It applies that rule to each one of the three spanS, then paints the final visual representation to the screen.
+
+The updated output is as follows:
+
+![CSS DOM](/images/CSSdom.png)
