@@ -448,3 +448,17 @@ The browser parses the HTML and creates a DOM from it. Next, it parses the CSS. 
 The updated output is as follows:
 
 ![CSS DOM](/images/CSSdom.png)
+
+
+## Conflicting rules
+
+CSS stands for Cascading Style Sheets, and that first word cascading is incredibly important to understand, the way that the cascade behaves is key to understanding CSS.
+At some point, you will be working on a project and you will find that the CSS you thought should be applied to an element is not working, often, the problem is that you create two rules that apply different values of the same property to the same elect. Cascade and the closely-related concept of specificity are mechanisms that control which rule applies when there is such a conflict. The rule that's styling your element may not be the one you expect, so you need to understand how these mechanisms work. Also significant here is the concept of inheritance, which means that some CSS properties by default inherit values set on the current element's parent element and some don't. This can also cause some behavior that you might not expect. These can seem like a tricky set of concepts to understand. As you get more practice writing CSS, the way it works wil become more obvious to you.
+
+## Cascade
+
+Stylesheets cascade -at a very simple level, this means that the origin, the cascade layer, and the order of CSS rules matter. When two rules from the same cascade layer apply and both have equal specificity, the one that is defined last in the stylesheet is the one that will be used.
+
+## Specificity
+
+Specificity is the algorithm that the browser uses to decide which property value is applied to an element. If multiple style blocks have different selectors that configure the same property with different values and target the same element, specificity decides the property value that gets applied to the element. Specificity is basically a measure of how specific a selector's selection will be:
