@@ -462,3 +462,67 @@ Stylesheets cascade -at a very simple level, this means that the origin, the cas
 ## Specificity
 
 Specificity is the algorithm that the browser uses to decide which property value is applied to an element. If multiple style blocks have different selectors that configure the same property with different values and target the same element, specificity decides the property value that gets applied to the element. Specificity is basically a measure of how specific a selector's selection will be:
+- An element selector is less specific; It will select all elements of that type that appear on a page, so it has less weight. Pseudo-element selectors have the same specificity as regular element selectors.
+- A class selector is more specific; It will select only the elements on a page that have a specific class attribute value, so it has more weight. Attribute selectors and pseudo-classes have the same weight as a class.
+
+## Inheritance
+
+Inheritance also needs sto be understood in this content -Some CSS property values set on parent elements are inherited by their child elements, and some aren't.
+For example, if you set a color and font-family on an element, every element inside it will also be styled with that color and font, unless you've applied different color and font values directly to them.
+Some properties do not inherit -For example, if you set a width of 50% on an element, all of its descendants do not get a width of 50% of their parent's width. If this was the case, CSS would be very frustrating to use!
+
+## Understanding how the concepts work together
+
+These three concepts (cascade, specificity and inheritance) together control which CSS applies to what element. In the sections below, we'll see how they work together. It can sometimes seem a little bit complicated, but you will start to remember them as you get more experienced with CSS, and you can always look up the details if you forget! Even experienced developers don't remember all the details.
+
+## Understanding inheritance
+
+We'll start with inheritance. In the example below, we have a UL element with two levels of unordered lists nested inside it. We have given the outer UL a border, padding, and font color.
+The color property is an inherited property. So, the color property value is applied to the direct children and also to the indirect childer -The inmediate child LIs and those inside the first nested list. We have then added the class special to the second nested list and applied a different color to it. This then inherits down through its children.
+
+![inheritcss](/images/inheritcss.png)
+
+``` 
+HTML
+
+<ul class="main">
+    <li>Item One</li>
+    <li>Item Two
+        <ul>
+            <li>2.1</li>
+            <li>2.2</li>
+        </ul>
+    </li>
+    <li>Item Three
+        <ul class="special">
+            <li>3.1
+                <ul>
+                    <li>3.1.1</li>
+                    <li>3.1.2</li>
+                </ul>
+            </li>
+            <li>3.2</li>
+        </ul>
+    </li>
+</ul>
+
+```
+
+```
+CSS
+
+.main {
+    color: rebeccapurple;
+    border: 2px solid #ccc;
+    padding: 1em;
+}
+
+.special {
+    color: black;
+    font-weight: bold;
+}
+```
+
+Properties like width (as mentioned earlier), margin, padding, and border are not inherited properties. If a border were to be inherited by the children in this list example, every single list and list item would gain a border -Probably not an effect we would ever want!
+
+Though every CSS property page lists whether or not the property is inherited, you can ofter guess the same intuitively if you know what aspect the property value will style.
