@@ -526,3 +526,35 @@ CSS
 Properties like width (as mentioned earlier), margin, padding, and border are not inherited properties. If a border were to be inherited by the children in this list example, every single list and list item would gain a border -Probably not an effect we would ever want!
 
 Though every CSS property page lists whether or not the property is inherited, you can ofter guess the same intuitively if you know what aspect the property value will style.
+
+## Controlling inheritance
+
+CSS provides five special universal property values for controlling inherintace. Every CSS property accepts these values.
+
+- inherit: Sets the property value applied to a select element to be the same as that of its parent element. Effectively, this "turns on inheritance".
+
+- inital: Sets the property value applied to a selected element to the initial value of that property.
+
+- revert: Resets the property value applied to a selected element to the browser's default styling rather than the defaults applied to that property. This value acts like unset in many cases.
+
+- revert-layer: Resets the property value applied to a selected element to the value established in a previous cascade layer.
+
+- unset: Resets the property to its natural value, which means that if the porperty is naturally inherited it acts like inherit, otherwise it acts like initial. 
+
+## Understanding the cascade
+
+We now understand that inheritance is why a paragraph nested deep in the structure of your HTML is the same color as the CSS applied to the body. Also we have an understading of how to change the CSS applied to something at any point in the document -Whether by assigning CSS to an element or by creating a class. We will now look at how cascade defines which CSS rules apply when more than one style block apply the same property, but with different values, to the same element.
+There are three factors to consider, listed here in increasing order of importance. Later ones overrule earlier ones:
+1. Source order
+2. Specificity
+3. Importance
+
+We will look at these to see how browsers figure out exactly what CSS should be applied.
+
+
+## Source order 
+
+We have already seen how source order matters to the cascade. If you have more than one rule, all of which have exactly the same weight, then the one that comes last in the CSS will win. You can think of this as: the rule that is nearer the element itself overwrites the earlier ones until the last one wins and gets to style the element.
+Source order only matters when the specificity weight or the rules is the same, so let's took at specificity:
+
+## Specificity
