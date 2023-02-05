@@ -558,3 +558,23 @@ We have already seen how source order matters to the cascade. If you have more t
 Source order only matters when the specificity weight or the rules is the same, so let's took at specificity:
 
 ## Specificity
+
+You will often run into a situation where you know that a rule comes later in the stylesheet, but an earlier, conflicting rule is applied. This happens because the earlier rule has a ***higher specificity*** -it is more specific, and therefore, is being chosen by the browser as the one that should style the element. 
+A Class selector has more weight than an element selector, so the properties defined in the class style block will override those defined in the element style block.
+Something to note here is that although we are thinking about selectors and the rules that are applied to the text or component they select, it isn't the entire rule that is overwritten, only the properties that are declared in multiple places.
+This behavior helps avoid repetition in your CSS. A common practice is to define generic styles for the basic elements, and then create classes for those that are different.
+
+The amount of specificity a selector has is measured using three different values (or components), which can be thought of as ID, CLASS, and ELEMENT columns in the hundreds, tens, and ones place:
+
+- Identifies: Score one in this column for each ID selector contained inside the overall selector.
+- Classes: Score one in this column for each class selector, attribute selector, or pseudo-class contained inside the overall selector.
+- Elements: Score one in this column for each element selector or pseudo-element contained inside the overall selector. 
+
+THe following table shows a few isolated examples to get you in the mood. Try going through these, and make sure you understand why they have the specificity that we have given them.
+
+![selectorvalue](/images/selectorsValue.png)
+
+
+## Inline Styles
+
+Inline styles, that is, the style declaration inside a style attribute, take precedence over all normal styles, no matter the specificity. Such declarations don't have selectors, but their specificity can be construed as 1-0-0-0; Always more than any other specificity weight no matter how many IDs are in the selectors.
