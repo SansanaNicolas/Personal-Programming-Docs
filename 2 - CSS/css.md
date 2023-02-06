@@ -578,3 +578,17 @@ THe following table shows a few isolated examples to get you in the mood. Try go
 ## Inline Styles
 
 Inline styles, that is, the style declaration inside a style attribute, take precedence over all normal styles, no matter the specificity. Such declarations don't have selectors, but their specificity can be construed as 1-0-0-0; Always more than any other specificity weight no matter how many IDs are in the selectors.
+
+## !important
+
+There's a special piece of CSS that you can use to overrule all of the above calculations, even inline styles -the !important flag. However, you should be very careful while using it. This flag is used to make an individual property and value pair the most specific rule, thereby overriding the normal rules of the cascade, including normal inline styles.
+
+One situation in which you may have to use the !important flag is when you are working on a CMS where you can't edit the core CSS modules, and you really want to override an inline style or an important declaration that can't be overridden in any other way. But really, don't use it if you can avoid it.
+
+## The effect of CSS location
+
+Finally, it's important to note that the precedence of a CSS declaration depends on what stylesheet and cascade layer it is specified in.
+
+It's possible for users to set custom stylesheets to override the developer's styles. For example, a visually impaired user might want to set the font size on all web pages they visit to be double the normal size to allow for easier reading.
+
+It's also possible to declare developer styles in cascade layers: you can make non-layered styles override styles declared in layers or you can make styles declared in later layers override styles from earlier declared layers.
