@@ -591,4 +591,26 @@ Finally, it's important to note that the precedence of a CSS declaration depends
 
 It's possible for users to set custom stylesheets to override the developer's styles. For example, a visually impaired user might want to set the font size on all web pages they visit to be double the normal size to allow for easier reading.
 
-It's also possible to declare developer styles in cascade layers: you can make non-layered styles override styles declared in layers or you can make styles declared in later layers override styles from earlier declared layers.
+It's also possible to declare developer styles in cascade layers: you can make non-layered styles override styles declared in layers or you can make styles declared in later layers override styles from earlier declared layers. For example, as a developer you may not be able to edit a third-party stylesheet, but you can import the external stylesheet into a cascade layer so that all of your styles easily override the imported styles without worrying about third-party selector specificity.
+
+## Order of overriding declarations
+
+1. Declarations in user agent style sheets (e.g., the browser's default styles, used when no other styling is set).
+
+2. Normal declarations in user style sheets (custom styles set by a user).
+
+3. Normal declarations in author style sheets (these are the styles set by us, the web developers).
+
+4. Important declarations in author style sheets.
+
+5. Important declarations in user style sheets.
+
+6. Important declarations in user agent style sheets.
+
+## Order of cascade layers
+
+Even though cascade layers is an advanced topic and you may not use this feature right away, it's important to understand how layers cascade.
+
+When you declare CSS in cascade layers, the order of precedence is determined by the order in which the layers are declared. CSS styles declared outside of any layer are combined together, in the order in which those styles are declared, into an unnamed layer, as if it were the last declared layer. With competing normal (not important) styles, later layers take predecende over earlier defined layers. For styles flagged with !important, however, the order is reversed, with important styles in earlier layers taking precedence over important styles declared in subsequent layers or outside of any layer. Inline styles take precedence over all author styles, no matter the layer.
+
+When you have multiple style blocks in differente layers providing competing values for a property on a single element, the layer in which the styles are declared on a single element, the layer in which the styles are declared deetermine the predecende. Specificity between layers doesn't matter, but specificty within a single layer still does.
