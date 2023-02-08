@@ -614,3 +614,48 @@ Even though cascade layers is an advanced topic and you may not use this feature
 When you declare CSS in cascade layers, the order of precedence is determined by the order in which the layers are declared. CSS styles declared outside of any layer are combined together, in the order in which those styles are declared, into an unnamed layer, as if it were the last declared layer. With competing normal (not important) styles, later layers take predecende over earlier defined layers. For styles flagged with !important, however, the order is reversed, with important styles in earlier layers taking precedence over important styles declared in subsequent layers or outside of any layer. Inline styles take precedence over all author styles, no matter the layer.
 
 When you have multiple style blocks in differente layers providing competing values for a property on a single element, the layer in which the styles are declared on a single element, the layer in which the styles are declared deetermine the predecende. Specificity between layers doesn't matter, but specificty within a single layer still does.
+
+## CSS SELECTORS
+
+In CSS, selectors are used to target the HTML elements on our web pages that we want to style. There are a wide variety of CSS selectors available, allowing for fine-grained precision when selecting elements to style.
+
+A CSS selector is the first part of a CSS rule. It's a pattern of elements and other terms that tell the browser which HTML elements should be selected to have the CSS property values inside the rule applied to them. The element or elements which are selected by the selector are referred to as the subject of the selector.
+
+![CssSelectors](/images/cssSelectors.png)
+
+In others articles you may have met some different selectors, and learned that there are selectors that target the document in different ways - for example by selecting an element such as h1, or a class such as .special.
+
+In CSS, selectors are defined in the CSS selectors specification; like any other part of CSS they need to have support in browsers for them to work. The majority of selectors that you will come across are defined in the [level 3 selectors specification](https://www.w3.org/TR/selectors-3/) and [level 4 selector specification](https://www.w3.org/TR/selectors-4/) which are both mature specifications, therefore you will find excellent browser support for these selectors.
+
+## Selector lists
+
+If you have more than one thing which uses the same CSS then the individual selectors can be combined into a selector list so that the rule is applied to all of the individual selectors. For exmaple, if I have the same CSS for an h1 and also a class of .special, I could write this as two separate rules.
+
+```
+ h1 {
+  color: blue;
+}
+
+.special {
+  color: blue;
+}
+```
+
+I could also combine these into a selector list, by adding a comma between them.
+
+```
+ h1, .special {
+  color: blue;
+}
+```
+
+White space is valid before or after the comma. You may also find the selectors more readable if each is on a new line.
+
+```
+ h1,
+.special {
+  color: blue;
+}
+```
+
+## Types of selectors
