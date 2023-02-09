@@ -659,3 +659,77 @@ White space is valid before or after the comma. You may also find the selectors 
 ```
 
 ## Types of selectors
+
+There are a few different groupings of selectors, and knowing which type of selector you might need will help you to find the right tool for the job. In this documentation we will look at the different groups of selectors in more detail.
+
+### Type, Class, and ID selectors
+
+This group includes selectors that target an HTML element such as an h1.
+
+```
+h1 {
+
+}
+```
+
+It also includes selectors which target a class:
+
+```
+ .box {
+
+ }
+```
+
+or, an ID:
+
+```
+ #unique {
+
+ }
+```
+
+## attribute selectors
+
+This group of selectors gives you different ways to select elements based on the presence of a certain attribute on an element:
+
+```
+ a[title] {
+
+ }
+```
+
+Or even make a selection based on the presence of an attribute with a particular value:
+
+```
+ a[href="https://example.com"] {
+
+}
+```
+
+## Pseudo-classes and pseudo-elements
+
+This group of selectors includes pseudo-classes, which style certain states of an element. The :hover pseudo-class for example selects an element only when it is being hovered over by the mouse pointer:
+
+```
+ a:hover {
+
+ }
+```
+
+It also includes pseudo-elements, which select a certain part of an element rather than the element itself. For example, ::first-line always selects the first line of text inside an element (a p in the below case), acting as if a span was wrapped around the first formatted line and then selected.
+
+```
+ p::first-line {
+
+ }
+```
+
+## Combinators
+
+The final group of selectors combine other selectors in order to target elements within our documents. The following, for example, selects paragraphs that are direct children of article elements using the child combinator (>):
+
+```
+ article > p {
+    
+ }
+```
