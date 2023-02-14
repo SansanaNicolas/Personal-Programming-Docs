@@ -974,3 +974,128 @@ AN element wih ***display: inline-block*** does a subset of the block things we 
 
 It doesn't, however, break onto a new line, and will only become larger than its content if you explicitly add ***width*** and ***height*** properties.
 
+## Styling backgrounds in CSS
+
+The CSS background property is a shorthand for a number of background longhand properties that we will meet in this lesson. If you discover a complex background property in a stylesheet, it might seem a little hard to understand as so many values can be passed in at once.
+
+## Background colors
+
+The background-color property defines the background color on any element in CSS. The property accepts any valid color. A background-color extends underneath the content and padding box of the element.
+
+In the example below, we have used various color values to add a background color to the box, a heading, and a span element.
+
+![backgroundcolor](/images/backgroundColor.png)
+
+```
+.box {
+  background-color: #567895;
+}
+
+h2 {
+  background-color: black;
+  color: white;
+}
+span {
+  background-color: rgba(255,255,255,.5);
+}
+```
+
+```
+<div class="box">
+  <h2>Background Colors</h2>
+  <p>Try changing the background <span>colors</span>.</p>
+</div>
+    
+```
+
+## Background images
+
+The background-image property enables the display of an image in the background of an element. In the example below, we have two boxes -one has a background image which is larger than the box (left image), the other has a small image of a single star.
+
+This example demostrates two things about background images. By default, the large image is not scaled down to fit the box, so we only see a small corner of it, whereas the small image is tiled to fill the box.
+
+
+![backgroundExample](/images/backgroundEx.png)
+
+```
+.a {
+  background-image: url(balloons.jpg);
+}
+
+.b {
+  background-image: url(star.png);
+}
+```
+
+```
+<div class="wrapper">
+  <div class="box a"></div>
+  <div class="box b"></div>
+</div>
+    
+```
+
+If you specify a background color in addition to a background image then the image displays on top of the color. Try adding a background-color property to the example above to see that in action.
+
+## Controlling background-repeat
+
+The [background-repeat](https://developer.mozilla.org/en-US/docs/Web/CSS/background-repeat) property is used to control the tiling behavior of images. The available values are:
+
+- no-repeat: stop the background from repeating altogether.
+- repeat-x: repeat horizontally.
+- repeat-y: repeat vetically.
+- repeat: the default; repeat in both directions.
+
+## Sizing the brackground image
+
+In case we use the backgroud-size property, can take length or pencentage values, to size the image to fit inside the background.
+
+You can also user keywords:
+
+- Cover: The browser will make the image just large enough so that it completely covers the box area while still retaining its aspect ratio. In this case, part of the image is likely to end up outside the box.
+- Contain: The browser will make the image the right size to fit inside the box. In this case, you may end up with gaps on either side or on the top and bottom of the image, if the aspect ratio of the image is different from that of the box.
+
+## Positioning the background image
+
+The background-position property allows you to choose the position in which the background image appears on the box it is applied to. This uses a coordinate system in which the top-left-hand corner of the box is (0,0), and the box is positioned along the horizontal (x) and vertical (y) axes.
+
+The most common background-position values take two individual values -a horizontal value followed by a vertical value. You can use keywords such as top and right (look up the others on the [background-position](https://developer.mozilla.org/en-US/docs/Web/CSS/background-position) page):
+
+```
+.box {
+  background-image: url(star.png);
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+```
+And [Lengths](https://developer.mozilla.org/en-US/docs/Web/CSS/length), and [percentages](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage):
+
+```
+.box {
+  background-image: url(star.png);
+  background-repeat: no-repeat;
+  background-position: 20px 10%;
+}
+```
+
+You can also mix keyword values with lengths or percentages, in which case the first value must refer to the horizontal position or offset and the second vertical. For example:
+
+```
+.box {
+  background-image: url(star.png);
+  background-repeat: no-repeat;
+  background-position: 20px top;
+}
+```
+
+Finally, you can also use a 4-value syntax in order to indicate a distance from certain edges of the box -the length unit, in this case, is an offset from the value that precedes it. So in the CSS below we are positioning the background 20px from the top and 10 from the right:
+
+```
+.box {
+  background-image: url(star.png);
+  background-repeat: no-repeat;
+  background-position: top 20px right 10px;
+}
+```
+
+## Gradient backgrounds
