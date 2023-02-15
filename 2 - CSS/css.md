@@ -1099,3 +1099,208 @@ Finally, you can also use a 4-value syntax in order to indicate a distance from 
 ```
 
 ## Gradient backgrounds
+
+A gradient -when used for a background- acts just like an image and is also set by using the background-image property.
+You can read more about the different types of grandients and things you can do with them on the MDN page for the [gradient](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient) data type. A fun way to play with gradients is to use one of the many CSS Gradient Generators available on the web, such as [this one](https://cssgradient.io/). You can create a gradient then copy and paste out the source code that generates it.
+
+![gradientCSS](/images/gradient.png)
+
+```
+.a {
+  background-image: linear-gradient(105deg, rgba(0,249,255,1) 39%, rgba(51,56,57,1) 96%);
+}
+
+.b {
+  background-image: radial-gradient(circle, rgba(0,249,255,1) 39%, rgba(51,56,57,1) 96%);
+  background-size: 100px 50px;
+}
+```
+
+```
+<div class="wrapper">
+  <div class="box a"></div>
+  <div class="box b"></div>
+</div>
+```
+
+## Multiple background images
+
+It's also possible to have multiple background images -you specificy multiple background-image values in a single property value, separating each one with a comma.
+
+When you do this you may end up with background images overlapping each other. The backgrounds will layers with the last listed background image at the bottom of the stack, and each previous image stacking on top of the one that follows it in the code.
+
+The other background-* properties can also have comma-separated values in the same way as background-image:
+
+```
+background-image: url(image1.png), url(image2.png), url(image3.png),
+  url(image4.png);
+background-repeat: no-repeat, repeat-x, repeat;
+background-position: 10px 20px, top right;
+```
+
+Each value of the different properties will match up to the values in the same position in the other properties. Above, for example, image1's background-repeat value will be no-repeat.
+However, what happens when different properties have different numbers of values? The answer is that the smaller numbers of values will cycle -in the above example there are four background images but only two background-position values. The first two positino values will be applied to the first two images, then they will cycle back around again -image3 will be given the first position values, and image4 will be given the second position value.
+
+![BackgroundImage](/images/backgroundImage.png)
+
+```
+.box {
+  background-image: url(star.png), url(big-star.png);
+}
+```
+
+```
+<div class="wrapper">
+  <div class="box"></div>
+</div>
+```
+
+## Background attachment
+
+Another option we have available for backgrounds is specifyin how they scroll when the content scrolls. This is cnotrolled using the background-attachment property, which can take the following values:
+
+- Scroll: causes the element's background to scroll when the page is scrolled. If the element content is scrolled, the background does not move. In effect, the background is fixed to the same position on the page, so it scrolls as the page scrolls.
+
+- Fixed: causes an element's background to be fixed to the viewport so that it doesn't scroll when the page or element content is scrolled. It always remain in the same position on the screen.
+
+- Local: fixes the background to the element it is set on, so when you scroll th element, the background scrolls with it.
+
+The [background-attachment](https://developer.mozilla.org/en-US/docs/Web/CSS/background-attachment) property only has an effect when there is content to scroll, so we've made a demo to demostrate the differences between the three values -have a look at [background-attachment.html](https://mdn.github.io/learning-area/css/styling-boxes/backgrounds/background-attachment.html) (also [see the source code](https://github.com/mdn/learning-area/tree/main/css/styling-boxes/backgrounds) here).
+
+## Using the background shorthand property
+
+As I mentioned at the beginning, you will often see backgrounds specified using the background property. This shorthand lets you set all of the different properties at once.
+
+If using multiple backgrounds, you need to specify all of the properties for the first background, then add your next background after a comma. In the example below we have a gradient with a size and position, then a image background with no-repeat and a position, then a color.
+
+There are a few rules that need to be followed when writing background image shorthand values, for example:
+
+- A background-color may only be specified after the final comma.
+
+- The value of background-size may only be included immediately after background-position, separated with the '/' character, like this: center/80%.
+
+![backgroundEX2](/images/backgroundEx2.png)
+
+```
+.box {
+  background:   
+    linear-gradient(105deg, rgba(255,255,255,.2) 39%, rgba(51,56,57,1) 96%) center center / 400px 200px no-repeat,
+url(big-star.png) center no-repeat, 
+    rebeccapurple;
+}
+```
+
+```
+<div class="box"></div>
+```
+
+## Accessibility considerations with backgrounds
+
+When placing text on top of a background image or color, you should take care that you have enough contrast for the text to be legible for your visitors. If specifying an image, and if text will be placed on top of that image, you should also specify a background-color that will allow the text to be legible if the images does not load.
+
+Screen readers cannot parse background images; therefore, they should be purely decoration. Any important content should be part of the HTML page and not contained in a background.
+
+## Borders
+
+When learning about Box Model, we discovered how borders affect the size of our box. We will look at how to use borders creatively. Typically when we add borders to an element with CSS we use a shorthand property that sets the color, width, and style of the border in one line of CSS.
+
+We can set a border for all four sides of a box with [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border):
+
+```
+.box {
+  border: 1px solid black;
+}
+```
+
+Or we can target one edge of the box, for example:
+
+```
+.box {
+  border-top: 1px solid black;
+}
+```
+
+The individual properties for these shorthands would be:
+
+```
+.box {
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+}
+```
+
+And for the longhands:
+
+```
+.box {
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: black;
+}
+```
+
+There are a variety of styles that you can use for borders.
+
+![bordersEX2](/images/bordersEx2.png)
+
+```
+.box {
+  background-color: #567895;
+  border: 5px solid #0b385f;
+  border-bottom-style: dashed;
+  color: #fff;
+}
+
+h2 {
+  border-top: 2px dotted rebeccapurple;
+  border-bottom: 1em double rgb(24, 163, 78);
+}
+```
+
+```
+<div class="box">
+  <h2>Borders</h2>
+  <p>Try changing the borders.</p>
+</div>
+```
+
+## Rounded corners
+
+Rounding corners on a box is achieved by using the border-radius property and associated longhands which relate to each corner of the box. Two lengths or percentages may be used as a value, the first value defining the horizontal radius, and the second the vertical radius. In a lot of cases, you will only pass in one value, which will be used for both.
+
+For example, to make all four corners of a box have a 10px radius:
+
+```
+.box {
+  border-radius: 10px;
+}
+```
+
+Or to make the top right corner have a horizontal radius of 1em, and a vertical radius of 10%:
+
+```
+.box {
+  border-top-right-radius: 1em 10%;
+}
+```
+
+We have set all four corners in the example below and then changed the values for the top right corner to make it differnet.
+
+![bordersEX3](/images/bordersEx3.png)
+
+```
+.box {
+  border: 10px solid rebeccapurple;
+  border-radius: 1em;
+  border-top-right-radius: 10% 30%;
+}
+```
+
+```
+<div class="box">
+  <h2>Borders</h2>
+  <p>Try changing the borders.</p>
+</div>
+```
+
