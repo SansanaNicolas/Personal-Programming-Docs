@@ -1304,3 +1304,156 @@ We have set all four corners in the example below and then changed the values fo
 </div>
 ```
 
+## Overflowing content
+
+Overflow is what happens when there is too much content to fit in a container. In this guide you will learn what overflow is and how to manage it.
+
+### What is overflow?
+
+Everything in CSS is a box. You can constrain the size of these boxes by assigning values of [width](https://developer.mozilla.org/en-US/docs/Web/CSS/width) and [height](https://developer.mozilla.org/en-US/docs/Web/CSS/height) (or [inline-size](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size) and [block-size](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size)). Overflow happens when there is too much content to fit in a box. CSS provides various tools to manage overflow. As you go further with CSS layout and writing CSS, you will encounter more overflow situations.
+
+### CSS tries to avoid "data loss"
+
+Let's consider two examples that demostrate the default behavior of CSS when there is overflow.
+
+The first example is a box that has been restricted by setting a height. Then we add content that exceeds the allocated space. The content overflows the box and falls into the paragraph below.
+
+![OverflowEx1](/images/overflowEx1.png)
+
+```
+.box {
+  border: 1px solid #333333;
+  width: 200px;
+  height: 100px;
+}
+    
+```
+
+```
+<div class="box">This box has a height and a width. This means that if there is too much content to be displayed within the assigned height, there will be an overflow situation. If overflow is set to hidden then any overflow will not be visible.</div>
+
+<p>This content is outside of the box.</p>
+```
+
+The second example is a word in a box. The box has been made too small for the word and so it breaks out of the box.
+
+![OverflowEx2](/images/overflowEx2.png)
+
+```
+.word {
+  border: 1px solid #333333;
+  width: 100px;
+  font-size: 250%;
+}
+    
+```
+
+```
+<div class="word">Overflow</div>
+```
+
+CSS does not hide content. This would cause data loss. The problem with data loss is that you might not notice. Website visitors may not notice. If the submit button on a form disappears and no one can complete the form, this could be a big problem! Instead, CSS overflows in visible ways. You are more likely to see there is a problem. At worst, a site visitor will let you know that content is overlapping.
+
+If you restrict a box with a width or a height, CSS trusts you to know what you are doing. CSS assumes that you are managing the potential for overflow. In general, restricting the block dimension is problematic when the box contains text. There may be more text than you expected when designing the site, or the text may be larger (for example, if the user has increaser their font size).
+
+## The overflow property
+
+The [overflow](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow) property is how you take control of an element's overflow. It is the way you instruct the browser how it should behave. The default value of overflow is visible. With this default, we can see content when it overflows.
+
+To crop content when it overflows, you can set overflow: hidden. This does exactly what it says: it hides overflow. Beware that this can make some content invisible. You should only do this if hiding content won't cause problems.
+
+![overflowHIddenEX](/images/overflowHiddenEX.png)
+
+```
+.box {
+  border: 1px solid #333333;
+  width: 200px;
+  height: 100px;
+  overflow: hidden;
+}
+```
+
+```
+<div class="box">This box has a height and a width. This means that if there is too much content to be displayed within the assigned height, there will be an overflow situation. If overflow is set to hidden then any overflow will not be visible.</div>
+
+<p>This content is outside of the box.</p>
+```
+ 
+Instead, perhaps you would like to add scrollbars when content overflows? Using overflow: scroll, browsers with visible scrollbars will always display them -even if there is not enough content to overflow. This offers the advantage of keeping the layour consistent, instead of scrollbars appearing or disappearing, depending upon the amount of content in the container.
+
+![overflowExSCroll](/images/overflowExScroll.png)
+
+```
+.box {
+  border: 1px solid #333333;
+  width: 200px;
+  height: 100px;
+  overflow: scroll;
+}
+    
+```
+
+```
+<div class="box">This box has a height and a width. This means that if there is too much content to be displayed within the assigned height, there will be an overflow situation. If overflow is set to hidden then any overflow will not be visible.</div>
+
+<p>This content is outside of the box.</p>
+```
+
+In the example above, we only need to scroll on the y axis, however we get scrollbars in both axes. To just scroll on the y axis, you could use the overflow-y property, setting overflow-y: scroll.
+
+![overflowYScroll](/images/overflowYScroll.png)
+
+```
+.box {
+  border: 1px solid #333333;
+  width: 200px;
+  height: 100px;
+  overflow-y: scroll;
+}
+```
+
+```
+<div class="box">This box has a height and a width. This means that if there is too much content to be displayed within the assigned height, there will be an overflow situation. If overflow is set to hidden then any overflow will not be visible.</div>
+
+<p>This content is outside of the box.</p>
+```
+
+You can also scroll on the x axis using [overflow-x](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-x), although this is not a recommended way to accommodate long words. If you have a long word in a small box, you might consider using the [word-break](https://developer.mozilla.org/en-US/docs/Web/CSS/word-break) or [overflow-wrap](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-wrap) properties. In addition, some of the methods discussed in [Sizing items in CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Sizing_items_in_CSS) may help you create boxes that scale better with varying amounts of content.
+
+![overflowXScroll](/images/overflowXScroll.png)
+
+```
+.word {
+  border: 5px solid #333333;
+  width: 100px;
+  font-size: 250%;
+  overflow-x: scroll;
+}
+```
+
+```
+<div class="word">Overflow</div>
+```
+
+As with scroll, you get a scrollbar in the scrolling dimension whether or not there is enough content to cause a scrollbar.
+
+If you only want scrollbars to appear when there is more content that can fit in the box, use overflow: auto. This allows the browser to determine if it should display scrollbars.
+
+In the example below, if you remove content until it fits into the box, you should see the scrollbars disappear.
+
+![overflowAuto](/images/overflowAuto.png)
+
+```
+.box {
+  border: 1px solid #333333;
+  width: 200px;
+  height: 100px;
+  overflow: auto;
+}
+```
+
+```
+<div class="box">This box has a height and a width. This means that if there is too much content to be displayed within the assigned height, there will be an overflow situation. If overflow is set to hidden then any overflow will not be visible.</div>
+
+<p>This content is outside of the box.</p>
+```
