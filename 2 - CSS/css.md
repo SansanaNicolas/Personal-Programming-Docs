@@ -1457,3 +1457,25 @@ In the example below, if you remove content until it fits into the box, you shou
 
 <p>This content is outside of the box.</p>
 ```
+
+
+## CSS values and units
+
+Every property used in CSS has a value type defining the set of values that are allowed for that property.
+
+## What is a CSS value?
+
+In CSS specifications and on the property pages here on MDN you will be able to spot value types as they will be surrounded by angle backers, such as color or lenght. When you see the value type color as valid for a particular property, that means you can use any valid color as a value for that property, as listed on the color reference page.
+
+In the following example, we have set the color of our heading using a keyword, and the background using the rgb() function:
+
+```
+ h1 {
+  color: black;
+  background-color: rgb(197, 93, 161);
+ }
+```
+
+A value type in CSS is a way to define a collection of allowable values. This means that if you see color as valid you don't need to wonder which of the different types of color value can be used -keywords, hex values, rgb() functions, etc. You can use any available color values, assuming they are supported by your browser. The page on MDN for each value will give you information about browser support. For example, if you look at the page for [color](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) you will see that the browser compatibility section lists different types of color values and support for them
+
+Let's have a look at some of the types of values and units you may frequently encounter, with examples so that you can try out different possible values.
