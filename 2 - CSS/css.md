@@ -1479,3 +1479,61 @@ In the following example, we have set the color of our heading using a keyword, 
 A value type in CSS is a way to define a collection of allowable values. This means that if you see color as valid you don't need to wonder which of the different types of color value can be used -keywords, hex values, rgb() functions, etc. You can use any available color values, assuming they are supported by your browser. The page on MDN for each value will give you information about browser support. For example, if you look at the page for [color](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) you will see that the browser compatibility section lists different types of color values and support for them
 
 Let's have a look at some of the types of values and units you may frequently encounter, with examples so that you can try out different possible values.
+
+## Numbers, lengths, and percentages
+
+- integer: an integer is a whole number such as 1024 or -55.
+
+- number: A number represents a decime number -it may ot may not have a decimal point with a fractional component. For example, 0.255, 128, or -1.2.
+
+- dimension: A dimension is a numberwith a unit attached to it. For example, 45deg, 5s, or 10px. dimension is an umbrella category that includes the length, angle, time, and resolution types.
+
+- percentage: A percentage represents a fraction of some other value. For example, 50%. Percentage values are always relative to another quantity. For example, an element's length is relative to its parent element's length.
+
+### Lenghts
+
+The numeric type you will come across most frequently is length. For example, 10px(pixels) or 30em. There are two types of lengths used in CSS -relative and absolute. It's important to know the difference in order to understand how big things will become.
+
+### Absolute length units
+
+The following are all ***absolute*** length units -they are not relative to anything else, and are generally considered to always be the same size.
+
+- ***cm***, centimeters, 1cm = 37.8px= 25.2/64in
+
+- ***mm***, milimeters, 1mm = 1/10th of 1cm.
+
+- ***Q***, Quarter-millimeters, 1Q = 1/40th of 1cm.
+
+- ***in***, Inches, 1in = 2.54cm = 96px.
+
+- ***pc***, Picas, 1pc = 1/6th of 1in.
+
+- ***pt***, Points, 1pt = 1/72nd of 1in.
+
+- ***px***, Pixels, 1px = 1/96th of 1in.
+
+Most of these units are more useful when used for print, rather than screen output. For example, we don't typically use cm (centimeters) on screen. The only value that you will commonly use is px (pixels).
+
+## Relative length units
+
+Relative length units are relative to something else, perhaps the size of parent element's font, or the size of the viewport. The benefit of using relative units is that with some careful planning you can make it so the size of text or other elements scales relative to everything else on the page. Some of the most useful units for web development are listed in the table below.
+
+- em : Font size of the parent, in the case of typographical properties like [font-size](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size), and font size of the element itself, in the case of other properties like [width](https://developer.mozilla.org/en-US/docs/Web/CSS/width).
+
+- ex : x-height of the element's font.
+
+- rem : Font size of the root element.
+
+- lh : Line height of the element.
+
+- vw : 1% of the viewport's width.
+
+- vh : 1% of the viewport's height.
+
+- vmin : 1% of the viewport's smaller dimension.
+
+- vmax : 1% of the viewport's larger dimension.
+
+### ems and rems
+
+***em*** and ***rem*** are the two relative lengths you are likely to encounter most frequently when sizing anything from boxes to text. It's worth understanding how these work, and the differences between them, especially when you start getting on to more complex subjects like [styling text](https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text) or [CSS layout](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout).
