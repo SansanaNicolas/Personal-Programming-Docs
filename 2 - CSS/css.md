@@ -1537,3 +1537,66 @@ Relative length units are relative to something else, perhaps the size of parent
 ### ems and rems
 
 ***em*** and ***rem*** are the two relative lengths you are likely to encounter most frequently when sizing anything from boxes to text. It's worth understanding how these work, and the differences between them, especially when you start getting on to more complex subjects like [styling text](https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text) or [CSS layout](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout).
+
+## Percentages
+
+In a lot of cases, a percentage is trated in the same way as a length. The thing with percentages is that they are always set relative to some other value. For example, if you set an element's font-size as a percentage, it will be a percentage of the font-size of the element's parent. If you use a percentage for a width value, it will be a percentage of the width of the parent.
+
+In the below example the two percentage-sized boxes and the two pixel-sized boxes have the same class names. The sets are 40% and 200px wide respectively.
+
+The difference is that the second set of two boxes is inside a wrapper that is 400 pixels wide. The second 200px wide box is the same width as the first one, but the second 40% box is now 40% of 400px -a lot narrower than the first one!
+
+![percetangeEx1](/images/percentageEx1.png)
+
+```
+.wrapper {
+  width: 400px;
+  border: 5px solid rebeccapurple;
+}
+
+.px {
+  width: 200px;
+}
+
+.percent {
+  width: 40%;
+}
+```
+
+```
+<div class="box px">I am 200px wide</div>
+<div class="box percent">I am 40% wide</div>
+<div class="wrapper">
+  <div class="box px">I am 200px wide</div>
+  <div class="box percent">I am 40% wide</div>
+</div>
+```
+
+The next example has font sizes set in percentages. Each li has a font-size of 80%; therefore, the nested list items become progressively smaller as they inherit their sizing from their parent.
+
+![percentageEx2](/images/percentageEx2.png)
+
+```
+li {
+  font-size: 80%;
+}
+```
+
+```
+<ul>
+  <li>One</li>
+  <li>Two</li>
+  <li>Three
+    <ul>
+      <li>Three A</li>
+      <li>Three B
+        <ul>
+          <li>Three B 2</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>  
+```
+
+Note that, while many values types accept a length or a percentage, there are some that only accept length. You can see which values are accepted on the MDN property reference pages. If the allowed value includes length-percentage then you can use a length or a percentage. If the allowed value only includes length, it is not possible to use a percentage.
