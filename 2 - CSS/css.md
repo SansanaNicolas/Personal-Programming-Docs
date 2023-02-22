@@ -1600,3 +1600,63 @@ li {
 ```
 
 Note that, while many values types accept a length or a percentage, there are some that only accept length. You can see which values are accepted on the MDN property reference pages. If the allowed value includes length-percentage then you can use a length or a percentage. If the allowed value only includes length, it is not possible to use a percentage.
+
+
+## Numbers
+
+Some value types accept numbers, without any unit added to them. An example of a property which accepts a unitless number is the opacity property, which controls the opacity of an element (how transparent it is). This property accepts a number between 0 (fully transparent) and 1 (fully opaque).
+
+
+## Color
+
+![opacity](/images/opacity.png)
+
+```
+.box {
+  opacity: 0.6;
+}
+```
+
+```
+<div class="wrapper">
+  <div class="box">I am a box with opacity</div>
+</div> 
+```
+
+## Color
+
+The standard color system available in modern computers support 24-bit colors, which allows the display of about 16.7 million distinct colors via a combination of different red, green and blue channels with 256 differente value per channel ( 256 x 256 x 256 = 16,777,215). Let's have a look at some of the ways in which we can specify colors in CSS.
+
+## Color keywords
+
+Quite often in examples here you will see the color keywords used, as they are a simple and understandable way of specifying color. There are a number of these keywords, some of which have fairly entertaining names, you can see a full list on the page for the [color](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) value type.
+
+## Hexadecimal RGB values
+
+The next type of color value you are likely to encounter is hexadecimal codes. Each hex value consists of a hash/ pound symbol followed by six hexadecimal numbers, each of which can take one of 16 values between 0 and f (which represents 15)- so 0123456789abcdef. Each pair of values represents one of the channels -red, green and blue- and allows us to specify any of the 256 available values for each ( 16 x 16 = 256).
+
+These values are a bit more complex and less easy to understand, but they are a lot more versatile than keywords -you can use hex values to represent any color you want to use in your color scheme.
+
+![hexadecimalRGBValues](/images/rgb%20colors.png)
+
+```
+.one {
+  background-color: #02798b;
+}
+
+.two {
+  background-color: #c55da1;
+}
+
+.three {
+  background-color: #128a7d;
+}
+```
+
+```
+<div class="wrapper">
+  <div class="box one">#02798b</div>
+  <div class="box two">#c55da1</div>
+  <div class="box three">#128a7d</div>
+</div>
+```
