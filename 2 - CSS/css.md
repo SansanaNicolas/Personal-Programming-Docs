@@ -1660,3 +1660,118 @@ These values are a bit more complex and less easy to understand, but they are a 
   <div class="box three">#128a7d</div>
 </div>
 ```
+
+## RGB and RGBA values
+
+The third scheme we'll talk about here is RGB. An RGB value is a function - rgb()- which is given three parameters that represent the red, green and blue channel values of the colors, in much the same way as hex values. The difference with RGB is that each channel is represented not by two hex digits, but by a decimal number between 0 and 255 -somewhat easier to understand.
+
+![RgbExample](/images/rgbExample.png)
+
+```
+.one {
+  background-color: rgba(2, 121, 139, .3);
+}
+
+.two {
+  background-color: rgba(197, 93, 161, .7);
+}
+
+.three {
+  background-color: rgba(18, 138, 125, .9);
+}
+```
+
+```
+<div class="wrapper">
+  <div class="box one">rgba(2, 121, 139, .3)</div>
+  <div class="box two">rgba(197, 93, 161, .7)</div>
+  <div class="box three">rgba(18, 138, 125, .9)</div>
+</div>
+```
+
+## HSL and HSLA values
+
+An alternative way to specify colors is the HSL color model. Instead of red, green and blue values, the hsl() function accepts hue, saturation, and lightness values, which are used to distinguish between the 16.7 million colors, but in a different way:
+
+- Hue: The base shade of the color. This takes a value between 0 and 360, representing the angles around a color wheel.
+
+- Saturation: How saturated is the color? This takes a value from 0-100%, where 0 is no color (it will appear as a shade of grey), and 100% is full color saturation.
+
+- Lightness: How light or bright is the color? This takes a value from 0-100%, where 0 is no light (it will appear completely black) and 100% is full light (it will appear completely white).
+
+![HslExample](/images/hslExample.png)
+
+```
+.one {
+  background-color: hsl(188, 97%, 28%);
+}
+
+.two {
+  background-color: hsl(321, 47%, 57%);
+}
+
+.three {
+  background-color: hsl(174, 77%, 31%);
+}
+```
+
+```
+<div class="wrapper">
+  <div class="box one">hsl(188, 97%, 28%)</div>
+  <div class="box two">hsl(321, 47%, 57%)</div>
+  <div class="box three">hsl(174, 77%, 31%)</div>
+</div>
+```
+
+Just like with rgb() you can pass an alpha parameter to hsl() to specify opacity:
+
+![HslExample2](/images/hslExample2.png)
+
+```
+.one {
+  background-color: hsl(188 97% 28% / .3);
+}
+
+.two {
+  background-color: hsl(321 47% 57% / .7);
+}
+
+.three {
+  background-color: hsl(174 77% 31% / .9);
+}
+    
+```
+
+```
+<div class="wrapper">
+  <div class="box one">hsl(188 97% 28% / .3)</div>
+  <div class="box two">hsl(321 47% 57% / .7)</div>
+  <div class="box three">hsl(174 77% 31% / .9)</div>
+</div>
+```
+
+You can use any of these color values in your projects. It is likely that for most projects you will decide on a color palette and then use those colors -and your chosen method of specifying color- throughout the whole project. You can mix and match color models, however for consistency it is usually best if your entire project uses the same one!
+
+## Images
+
+The [image](https://developer.mozilla.org/en-US/docs/Web/CSS/image) value type is used wherever an image is a valid value. This can be an actual image file pointer to via a url() function, or a gradient.
+
+In the example below, we have demonstrated an image and a gradient in use as a value for the CSS background-image property.
+
+![ImageEx](/images/imageEx1.png)
+
+```
+.image {
+  background-image: url(star.png);
+}
+
+.gradient {
+  background-image: linear-gradient(90deg, rgba(119,0,255,1) 39%, rgba(0,212,255,1) 100%);
+}
+```
+
+```
+div class="box image"></div>
+<div class="box gradient"></div> 
+```
+
