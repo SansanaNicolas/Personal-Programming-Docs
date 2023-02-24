@@ -1775,3 +1775,79 @@ div class="box image"></div>
 <div class="box gradient"></div> 
 ```
 
+## Position
+
+The position value type represents a set of 2D coordinates, used to position an item such as background image (via background-position). It can take keywords such as top, left, bottom, right, and center to align items with specific bounds of a 2D box, along with lengths, which represent offsets from the top and left-hand edges of the box.
+
+A typical position value consists of two values -the first sets the position horizontally, the second vertically. If you only specify values for one axis the other will default to center.
+
+In the following example we have positioned a background image 40px from the top and to the right of the container using a keyword.
+
+![backgroundEx3](/images/backgroundEx3.png)
+
+```
+.box {
+  height: 300px;
+  width: 400px;
+  background-image: url(star.png);
+  background-repeat: no-repeat;
+  background-position: right 40px;
+}
+```
+
+```
+<div class="box"></div> 
+```
+
+## Strings and identifiers
+
+Throughout the examples above, we've seen places where keywords are used as value (for example color keywords like red, black, rebeccapurple and goldenrod). These keywords are more accurately described as identifiers, a special value that CSS understands. As such they are not quoted -they are not treated as strings.
+
+There are places where you use strings in CSS. For example, when specifying generated content. In this case, the value is quoted to demonstrate that it is a string. In the example below, we use unquoted color keywords along with a quoted generated content string.
+
+![stringExample](/images/stringsExCSS1.png)
+
+```
+.box {
+  width:400px;
+  padding: 1em;
+  border-radius: .5em;
+  border: 5px solid rebeccapurple;
+  background-color: lightblue;
+}
+
+.box::after {
+  content: "This is a string. I know because it is quoted in the CSS."
+}
+```
+
+```
+<div class="box"></div> 
+```
+
+## Functions
+
+The final type of value we will take a look at is the group of values known as functions. In programming, a function is a reusable section of code that can be run multiple times to complete a repetitive task with minimum effort on the part of both the developer and the computer. Functions are usually associated with languages like JavaScript, Python or C++, but they do exist in CSS too, as property values. We've already seen functions in action in the Colors section -rgb(), hsl(), etc. The value used to return an image from a file -url()- is also a function.
+
+A value that behaves more like something you might find in a traditional programming language is the calc() CSS function. This function gives you the ability to do simple calculations inside your CSS. It's particularly useful if you want to work out values that you can't define when writing the CSS for your project, and need the browser to work out for you at runtime.
+
+For example, below we are using calc() to make a box 20% + 100px wide. The 20% is calculated from the width of the parent container .wrapper and so will change if that width changes. We can't do this calculation beforehand because we don't know what 20% of the parent will be, so w euse calc() to tell the browser to do it for us.
+
+![calc()functionCSS](/images/calc()functioncss.png)
+
+```
+.wrapper {
+  width: 400px;
+}
+
+.box {
+  width: calc(20% + 100px);
+}
+    
+```
+
+```
+<div class="wrapper">
+  <div class="box">My width is calculated.</div> 
+</div>
+```
