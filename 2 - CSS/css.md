@@ -1851,3 +1851,41 @@ For example, below we are using calc() to make a box 20% + 100px wide. The 20% i
   <div class="box">My width is calculated.</div> 
 </div>
 ```
+
+## Sizing items in CSS
+
+### The natural or intrinsic size of things
+
+HTML elements have a natural size, set before they are affected by any CSS. A straightforward example is an image. An image file contains sizing information, described as its ***intrinsic size***. This size is determined by the image itself, not by any formatting we happen to apply.
+
+If you place an image on a page and do not change its height or width, either by using attributes on the img tag orelse by CSS, it will be displayed using that intrinsic size. 
+
+![imageEx2](/images/imageEx2.png)
+
+```
+img {
+  border: 5px solid darkblue;
+}
+```
+
+```
+<img src="star.png" alt="star">
+```
+
+An empty div, on the other hand, has no size of its own. If you add a div to your HTML with no content, then give it a border as we did with the image, you will see a line on the page. This is the collapsed border on the element -there is no content to hold it open. In our example below, that border stretches to the width of the container, because it is a block level element, a behavior that should be starting to become familiar to you. It has no height (or size in the block dimension) because there is no content.
+
+![divEx](/images/divEx.png)
+
+```
+.box {
+  border: 5px solid darkblue;
+}
+```
+
+```
+<div class="box">
+
+</div>
+```
+
+In the example above, try adding some text inside the empty element. The border now contains that text because the height of the element is defined by the content. Therefore the size of this div in the block dimension comes from the size of the content. Again, this is the intrinsic zone of the element -its size is defined by its content.
