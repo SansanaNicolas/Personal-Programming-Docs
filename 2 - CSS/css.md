@@ -1889,3 +1889,160 @@ An empty div, on the other hand, has no size of its own. If you add a div to you
 ```
 
 In the example above, try adding some text inside the empty element. The border now contains that text because the height of the element is defined by the content. Therefore the size of this div in the block dimension comes from the size of the content. Again, this is the intrinsic zone of the element -its size is defined by its content.
+
+## Setting a specific size
+
+We can, of course, give elements in our design a specific size. When a size is given to an element (the content of which then needs to fit into that size) we refer to it as an ***extrinsic size***.
+Take out div from the example above -we can give it specific width and height values, and it will now have that size no matter what content is placed into it. As we discovered in overflow lesson, a set height can cause content to overflow if there is more content than the element has space to fit inside it.
+
+![overflowEx3](/images/overflowEx3.png)
+
+```
+.box {
+  border: 5px solid darkblue;
+  height: 150px;
+  width: 200px;
+}
+```
+
+```
+<div class="wrapper">
+  <div class="box"></div>
+  <div class="box">These boxes both have a height set, this box has content in it which will need more space than the assigned height, and so we get overflow. </div>
+</div>
+```
+
+Due to this problem of overflow, fixing the height of elements with lengths or percentages is something we need to do very carefully on the web.
+
+## Using percentages
+
+In many ways, percentages act like length units, and as we discussed in the lesson on values and units, they can often be used interchangeably with lengths. When using a percentage you need to be aware what it is a percentage of. In the case of a box inside another container, if you give the child box a percentage width it will be a percentage of the width of the parent container.
+
+![percentageEx3](/images/percentageEx3.png)
+
+```
+.box {
+  border: 5px solid darkblue;
+  width: 50%;
+}
+```
+
+```
+<div class="box">
+  I have a percentage width.
+</div>
+```
+
+This is because percentages resolve against the size of the containing block. With no percentage applied, our div would take up 100% of the available space, as it is a block level element. If we give it a percentage width, this becomes a percentage of the space it would normally fill.
+
+## Percentage margins and padding
+
+If you set margins and padding as a percentage, you may notive some strange behavior. In the below examplewe have a box. We have given the inner box a margin of 10% and a padding of 10%. The padding and margin on the top and bottom of the box are the same size as the margin on the left and right.
+
+![percentageEx4](/images/percentageEx4.png)
+
+```
+.box {
+  border: 5px solid darkblue;
+  width: 300px;
+  margin: 10%;
+  padding: 10%;
+}
+```
+
+```
+<div class="box">
+  I have margin and padding set to 10% on all sides.
+</div>
+```
+
+You might expect for example the percentage top and bottom margins to be a percentage of the element's height, and the percentage left and right margins to be a percentage of the element's width. however, this is not the case!
+
+When you use a marign and padding set in percentages, the value is calculated from the ***inline size*** of the containing block -therefore the width when working in a horizontal language. In our example, all of the margins and padding are 10% of the width. This means you have equal-sized margins and padding all around the box. This is a fact worth remembering if you do use percentages in this way.
+
+## min- and max- sizes
+
+In addition to giving things a fixed size, we can ask CSS to give an element a minimum or a maximum size. If you have a box that might contain a variable amount of content, and you always want it to be at least a certain height, you could set a min-height property on it. The box will always be at least this height, but will then grow taller if there is more content than the box has space for at its minimum height.
+
+In the example below you can see two boxes, both with a defined min-height of 150 pixels. The box on the left is 150 pixels tall; the box on the right has content that needs more room, and so it has grown taller than 150 pixels.
+
+![min-heightEx](/images/min-heightEx.png)
+
+```
+.box {
+  border: 5px solid darkblue;
+  min-height: 150px;
+  width: 200px;
+}
+```
+
+```
+<div class="wrapper">
+  <div class="box"></div>
+  <div class="box">These boxes both have a min-height set, this box has content in it which will need more space than the assigned height, and so it grows from the minimum.</div>
+</div>
+```
+
+This is very useful for dealing with variable amounts of content while avoiding overflow.
+
+A common use of max-width is to cause images to scale down if there is not enough space to display them at their intrinsic width while making sure they don't become larger than that width.
+
+As an example, if you were to set width: 100% on an image, and its intrinsic width was smaller than its container, the image would be forced to stretch and become larger, causing it to look pixelated.
+
+If you instead use max-width: 100%, and its intrisic width is smaller than its container, the image will not be forced to stretch and become larger, this preventing pixelation.
+
+In the example below, we have used the same image three times. The first image has been given width: 100% and is in a container which is larger than it, therefore it stretches to the container width. The second image has max-width: 100% set on it and therefore does not stretch to fill the container. The third box contains the same image again, also with max-width: 100% set; in this case you can see how it has scaled down to fit into the box.
+
+![max-widthEx](/images/max-widthEx.png)
+
+```
+.box {
+  width: 200px;
+}
+.minibox {
+  width: 50px;
+}
+.width {
+  width: 100%;
+}
+.max {
+  max-width: 100%;
+}
+```
+
+```
+<div class="wrapper">
+  <div class="box"><img src="star.png" alt="star" class="width"></div>
+  <div class="box"><img src="star.png" alt="star" class="max"></div>
+  <div class="minibox"><img src="star.png" alt="star" class="max"></div>
+</div>
+```
+
+This technique is used to make images responsive, so that when viewed on a smaller device they scale down appropriately. You should, however, not use this technique to load really large images and then scale them down in the browser. Images should be appropriately sized to be no larger than they need to be for thelargest size they are displayed in the design. Downloading overly large images will cause your site to become slow, and it can cost users more money if they are on a metered connection.
+
+## Viewport units
+
+The viewport -which is the visible area of your page in the browser you are using to view a site- also has a size. In CSS we have units which relate to the size of the viewport -the ***vw*** unit for viewport width, and ***vh*** for viewport height. Using these units you can size something relative to the viewport of the user.
+
+1vh is equal to 1% of the viewport height, and 1vw is equal to 1% of the viewport width. You can use these units to size boxes, but also text. In the example below we have a box which is sized as 20vh and 20vw. The box contains a letter A, which has been given a font-size of 10vh.
+
+![viewportEx](/images/viewportEx.png)
+
+```
+.box {
+  border: 5px solid darkblue;
+  width: 20vw;
+  height: 20vh;
+  font-size: 10vh;
+}
+```
+
+```
+<div class="box">
+  A
+</div>
+```
+
+If you change the vh and vw values this will change the size of the box or font; changing the viewport size will also change their sizes because they are sized relative to the viewport. To see the example change when you change the viewport size you will need to load the example in a new browser window that you can resize (as the embedded iframe that contains the example shown above is its viewport).[Open the example](https://mdn.github.io/css-examples/learn/sizing/vw-vh.html), resize the browser window, and observe what happens to the size of the box and text.
+
+Sizing things according to the viewport can be useful in your designs. For example, if you want a full-page hero section to show before the rest of your content, making that part of your page 100vh high will push the rest of the content below the viewport, meaning that it will only appear once the document is scrolled.
