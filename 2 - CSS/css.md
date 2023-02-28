@@ -2046,3 +2046,88 @@ The viewport -which is the visible area of your page in the browser you are usin
 If you change the vh and vw values this will change the size of the box or font; changing the viewport size will also change their sizes because they are sized relative to the viewport. To see the example change when you change the viewport size you will need to load the example in a new browser window that you can resize (as the embedded iframe that contains the example shown above is its viewport).[Open the example](https://mdn.github.io/css-examples/learn/sizing/vw-vh.html), resize the browser window, and observe what happens to the size of the box and text.
 
 Sizing things according to the viewport can be useful in your designs. For example, if you want a full-page hero section to show before the rest of your content, making that part of your page 100vh high will push the rest of the content below the viewport, meaning that it will only appear once the document is scrolled.
+
+
+## Images, media, and form elements
+
+We will take a look at how certain special elements are treated in CSS. Images, other media, and form elements behave a little differently from regular boxes in terms of your ability to style them with CSS. Understanding what is and isn't possible can save some frustration, and this lesson will highlight some of the main things that you need to know.
+
+### Replaced elements
+
+Images and video are described as [replaced elements](https://developer.mozilla.org/en-US/docs/Web/CSS/Replaced_element). This means that CSS cannot affect the internal layout of these elements -only their position on the page amongst other elements. As we will see however, there are various things that CSS can do with an image.
+
+Certain replaced elements, such as images and video, are also described as having an ***aspect ratio***. This means that it has a size in both the horizontal (x) and vertical (y) dimensions, and will be displayed using the intrinsic dimensions of the fily by default.
+
+### Sizing images
+
+As you already know from following this documentation, everything in CSS generates a box. If you place an image inside a box that is smaller or larger than the intrinsic dimensions of the image file in either direction, it will either appear smaller than the box, or overflow the box. You need to make a decision about what happens with the overflow.
+
+In the example below we have two boxes, both 200 pixels in size:
+
+- One contains an image which is smaller than 200 pixels -it's smaller than the box and doesn't stretch to fill it.
+- The other is larger than 200 pixels and overflows the box.
+
+![imageOverflow](/images/imageEx3.png)
+
+```
+.box {
+  width: 200px;
+}
+
+img {
+
+}
+```
+
+```
+<div class="wrapper">
+  <div class="box"><img src="star.png" alt="star"></div>
+  <div class="box"><img src="balloons.jpg" alt="balloons"></div>
+</div>
+```
+
+So what can we do about the overflowing issue?
+
+As we learned in our previous lesson, a common technique is to make the mex-width of an image 100%. This will enable the image to become smaller in size than the box but not larger. This technique will also work with other replaced elements such as videos, or iframes.
+
+Try adding "max-width: 100%" to the img element in the example above. You will see that the smaller image remains unchanged, but the larger one becomes smaller to fit into the box.
+
+You can make other choices about images inside containers. For example, you may want to size an image so it completely covers a box.
+
+The ***object-fit*** property can help you here. When using object-fit the replaced element can be sized to fit a box in a variety of ways.
+
+Below we have used the value ***cover***, which sizes the image down, maintaining the aspect ratio so that it neatly fills the box. As the aspect ratio is maintained, some parts of the image will be cropped by the box.
+
+![objectFitExample](/images/imageEx4.png)
+
+```
+.box {
+  width: 200px;
+  height: 200px;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+}
+
+.cover {
+  object-fit: cover;
+}
+
+.contain {
+  object-fit: contain;
+}
+```
+
+```
+<div class="wrapper">
+  <div class="box"><img src="balloons.jpg" alt="balloons" class="cover"></div>
+  <div class="box"><img src="balloons.jpg" alt="balloons" class="contain"></div>
+</div>
+```
+
+If we use ***contain*** as a value, the image will be scaled down until it is small enough to fit inside the box. This will result in "letterboxing" if it is not the same aspect ratio as the box.
+
+You could also try the value ***fill***, which will fix the box but not maintain the aspect ratio.
+
