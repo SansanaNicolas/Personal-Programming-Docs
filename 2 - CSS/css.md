@@ -2131,3 +2131,113 @@ If we use ***contain*** as a value, the image will be scaled down until it is sm
 
 You could also try the value ***fill***, which will fix the box but not maintain the aspect ratio.
 
+
+### Replaced elements in layout
+
+When using various CSS layout techniques on replaced elements, you may hell find that they behave slightly differently from other elements. For example, in a flex or grid layout elements are stretched by default to fill the entire area. Images will not stretch, and instead will be aligned to the start of the grid area or flex container.
+
+You can see this happening in the example below where we have a two column, two row grid container, which has four items in it. All of the div elements have a background color and stretch to fill the row and column. The image, however, does not stretch.
+
+![gridEx](/images/gridEx.png)
+
+```
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 200px 200px;
+  gap: 20px;
+}
+
+.wrapper > div {
+  background-color: rebeccapurple;
+  border-radius: .5em;
+}
+```
+
+```
+<div class="wrapper">
+  <img src="star.png" alt="star">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+```
+
+If you are following these lessons in order then you may not have looked at layout yet. Just keep in mind that replaced elements, when they become part of a grid or flex layout, have different default behaviors, essentially to avoid them being stretched strangely by the layout.
+
+To force the image to stretch to fill the grid cell it is in, you'd have to do something like the followin:
+
+```
+img {
+  width: 100%;
+  height: 100%;
+}
+```
+
+This would, however, stretch the image, so it's probably not what you'd want to do.
+
+## Form elements
+
+Form elements can be a tricky issue when it comes to styling with CSS. The [Web Forms module](https://developer.mozilla.org/en-US/docs/Learn/Forms) contains detailed guides to the trickier aspects of styling these, which I will not fully reproduce here. There are, however, a few key basics worth highlighting in this section.
+
+Many form controls are added to your page by way of the input element -this defines simple form fields such as text inputs, through to more complex fields such as color and date pickers. There are some additional elements, such as textarea for multiline text input, and also elements used to contain and label parts of forms such as fieldset and legend.
+
+HTML also contains attributes that enable web developers to indicate which fields are required, and even the type of content that needs to be entered. If the user enters something unexpected, or leaves a required field black, the browser can show an error message. Different browsers vary with one another in how much styling and customization they allow for such items.
+
+### Styling text input elements
+
+Elements that allow for text input, such as input type="text", and the more specific input type="email", and the textarea element are quite easy to style and tend to behave just like other boxes on your page. The default styling of these elements will differ, however, based on the operating system and browser that your user visits the site with.
+
+In the example below we have styled some text inputs using CSS -you can see that things such as borders, margins and padding all apply as you would expect. We are using attribute selectors to target the different input types. Try changing how this form looks by adjusting the borders, adding background colors to the fields, and changing fonts and padding.
+
+![formEx](/images/formEx.png)
+
+```
+input[type="text"],
+input[type="email"] {
+  border: 2px solid #000;
+  margin: 0 0 1em 0;
+  padding: 10px;
+  width: 100%;
+}
+
+input[type="submit"] {
+  border: 3px solid #333;
+  background-color: #999;
+  border-radius: 5px;
+  padding: 10px 2em;
+  font-weight: bold;
+  color: #fff;
+}
+
+input[type="submit"]:hover, input[type="submit"]:focus {
+  background-color: #333;
+}
+```
+
+```
+<form>
+  <div><label for="name">Name</label>
+  <input type="text" id="name"></div>
+  <div><label for="email">Email</label>
+  <input type="email" id="email"></div>
+
+  <div class="buttons"><input type="submit" value="Submit"></div>
+</form>
+```
+
+As explained in the lessons on [form styling](https://developer.mozilla.org/en-US/docs/Learn/Forms/Styling_web_forms) in the HTML part, many of the more complex input types are rendered by the operating system and are inaccessible to styling. You should therefore always assume that forms are going to look quite different for different visitors and test complex forms in a number of browsers.
+
+### Inheritance and form elements
+
+In some browsers, form elements do not inherit font styling by default. Therefore, if you want to be sure that your form fields use the font defined on the body, or on a parent element, you should add this rule to your CSS.
+
+```
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+}
+```
