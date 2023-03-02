@@ -2241,3 +2241,59 @@ textarea {
   font-size: 100%;
 }
 ```
+
+## Form elements and box-sizing
+
+Across browsers, form elements use different box sizing rules for different widgets. You learned about the box-sizing property and you can use this knowledge when styling forms to ensure a consistent experience when setting widths and heights on form elements.
+
+For consistency, it is a good idea to set margins and padding to 0 on all elements, then add these back in when styling particular controls:
+
+```
+button,
+input,
+select,
+textarea {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+```
+
+### Other useful settings
+
+In addition to the rules mentioned above, you should also set overflow: auto on text area to stop IE showing a scrollbar when there is no need for one:
+
+```
+textarea {
+  overflow: auto;
+}
+```
+
+## Putting it all together into a "reset"
+
+As a final step, we can wrap up the various properties discussed above into the following "form reset" to provide a consistent base to work from. This includes all the the items mentioned in the last three sections:
+
+```
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+textarea {
+  overflow: auto;
+}
+```
+
+## Debugging CSS
+
+Sometimes when writing CSS you will encounter an issue where your CSS doesn't seem to be doing what you expect. Perhaps you believe that a certain selector should match an element, but nothing happens, or a box is a different size than you expected. This documentatios will give you guidance on how to go about debuggin a CSS problem, and show you how the DevTools included in all modern browsers can help you to find out what is going on.
+
+## How to access browser DevTools
+
+The article [What are browser developer tools](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Tools_and_setup/What_are_browser_developer_tools) is an up-to-date guide explaining how to access the tools in various browsers and platforms. While you may choose to mostly develop in a particular browser, and therefore will become most familiar with the tools included in that browser, it is worth knowing how to access them in the other browsers. This will help if you are seeing different rendering between multiple browsers.
