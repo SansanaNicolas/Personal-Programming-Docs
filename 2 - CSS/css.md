@@ -2297,3 +2297,30 @@ Sometimes when writing CSS you will encounter an issue where your CSS doesn't se
 ## How to access browser DevTools
 
 The article [What are browser developer tools](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Tools_and_setup/What_are_browser_developer_tools) is an up-to-date guide explaining how to access the tools in various browsers and platforms. While you may choose to mostly develop in a particular browser, and therefore will become most familiar with the tools included in that browser, it is worth knowing how to access them in the other browsers. This will help if you are seeing different rendering between multiple browsers.
+
+You will also find that browsers have chosen to focus on different areas when creating their DevTools. For example, in Firefox there are some excellent tools for working visually with CSS layout, allowing you to inspect and edit [Grid layouts](https://firefox-source-docs.mozilla.org/devtools-user/page_inspector/how_to/examine_grid_layouts/index.html), [Flexbox](https://firefox-source-docs.mozilla.org/devtools-user/page_inspector/how_to/examine_flexbox_layouts/index.html), and [Shapes](https://firefox-source-docs.mozilla.org/devtools-user/page_inspector/how_to/edit_css_shapes/index.html). However, all of the different browsers have similar fundamental tools, e.g., for inspecting the properties and values applied to elements on your page, and making changes to them from editor.
+
+## The DOM versus view source
+
+Something that can trip up newcomers to DevTools is the difference between what you see when you [view the source](https://firefox-source-docs.mozilla.org/devtools-user/view_source/index.html) of a webpage, or look at the HTML file you put on the server, and what you can see in the [HTML pane](https://firefox-source-docs.mozilla.org/devtools-user/page_inspector/ui_tour/index.html#html-pane) of the DevTools. While it looks roughly similar to what you can see via View Source there are some differences.
+
+In the rendered DOM the browser may have normalized the HTML, for example by correcting some badly-written HTML for you. If you incorrectly closed an element, for instance by opening a h2 but closing an h3, the browser will figure out what you were meaning to do and the HTML in the DOM will correctly close the open h2 with an h2. The DOM will also show any changes made by JavaScript.
+
+View source, in comparison, is the HTML source code as stored on the server. The [HTML tree](https://firefox-source-docs.mozilla.org/devtools-user/page_inspector/how_to/examine_and_edit_html/index.html#html-tree) in your DevTools shows exactly what the browser is rendering at any given time, so it gives you an insight into what is really going on.
+
+## Inspecting the applied CSS
+
+Select an element on your page, either by right/ctrl-clicking on it and selecting inspect, or selecting it from the HTML tree on the left of the DevTools display. Try selecting the element with the class of box1; this is the first element on the page with a bordered box drawn around it.
+
+![inspectingEx1](/images/inspectingEx.png)
+
+If you look at the [Rules view](https://firefox-source-docs.mozilla.org/devtools-user/page_inspector/ui_tour/index.html#rules-view) to the right of your HTML, you should be able to see the CSS properties and values applied to that element. You will see the rules directly applied to class box1 and also the CSS that is being inherited by the box from its ancestors, in this case from body. This is useful if you are seeing some CSS being applied that you didn't expect. Perhaps it is being inherited from a parent element and you need to add a rule to overwrite it in the context of this element.
+
+Also useful is the ability to expand out shorthand properties. In our example the margin shorthand is used.
+
+Click on the little arrow to expand the view, showing the different loghand properties and their values.
+
+You can toggle values in the Rules view on and off when that panel is active -if you hold your mouse over it, checkboxes will appear. Uncheck a rule's checkbox, for example border-radius, and the CSS will stop applying.
+
+You can use this to do an A/B comparison, deciding if something looks better with a rule applied or not, and also to help debug it -for example, if a layout is going wrong and you are trying to work out which property is causing the problem.
+
