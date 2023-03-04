@@ -2324,3 +2324,32 @@ You can toggle values in the Rules view on and off when that panel is active -if
 
 You can use this to do an A/B comparison, deciding if something looks better with a rule applied or not, and also to help debug it -for example, if a layout is going wrong and you are trying to work out which property is causing the problem.
 
+## Editing values
+
+In addition to turning properties on and off, you can edit their values. Perhaps you want to see if another color looks better, or wish to tweak the size of something? DevTools can save you a lot of time editing a stylesheet and reloading the page.
+
+With box1 select, click on the watch (the small colored circle) that shows the color applied to the border. A color picker will open up and you can try out some different colors; these will update in real time on the page. In a similar fashion, you could change the width or style of the border.
+
+![](/images/inspecting2-color-picker.png)
+
+## Adding a new property
+
+You can add properties using the DevTools. Perhaps you have realized that you don't want your box to inherit the body element's font size, and want to set its own specific size? You can try this out in DevTools before adding it to your CSS file.
+
+You can click the closing curly brace in the rule to start entering a new declaration into it, at which point you can strat typing the new property and DevTools will show you an autocomplete list of matching properties. After selecting font-size, enter the value you want to try. You can also click the + button to add an additional rule with the same selector, and add your new rules there.
+
+![](/images/inspecting3-font-size.png)
+
+## Understanding the box model
+
+In previous doc we have discussed the Box Model, and the fact that we have an alternate box model that changes how the size of elements are calculated based on the size you give them, plus the padding and borders. DevTools can really help you to understand how the size of an element is being calculated.
+
+The [layout view](https://firefox-source-docs.mozilla.org/devtools-user/page_inspector/ui_tour/index.html#layout-view) shows you a diagram of the box model on the selected element, along with a description of the properties and values that change how the element is laid out. This includes a description of properties that you may not have explictly used on the element, but which do have initial values set.
+
+In this panel, one of the detailed properties is the box-sizing property, which controls what box model the element uses.
+
+Compare two boxes with classes box1 and box2. They both have the same width applied (400px), however box1 is visually wider. You can see in the layout panel that it is using content-box. This is the value that takes the size you give the element and then adds on the padding and border width.
+
+The element with a class of box2 is using border-box, so here the padding and border is subtracted from the size that you have given the element. This means that the space taken up on the page by the box is the extact size that you specified -in our case width: 400px.
+
+![](/images/inspecting4-box-model.png)
