@@ -2353,3 +2353,31 @@ Compare two boxes with classes box1 and box2. They both have the same width appl
 The element with a class of box2 is using border-box, so here the padding and border is subtracted from the size that you have given the element. This means that the space taken up on the page by the box is the extact size that you specified -in our case width: 400px.
 
 ![](/images/inspecting4-box-model.png)
+
+
+## Solving specificity issues
+
+Sometimes during development, but in particular when you need to edit the CSS on an existing site, you will find yourself having a hard time getting some CSS to apply. No matter what you do, the element just doesn't seem to take the CSS. What is generally happening here is that a more specific selector is overriding your changes, and here DevTools will really help you out.
+
+In our example file there are two words that have been wrapped in a em element. One is displaying as orange and the other hotpink. In the CSS we have applied:
+
+```
+em {
+  color: hotpink;
+  font-weight: bold;
+}
+```
+
+Above that in the stylesheet however is a rule with a .special selector:
+
+```
+.special {
+  color: orange;
+}
+```
+
+As you will recall from the lesson on cascade and inheritance where we discussed specificity, class selectors are more specific than element selectors, and so this is the value that applies. DevTools can help you find such issues, especially if the information is buried somewhere in a huge stylesheet.
+
+Inspect the em with the class of .special and DevTools will show you that orange is the color that applies, and also that the color property applied to the em is crossed out. You can now see that the class selector is overriding the element selector.
+
+![](/images/inspecting5-specificity.png)
