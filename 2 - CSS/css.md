@@ -2381,3 +2381,18 @@ As you will recall from the lesson on cascade and inheritance where we discussed
 Inspect the em with the class of .special and DevTools will show you that orange is the color that applies, and also that the color property applied to the em is crossed out. You can now see that the class selector is overriding the element selector.
 
 ![](/images/inspecting5-specificity.png)
+
+## Debugging problems in CSS
+
+DevTools can be a great help when solving CSS problems, so when you find yourself in a situation where CSS isn't behaving as you expect, how should you go about solving it? The following steps should help.
+
+### Take a setp back from the problem
+
+Any coding problem can be frustrating, especially CSS problems because you often don't get an error message to search for online to help with finding a solution. If you are becoming frustrated, take a step away from the issue for a while -go for a walk, grab a drink, chat to a co-worker, or work on some other thing for a while. Sometimes the solution magically appears when you stop thinking about the problem, and even if not, working on it when feeling refreshed will be much easier.
+
+### Do you have valid HTML and CSS?
+
+Browsers expect your CSS and HTML to be correctly written, however browsers are also very forgiving and will try their best to display your webpages even if you have error in the markup or stylesheet. If you have mistakes in your code the browser needs to make a guess at what you meant, and it might make a different decision to what you had in mind. In addition, two differente browsers might cope with the problem in two different ways. A good first step, therefore, is to run your HTML and CSS through a validator, to pick up and fix any errors.
+
+- [CSS Validator](https://jigsaw.w3.org/css-validator/)
+- [HTML validator](https://validator.w3.org/)
