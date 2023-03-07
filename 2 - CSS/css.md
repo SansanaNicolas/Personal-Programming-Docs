@@ -2396,3 +2396,16 @@ Browsers expect your CSS and HTML to be correctly written, however browsers are 
 
 - [CSS Validator](https://jigsaw.w3.org/css-validator/)
 - [HTML validator](https://validator.w3.org/)
+
+### Are the property and value supported by the browser you are testing in?
+
+Browsers ignore CSS they don't understand. If the property or value you are using is not supported by the browser you are testing in then nothing will break, but that CSS won't be applied. DevTools will generally highlight unsupported properties and values in some way. In the screenshot below the browser does not support the subgrid value of grid-template-columns.
+
+![](/images/no-support.png)
+
+You can also take a look at the browser compatibility tables at the bottom of each property page on MDN. These show you browser support for that property, often broken down if there is support for some usage of the property and not others.
+
+### Is something else overriding your CSS?
+
+This is where the information you have learned about specificity will come into much use. If you have something more specific overriding what you are trying to do, you can enter into a very frustrating game of trying to work out what. However, as described above, DevTools will show you what CSS is applying and you can work out how to make the new selector specific enough to override it.
+
