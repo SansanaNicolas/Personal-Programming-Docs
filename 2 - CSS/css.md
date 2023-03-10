@@ -2444,3 +2444,163 @@ Here are some general suggestions for ways to keep your stylesheets organized an
 If you are working with a team on an existing project, the first thing to check is whether the project has an existing style guide for CSS. The team style guide should always win over your own personal preferences. There often isn't a right or wrong way to do things, but consistency is important.
 
 For example, have a look at the [CSS guidelines for MDN code examples](https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Writing_style_guide/Code_style_guide/CSS)
+
+### Keep it consistent
+
+If you get to set the rules for the project or are working alone, then the most important thing to do is to keep things consistent. Consistency can be applied in all sorts of ways, such as using the same naming conventions for classes, choosing one method of describing color, or maintaining consistent formatting. (For example, will you use tabs or spaces to indent your code? If spaces, how many spaces?)
+
+Having a set of rules you always follow reduces the amount of mental overhead needed when writing CSS, as some of the decisions are already made.
+
+## Formatting readable CSS
+
+There are a couple of ways you will see CSS formatted. Some developers put all of the rules onto a single line, like so:
+
+```
+.box {background-color: #567895; }
+h2 {background-color: black; color: white; }
+```
+
+Other developers prefer to break everything onto a new line:
+
+```
+.box {
+  background-color: #567895;
+}
+
+h2 {
+  background-color: black;
+  color: white;
+}
+```
+
+CSS doesn't mind which one you use. We perrsonally find it is more readable to have each property and value pair on a new line.
+
+## Comment your CSS
+
+Adding comments to your CSS will help any future developer work with your CSS file, but will also help you when you come back to the project after a break.
+
+```
+/* This is a CSS comment
+It can be broken onto multiple lines. */
+```
+
+A good tip is to add a block of comments between logical sections in your stylesheet too, to help locate different sections quickly when scanning it, or even to give you something to search for to jump right into that part of the CSS. If you use a string that won't appear in the code, you can jump from section to section by searching for it -below we have used ||.
+
+```
+/* || General styles */
+
+/* … */
+
+/* || Typography */
+
+/* … */
+
+/* || Header and Main Navigation */
+
+/* … */
+```
+
+You don't need to comment every single thing in your CSS, as much of it will be self-explanatory. What you should comment are the things where you made a particular decision for a reason.
+
+You may have used a CSS property in a specific way to get around older browser incompatibilities, for example:
+
+```
+.box {
+  background-color: red; /* fallback for older browsers that don't support gradients */
+  background-image: linear-gradient(to right, #ff0000, #aa0000);
+}
+```
+
+You don't need to comment every single thing in your CSS, as much of it will be self-explanatory. What you should comment are the things where you made a particular decision for a reason.
+
+You may have used a CSS property in a specific way to get around older browser incompatibilities, for example:
+
+```
+.box {
+  background-color: red; /* fallback for older browsers that don't support gradients */
+  background-image: linear-gradient(to right, #ff0000, #aa0000);
+}
+```
+
+Perhaps you followed a tutorial to achieve something, and the CSS isn't very self-explanatory or recognizable. In that case, you could add the URL of the tutorial to the comments. You will thank yourself when you come back to this project in a year or so and can vaguely remember that there was a great tutorial about that thing, but can't recall where it's from.
+
+
+## Create logical sections in your stylesheet
+
+It's a good idea to have all of the common styling first in the stylesheet. This means all of the styles which will generally apply unless you do something special with that element. You will typically have rules set up for:
+
+- body
+- p
+- h1, h2, h3, h4, h5
+- ul and ol
+- The ***table*** properties
+- links
+
+In this section of the stylesheet we are providing default styling for the type on the site, setting up a default style for data tables and lists and so on.
+
+```
+/* || GENERAL STYLES */
+
+body {
+  /* … */
+}
+
+h1,
+h2,
+h3,
+h4 {
+  /* … */
+}
+
+ul {
+  /* … */
+}
+
+blockquote {
+  /* … */
+}
+```
+
+After this section, we could define a few utility classes, for example, a class that removes the default list style for lists we're going to display as flex items or in some other way. If you have a few styling choices you know you will want to apply to lots of different elements, they can be put in this section.
+
+```
+/* || UTILITIES */
+
+.nobullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* … */
+```
+
+Then we can add everything that is used sitewide. That might be things like the basic page layout, navigation styling, and so on.
+
+```
+/* || SITEWIDE */
+
+.main-nav {
+  /* … */
+}
+
+.logo {
+  /* … */
+}
+```
+
+Finally, we will include CSS for specific things, broken down by the context, page, or even component in which they are used.
+
+```
+/* || STORE PAGES */
+
+.product-listing {
+  /* … */
+}
+
+.product-box {
+  /* … */
+}
+```
+
+By ordering things in this way, we at least have an idea in which part of the stylesheet we will be looking for something that we want to change.
