@@ -2604,3 +2604,31 @@ Finally, we will include CSS for specific things, broken down by the context, pa
 ```
 
 By ordering things in this way, we at least have an idea in which part of the stylesheet we will be looking for something that we want to change.
+
+## Avoid overly-specific selectors
+
+If you create very specific selectors, you will often find that you need to duplicate chunks of your CSS to apply the same rules to another element. For example, you might have something like the below selector, which applies the rule to a ***p*** with a class of ***box*** inside an ***article*** with a class of ***main***.
+
+```
+article.main p.box {
+  border: 1px solid #ccc;
+}
+```
+
+If you then wanted to apply the same rules to something outside of main, or to something other than a p, you would have to add another selector to these rules or create a whole new ruleset. Instead, you could use the selector .box to apply your rule to any element that has the class box:
+
+```
+.box {
+  border: 1px solid #ccc;
+}
+```
+
+There will be times when making something more specific makes sense; however, this will generally be an exception rather than usual practice.
+
+## Break large stylesheets into multiple smaller ones
+
+In cases where you have very different styles for distinct parts of the site, you might want to have one stylesheet that includes all the global rules, as well as some smaller stylesheets that include the specific rules needed for those sections. You can link to multiple stylesheets from one page, and the normal rules of the cascade apply, with rules in stylesheets linked later coming after rules in stylesheets linked earlier.
+
+For example, we might have an online stores as part of the site, with a lot of CSS used only for styling the product listings and forms needed for the store. It would make sense to have those things in a different stylesheet, only linked to on store pages.
+
+This can make it easier to keep your CSS organized, and also means that if multiple people are working on the CSS, you will have fewer situations where two people need to work on the same stylesheet at once, leading to conflicts in source control.
