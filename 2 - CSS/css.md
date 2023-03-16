@@ -2632,3 +2632,87 @@ In cases where you have very different styles for distinct parts of the site, yo
 For example, we might have an online stores as part of the site, with a lot of CSS used only for styling the product listings and forms needed for the store. It would make sense to have those things in a different stylesheet, only linked to on store pages.
 
 This can make it easier to keep your CSS organized, and also means that if multiple people are working on the CSS, you will have fewer situations where two people need to work on the same stylesheet at once, leading to conflicts in source control.
+
+# Other tools that can help
+
+CSS itself doesn't have much in the way of in-built organization; therefore, the level of consistency in your CSS will largely depend on you. The web community has developed various tools and approaches that can help you to manage larger CSS projects. Since you are likely to come across these aids when working with other people, and since they are often of help generally, we've included a short guide to some of them.
+
+## CSS methodologies
+
+Instead of needing to come up with your own rules for writing CSS, you may benefit from adopting one of the approaches already designed by the community and tested across many projects. These methodologies are essentially CSS coding guides that take a very structured approach to writing and organizing CSS. Typically they tend to render CSS more verbosely than you might have if you wrote and optimized every selector to a custom set of rules for that project.
+
+However, you do gain a lot of structure by adopting one. Since many of these systems are widely used, other developers are more likely to understand the approach you are using and be able to write their own CSS in the same way, rather than having to work out your own personal methodology from scratch.
+
+### OOCSS
+
+Most of the approaches you will encounter owe something to the concept of Object Oriented CSS (OOCSS), an approach made popular by the work of [Nicole Sullivan](https://github.com/stubbornella/oocss/wiki). The basic idea of OOCSS is to separate your CSS into reusable objects, which can be used anywhere you need on your site. The standard example of OOCSS is the pattern described as [The Media Object](https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook/Media_objects). This is a pattern with a fixed size image, video or other element on one side, and flexible content on the other. It's a pattern we see all over websites for comments, listings, and so on.
+
+If you are not taking an OOCSS approach you might create a custom CSS for the different places this pattern is used, for example, by creating two classes, one called ***comment*** with a bunch of rules for the component parts, and another called ***list-item*** with almost the same rules as the ***comment*** class except for some tiny differences. The differences between these two components are the list-item has a bottom orderd, and images in comments have a border whereas list-item images do not.
+
+```
+.comment {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.comment img {
+  border: 1px solid grey;
+}
+
+.comment .content {
+  font-size: 0.8rem;
+}
+
+.list-item {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  border-bottom: 1px solid grey;
+}
+
+.list-item .content {
+  font-size: 0.8rem;
+}
+```
+
+In OOCSS, you would create one pattern called ***media*** that would have all of the common CSS for both patterns -a base class for things that are generally the shape of the media object. Then we'd add an additional class to deal with those tiny differences, thus extending that styling in specific ways.
+
+```
+.media {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.media .content {
+  font-size: 0.8rem;
+}
+
+.comment img {
+  border: 1px solid grey;
+}
+
+.list-item {
+  border-bottom: 1px solid grey;
+}
+```
+
+In your HTML, the comment would need both the ***media*** and ***comment*** classes applied:
+
+```
+<div class="media comment">
+  <img src="" alt="" />
+  <div class="content"></div>
+</div>
+```
+
+The list-item would have ***media*** and ***list-item*** applied:
+
+```
+<ul>
+  <li class="media list-item">
+    <img src="" alt="" />
+    <div class="content"></div>
+  </li>
+</ul>
+```
+
+The work that Nicole Sullivan did in describing this approach and promoting it means that even people who are not strictly following an OOCSS approach today will generally be reusing CSS in this way -it has entered our understanding as a good way to approach things in general.
