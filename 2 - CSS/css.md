@@ -2716,3 +2716,31 @@ The list-item would have ***media*** and ***list-item*** applied:
 ```
 
 The work that Nicole Sullivan did in describing this approach and promoting it means that even people who are not strictly following an OOCSS approach today will generally be reusing CSS in this way -it has entered our understanding as a good way to approach things in general.
+
+## BEM
+
+BEM stands for Block Element Modifier. In BEM a block is a stand-alone entity such as a button, menu, or logo. An element is something like a list item or a title that is tied to the block it is in. A modifier is a flag on a block or element that changes the styling or behavior. You will be able to recognize code that uses BEM due to the extensive use of dashes and underscores in the CSS classes. For example, look at the classes applied to this HTML from the page about [BEM naming conventions](http://getbem.com/naming/).
+
+```
+<form class="form form--theme-xmas form--simple">
+  <label class="label form__label" for="inputId"></label>
+  <input class="form__input" type="text" id="inputId" />
+
+  <input
+    class="form__submit form__submit--disabled"
+    type="submit"
+    value="Submit" />
+</form>
+```
+
+The additional classes are similar to those used in the OOCSS example; however, they use the stric naming conventions of BEM.
+
+BEM is widely used in larger web projects and many people write their CSS in this way. It is likely that you will come across examples, even in tutorials, that use BEM syntax, without mentioning why the CSS is structured in such a way.
+Read more about this system [BEM 101](https://css-tricks.com/bem-101/) on CSS tricks.
+
+## Other common systems
+
+There are a larger number of these systems in use. Other popular approaches include [Scalable and Modular Architecture for CSS (SMACSS)](http://smacss.com/), created by Jonathan Snook, [ITCSS](https://itcss.io/) from Harry Roberts, and [Atomic CSS (ACSS)](https://acss.io/), originally created by Yahoo!. If you come across a project that uses one of these approaches, then the advantage is that you will be able to search and find many articles and guides to help you understand how to code in the same style.
+
+The disadvantage of using such a system is that they can seem overly complex, especially for smaller projects.
+
