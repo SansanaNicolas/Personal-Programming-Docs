@@ -2744,3 +2744,10 @@ There are a larger number of these systems in use. Other popular approaches incl
 
 The disadvantage of using such a system is that they can seem overly complex, especially for smaller projects.
 
+## Build systems for CSS
+
+Another way to organize CSS is to take advantage of some of the tooling that is available for front-end developers, which allows you to take a slightly more programmatic approach to writing CSS. There are a number of tools, which we refer to as pre-processors and post-processors. A pre-processor runs over your raw files and turns them into a stylesheet, whereas a post-processor takes your finished stylesheet and does something to it -perhaps to optimize it in order that it will load faster.
+
+Using any of these tools will require that your development environment be able to run scripts that do the pre- and post- processing. Many code editors can do this for you, or you can install command line tools to help.
+
+The most popular pre-processor is [Sass](https://sass-lang.com/). This is not a Sass tutorial, so I will briefly explain a couple of the things that Sass can do, which are really helpful in terms of organization even if you don't use any of the other Sass features. If you want to learn a lot more about Sass, start with the [Sass basics](https://sass-lang.com/guide) article, then move on to their documentation.
