@@ -2751,3 +2751,92 @@ Another way to organize CSS is to take advantage of some of the tooling that is 
 Using any of these tools will require that your development environment be able to run scripts that do the pre- and post- processing. Many code editors can do this for you, or you can install command line tools to help.
 
 The most popular pre-processor is [Sass](https://sass-lang.com/). This is not a Sass tutorial, so I will briefly explain a couple of the things that Sass can do, which are really helpful in terms of organization even if you don't use any of the other Sass features. If you want to learn a lot more about Sass, start with the [Sass basics](https://sass-lang.com/guide) article, then move on to their documentation.
+
+## Defining variables
+
+CSS now has native [custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties), making this feature increasingly less important. However, one of the reasons you might use Sass is to be able to define all of the colors and fonts used in a project as settings, then to use that variable around the project. This means that if you realize you have used the wrong shade of blue, you only need change it in one place.
+
+If we created a variable called ***$base-color***, as in the first line below, we could then use it through the stylesheet anywhere that required that color.
+
+```
+$base-color: #c6538c;
+
+.alert {
+  border: 1px solid $base-color;
+}
+```
+
+Once compiled to CSS, you would end up with the following CSS in the final stylesheet.
+
+```
+.alert {
+  border: 1px solid #c6538c;
+}
+```
+
+## Compiling component stylesheets
+
+I mentioned above that one way to organize CSS is to break down stylesheets into smaller stylesheets. When using Sass you can take this to another level and have lots of very small stylesheets -even going as far as having a separate stylesheet for each component. By using the included functionality in Sass (partials), these can all be compiled together into one or a small number of stylesheets to actually link into your website.
+
+So, for example, with [partials](https://sass-lang.com/documentation/at-rules/use#partials), you could have several style files inside a directory, say foundation/_code.scss, foundation/_lists.scss, foundation/_footer.scss, foundation/_links.scss, etc. You could then use  the Sass @use rule to load them into other stylesheets:
+
+```
+// foundation/_index.scss
+@use "code";
+@use "lists";
+@use "footer";
+@use "links";
+```
+
+If the partials are all loaded into an index file, as implied above, you can then load that entire directory into another stylesheet in one go:
+
+```
+// style.scss
+@use "foundation";
+```
+
+### Post-processing for optimization
+
+If you are concerned about adding size to oyur stylesheets, for example, by adding a lot of additional comments and whitespace, then a post-processing step could be to optimize the CSS by stripping out anything unnecessary in the production version. An example of a post-processor solution for doing this would be [cssnano](https://cssnano.co/).
+
+# Flexbox
+
+Flexbox is a one-dimensional layout method for arranging items in rows or columns. Items flex (expand) to fill additional space or shrink to fit into smaller spaces. This article explains all the fundamentals.
+
+## Why flexbox?
+
+For a long time, the only reliable cross-browser compatible tools available for creating CSS layouts were features like [floats](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Floats) and [positioning](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning). These work, but in some ways they're also limiting and frustrating.
+
+The following simple layout designs are either difficult or impossible to achieve with such tools in any kind of convenient, flexible way:
+
+- Vertically centering a block of content inside its parent.
+
+- Making all the children of a container take up an equal amount of the available width/height, regardless of how much width/height is available.
+
+- Making all columns in a multiple-column layout adopt the same height even if they contain a different amount of content.
+
+## Introducing a simple example
+
+In this article, you'll work through a series of exercises to help you understand how flexbox works. To get started, you should make a local copy of the first starter file - [flexbox0.html](https://github.com/mdn/learning-area/blob/main/css/css-layout/flexbox/flexbox0.html) from our GitHub repo. Load it in a modern browser (like firefox or chrome) and have a look at the code in your code editor. 
+
+![](/images/bih741v.png)
+
+You'll see that we have a ***header*** element with a top level heading inside it and a ***section*** element containing three ***article***s. We're going to use these to create a fairly standard three column layout.
+
+## Specifying what elements to lay out as flexible boxes
+
+To start with, we need to select which elements are to be laid out as flexible boxes. To do this, we set a special value of ***display*** on the parent element of the elements you want to affect. In this case we want to lay out the ***article*** elements, so we set this on the ***section***:
+
+```
+section {
+  display: flex;
+}
+```
+
+This causes the section element to become a flex container and its children to become flex items. The result of this should be something like so:
+
+![](/images/flexbox-example2.png)
+
+So, this single declaration gives us everything we need. Incredible, right? We have our multiple column layout with equal-sized columns, and the columns are all the same height. This is because the default values given to flex items (the children of the flex container) are set up to solve common problems such as this.
+
+To be clear, let's reiterate what is happening here. The element we've given a ***display*** value of ***flex*** to is acting like a block-level element in terms of how it interacts with the rest of the page, but its children are laid out as flex items. The next section will explain in more detail what this means. Note also that you can use a ***display*** value of ***inline-flex*** if you wish to lay out an element's children as flex items, but have that element behave like an inline element.
