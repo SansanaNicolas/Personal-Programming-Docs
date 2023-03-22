@@ -2840,3 +2840,19 @@ This causes the section element to become a flex container and its children to b
 So, this single declaration gives us everything we need. Incredible, right? We have our multiple column layout with equal-sized columns, and the columns are all the same height. This is because the default values given to flex items (the children of the flex container) are set up to solve common problems such as this.
 
 To be clear, let's reiterate what is happening here. The element we've given a ***display*** value of ***flex*** to is acting like a block-level element in terms of how it interacts with the rest of the page, but its children are laid out as flex items. The next section will explain in more detail what this means. Note also that you can use a ***display*** value of ***inline-flex*** if you wish to lay out an element's children as flex items, but have that element behave like an inline element.
+
+## The flex model
+
+When elements are laid out as flex items, they are laid out along two axes:
+
+![](/images/flex_terms.png)
+
+- The ***main axis*** is the axis running in the direction the flex items are laid out in (for example, as a row across the page, or a column down the page.) The start and end of this axis are called the ***main start*** and ***main end***.
+
+- The ***cross axis*** is the axis running perpendicular to the direcion the flex items are laid out in. The start and end of this axis are called the ***cross start*** and ***cross end***.
+
+- The parent element that has ***display: flex*** set on it (the section in our example) is called the ***flex container***.
+
+- The items laid out as flexible boxes inside the flex container are called ***flex items*** (the article elements in our example).
+
+Bear this terminology in mind as you go through subsequent sections. You can always refer back to it if you get confused about any of the terms being used.
