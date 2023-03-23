@@ -2856,3 +2856,41 @@ When elements are laid out as flex items, they are laid out along two axes:
 - The items laid out as flexible boxes inside the flex container are called ***flex items*** (the article elements in our example).
 
 Bear this terminology in mind as you go through subsequent sections. You can always refer back to it if you get confused about any of the terms being used.
+
+## Columns or rows?
+
+Flexbox provides a property called ***flex-direction*** that specifies which direction the main axis runs (which direction the flexbox children are laid out in). By default this is set to ***row***, which causes them to be laid out in a row in the direction your browser's default language works in (left to right, in the case of an English browser).
+
+Try adding the followin declaration to your section rule:
+
+```
+flex-direction: column;
+```
+
+You'll see that this puts the item back in a column layout, much like they were before we added any CSS. Before you move on, delete this declaration from your example.
+
+## Wrapping
+
+One issue that arises when you have a fixed width or height in your layout is that eventually your flexbox children will overflow their container, breaking the layout. Have a look at our flexbox-wrap0.html example and try viewing it live (take a local copy of this file now if you want to follow along with this example):
+
+![](/images/flexbox-example3.png)
+
+Here we see that the children are indeed breaking out of their container. One way in which you can fix this is to add the followin declaration to your section rule:
+
+```
+flex-wrap: wrap;
+```
+
+Also, add the following declaration to your article rule:
+
+```
+flex: 200px;
+```
+
+Try this now. You'll see that the layout looks much better with this included:
+
+![](/images/flexbox-example4.png)
+
+We now have multiple rows. Each row has as many flexbox children fitted into it as is sensible. Any overflow is moved down to the next line. The flex: 200px declaration set on the articles means that each will be at least 200px wide. We'll discuss this property in more detail later on. You might also notice that the last few children on the last row are each made wider so that the entire row is still filled.
+
+But there's more we can do here. First of all, try changing your [flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction) property value to ***row-reverse***. Now you'll see that you still have your multiple row layout, but it starts from the opposite corner of the browser window and flows in reverse.
