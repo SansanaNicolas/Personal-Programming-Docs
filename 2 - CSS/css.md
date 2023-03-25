@@ -2894,3 +2894,38 @@ Try this now. You'll see that the layout looks much better with this included:
 We now have multiple rows. Each row has as many flexbox children fitted into it as is sensible. Any overflow is moved down to the next line. The flex: 200px declaration set on the articles means that each will be at least 200px wide. We'll discuss this property in more detail later on. You might also notice that the last few children on the last row are each made wider so that the entire row is still filled.
 
 But there's more we can do here. First of all, try changing your [flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction) property value to ***row-reverse***. Now you'll see that you still have your multiple row layout, but it starts from the opposite corner of the browser window and flows in reverse.
+
+## Flex-flow shorthand
+
+At this point it's worth nothing that a shorthand exists for [flex-direction](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction) and [flex-wrap](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap) : [flex-flow](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-flow). So, for example, you can replace: 
+
+```
+flex-direction: row;
+flex-wrap: wrap;
+```
+with
+
+```
+flex-flow: row wrap;
+```
+
+## Grids
+
+CSS grid layout is a two-dimensional layout system for the web. It lets you lay content out in rows and columns. It has many features that make building complex layouts straightforward.
+
+### What is grid layout?
+
+A grid is a collection of horizontal and vertical lines creating a pattern against which we can line up our design elements. They help us to create layouts in which our elements won't jump around or change width as we move from page to page, providing greater consistency on our websites.
+
+A grid will typically have columns, rows, and then gaps between each row and column. The gaps are commonly regerred to as ***gutters***.
+
+![](/images/grid.png)
+
+## Creating your grid in CSS
+
+Having decided on the grid that you design needs, you can use CSS grid layout to create it. We'll look at the basic features of grid layout first and then explore how to create a simple grid system for your project.
+
+The following video provides a nice visual explanation of using CSS Grid https://youtu.be/KOvGeFUHAC0.
+
+
+
