@@ -2927,5 +2927,55 @@ Having decided on the grid that you design needs, you can use CSS grid layout to
 
 The following video provides a nice visual explanation of using CSS Grid https://youtu.be/KOvGeFUHAC0.
 
+## Defining a grid
 
+As a starting point, download and open [the starting point file](https://github.com/mdn/learning-area/blob/main/css/css-layout/grids/0-starting-point.html) in your text editor and browser (you can also [see it live here](https://mdn.github.io/learning-area/css/css-layout/grids/0-starting-point.html)). You will see an example with a container, which has some child items. These display in normal flow by default, so the boxes display one below the other. We'll be working with this file for the first part of this lesson, making changes to see how its grid behaves.
 
+To define a grid we use the ***grid*** value of the ***display*** property. AS with Flexbox, this enables Grid Layout; all of the direct children of the container become grid items. Add this to the CSS inside your file:
+
+```
+.container {
+  display: grid;
+}
+```
+
+Unlike flexbox, the items will not immediately look any different. Declaring ***display: grid;*** gives you a one column grid, so your items will continue to display one below the other as they do in normal flow.
+
+To see something that looks more grid-like, we'll need to add some columns to the grid. Let's add three 200-pixel columns. You can use any length unit or percentage to create these column tracks.
+
+```
+.container {
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+}
+```
+
+Add the second declaration to your CSS rule, then reload the page. You should see that the items have rearranged themselves such that there's one in each cell of the grid.
+
+![griEx2](/images/gridEx2.png)
+
+## Flexible grids with the fr unit
+
+In addition to creating grid using lengths and percentages, we can use ***fr***. The fr unit represents one fraction of the available space in the grid container to flexibly size grid rows and columns.
+
+Change your track listing to the followin definition, creatine three ***1fr*** tracks:
+
+```
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+```
+
+You now have flexible tracks. The ***fr*** unit distributes space proportionally. You can specify different positive values for your tracks like so:
+
+```
+.container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+}
+```
+
+The first track gets ***2fr*** of the available space and the other two tracks get ***1fr***, making the first track larger. You can mix fr units with fixed length units. In this case, the space needed for the fixed tracks is used up first before the remaining space is distributed to ther other tracks.
+
+![gridEx3](/images/gridEx3.png)
