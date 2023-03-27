@@ -2979,3 +2979,56 @@ You now have flexible tracks. The ***fr*** unit distributes space proportionally
 The first track gets ***2fr*** of the available space and the other two tracks get ***1fr***, making the first track larger. You can mix fr units with fixed length units. In this case, the space needed for the fixed tracks is used up first before the remaining space is distributed to ther other tracks.
 
 ![gridEx3](/images/gridEx3.png)
+
+## Gaps between tracks
+
+- [column-gap](https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap) for gaps between columns
+- [row-gap](https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap) for gaps between rows
+- [gap](https://developer.mozilla.org/en-US/docs/Web/CSS/gap) as a shorthand for both
+
+```
+.container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 20px;
+}
+```
+
+These gaps can be any length unit or percentage, but not an ***fr*** unit.
+
+![](/images/gridEx4.png)
+
+## Repeating track listings
+
+You can repeat all of merely a section of your track listing using the CSS repeat() function. Change your track listing to the following:
+
+```
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+```
+
+You'll now get three ***1fr*** tracks just as before. The first value passed to the ***repeat()*** function specifies the number of times you want the listing to repeat, while the second value is a track listing, which may be one or more tracks that you want to repeat.
+
+## The implicit and explicit grid
+
+We've only specified column tracks so far, yet rows are being created to hold our content. This is an example of the explicit versus the implicit grid.
+
+The difference: 
+- Explicit grid: created using ***grid-template-columns*** or ***grid-template-rows***.
+- Implicit grid: Extends the defined explicit grid when content is placed outside of that grid, such as into our rows by drawing additional grid lines.
+
+By default, tracks created in the implicit grid are ***auto*** sized, which in general means that they're large enough to accommodate their content. If you wish to give implicit grid tracks a size, you can use the [grid-auto-rows](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-rows)  and [grid-auto-columns](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-columns) properties. If you add grid-auto-rows with a value of 100px to your CSS, you'll see that those created rows are now 100 pixels tall.
+
+```
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 100px;
+  gap: 20px;
+}
+```
+
+![](/images/gridEx5.png)
