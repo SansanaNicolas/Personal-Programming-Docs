@@ -3032,3 +3032,36 @@ By default, tracks created in the implicit grid are ***auto*** sized, which in g
 ```
 
 ![](/images/gridEx5.png)
+
+## The minmax() function
+
+Our 100-pixel tall tracks won't be very useful if we add content into those tracks that is taller than 100 pixels, in which case it would cause an overflow. It might be better to have tracks that are at least 100 pixels tall and can still expand if more content becomes added. A fairly basic fact about the web is that you never really know how tall something is going to be — additional content or larger font sizes can cause problems with designs that attempt to be pixel perfect in every dimension.
+
+The [minmax()](https://developer.mozilla.org/en-US/docs/Web/CSS/minmax) function lets us set a minimum and maximum size for a track, for exmaple, ***minmax(100px, auto)***. The minimum size is 100 pixels, but the maximum is ***auto***, which will expand to accommodate more content. Try changing ***grid-auto-rows*** to use a minmax value:
+
+```
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+  gap: 20px;
+}
+```
+
+If you add extra content, you'll see that the track expands to allow it to fit. Note that the expansion happens right along the row.
+
+## As many columns as will fit
+
+We can combine some of the lessons we've learned about track listing, repeat notation, and [minmax()](https://developer.mozilla.org/en-US/docs/Web/CSS/minmax) to create a useful pattern. Sometimes it's helpful to be able to ask grid to create as many columns as will fit into the container. We do this by setting the value of ***grid-template-columns*** using the [repeat()](https://developer.mozilla.org/en-US/docs/Web/CSS/repeat) function, but instead of passing in a number, pass in the keyword ***auto-fill***. For the second parameter of the function we use ***minmax()*** with a minimum value equal to the minimum track size that we would like to have and a maximum of ***1fr***.
+
+```
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: minmax(100px, auto);
+  gap: 20px;
+}
+```
+![]()
+
+This works because grid is creating as many 200-pixel columns as will fit into the container, then sharing whatever space is leftover among all the columns. The maximum is ***1fr*** which, as we already know, distributes space evenly between tracks.
