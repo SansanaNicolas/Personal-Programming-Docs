@@ -3062,6 +3062,132 @@ We can combine some of the lessons we've learned about track listing, repeat not
   gap: 20px;
 }
 ```
-![]()
+![](/images/minmaxfunct.png)
 
 This works because grid is creating as many 200-pixel columns as will fit into the container, then sharing whatever space is leftover among all the columns. The maximum is ***1fr*** which, as we already know, distributes space evenly between tracks.
+
+## Line-based placement
+
+We now move on from creating a grid to placing things on the grid. Our grid always has lines -these are numbered beginning with 1 and relate to the [writing mode](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Writing_Modes) of the document. For example, column line 1 in English (written left-to-right) would be on the left-hand side of the grid and row line 1 at the top, while in Arabic (written right-to-left), column line 1 would be on the right-hand side.
+
+We can arrange things in accordance with these lines by specifying the start and end line. We do this using the following properties.
+
+- [grid-column-start](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-start)
+- [grid-column-end](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-end)
+- [grid-row-start](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-start)
+- [grid-row-end](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-end)
+
+These properties can all have a line number as their value- You can also use the shorthand properties:
+
+- [grid-column](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column)
+- [grid-row](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row)
+
+These let you specify the start and end lines at once, separated by a forward slash ***/***.
+
+Let's instead arrange all of the elements for our site by using the grid lines. Add the following rules to the bottom of your CSS:
+
+```
+header {
+  grid-column: 1 / 3;
+  grid-row: 1;
+}
+
+article {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+aside {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+footer {
+  grid-column: 1 / 3;
+  grid-row: 3;
+}
+```
+
+![](/images/gridEx6.png)
+
+## Positioning with grid-template-areas
+
+An alternative way to arrange items on your grid is to use the [grid-template-areas](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas) property and give the various elements of your design a name.
+
+Remove the line-based positioning from the last example and add the following CSS.
+
+```
+.container {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar content"
+    "footer footer";
+  grid-template-columns: 1fr 3fr;
+  gap: 20px;
+}
+
+header {
+  grid-area: header;
+}
+
+article {
+  grid-area: content;
+}
+
+aside {
+  grid-area: sidebar;
+}
+
+footer {
+  grid-area: footer;
+}
+```
+
+Reload the page and you will see that your items have been placed just as before without us needing to use any line numbers!
+
+![](/images/gridEx7.png)
+
+The rules for ***grid-template-areas*** are as follows:
+
+- You need to have every cell of the grid filled.
+- To span across two cells, repeat the name.
+- To leave a cell empty, use a . (period).
+- Areas must be rectangular -for example, you can't have an L-shaped area.
+- Areas can't be repeated in different locations.
+
+You can play around with our layout, changing the footer to only sit underneath the article and the sidebar to span all the way down. This is a very nice way to describe a layout because it's clear just from looking at the CSS to know exactly what's happening.
+
+## Grid frameworks in CSS grid
+
+Grid "frameworks" tend to be based around 12 or 16 column grids. With CSS grid, you don't need any third party tool to give you such a framework -it's already there in the spec.
+
+[Download the starting point file](https://github.com/mdn/learning-area/blob/main/css/css-layout/grids/11-grid-system-starting-point.html). This has a container with a 12-column grid defined and the same markup we used in the previous two examples. We can now use line-based placement to place our content on the 12-column grid.
+
+```
+header {
+  grid-column: 1 / 13;
+  grid-row: 1;
+}
+
+article {
+  grid-column: 4 / 13;
+  grid-row: 2;
+}
+
+aside {
+  grid-column: 1 / 4;
+  grid-row: 2;
+}
+
+footer {
+  grid-column: 1 / 13;
+  grid-row: 3;
+}
+```
+
+![](/images/gridEx8.png)
+
+If you use the [Fireforx Grid Inspector](https://firefox-source-docs.mozilla.org/devtools-user/page_inspector/how_to/examine_grid_layouts/index.html) to overlay the grid lines on your design, you can see how our 12-column grid works.
+
+![](/images/GridEx9.png)
