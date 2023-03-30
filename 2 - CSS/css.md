@@ -3191,3 +3191,46 @@ footer {
 If you use the [Fireforx Grid Inspector](https://firefox-source-docs.mozilla.org/devtools-user/page_inspector/how_to/examine_grid_layouts/index.html) to overlay the grid lines on your design, you can see how our 12-column grid works.
 
 ![](/images/GridEx9.png)
+
+
+## Positioning 
+
+Positioning allows you to take elements out of normal document flow and make them behave differently, for example, by sitting on top of one another or by always remaining in the same place inside the browser viewport.
+
+### Introducing positioning
+
+Positioning allows us to produce intereseting results by overriding normal document flow. What if you want to slightly alter the position of some boxes from their default flow position to give a slightly quircky, distressed feel? Positioning is your tool. Or what if you want to create a UI element that floats over the top of other parts of the page and/or always sits in the same place inside the browser window no matter how much the page is scrolled? Positioning makes such layout work possible.
+
+There are a number of different types of positioning that you can put into effect on HTML elements. To make a specific type of positioning active on an element, we use the [position](https://developer.mozilla.org/en-US/docs/Web/CSS/position) property.
+
+## Static positioning
+
+Static positioning is the default that every element gets. It just means "put the element into its normal position in the document flow -nothing special to see here."
+
+To see this (and get you example set up for the future sections) first add a ***class*** of ***positioned*** to the second ***p*** in the HTML:
+
+```
+<p class="positioned">…</p>
+```
+
+Now add the followin rule to the bottom of your CSS:
+
+```
+.positioned {
+  position: static;
+  background: yellow;
+}
+```
+
+If you save and refresh, you'll see no difference at all, except for the updated background color of the 2nd paragraph. This is fine -as we said before, static positioning is the default behavior!
+
+## Relative positioning
+
+Relative positioning is the first position type we'll take a look at. This is very similar to static positioning, except that once the positioned element has taken its place in the normal flow, you can then modify its final position, including making it overlap other element on the page. Go ahead and update the ***position*** declaration in your code:
+
+```
+position: relative;
+```
+
+If you save and refresh at this stage, you won't see a change in the result at all. So how do you modify the element's position? You need to use the: top, bottom, left and right properties, which we'll explain in the next section.
+
