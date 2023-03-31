@@ -3234,3 +3234,46 @@ position: relative;
 
 If you save and refresh at this stage, you won't see a change in the result at all. So how do you modify the element's position? You need to use the: top, bottom, left and right properties, which we'll explain in the next section.
 
+## Introducing top, bottom, left, and right
+
+[top](https://developer.mozilla.org/en-US/docs/Web/CSS/top), [bottom](https://developer.mozilla.org/en-US/docs/Web/CSS/bottom), [left](https://developer.mozilla.org/en-US/docs/Web/CSS/left) and [right](https://developer.mozilla.org/en-US/docs/Web/CSS/right) are used alongside [position](https://developer.mozilla.org/en-US/docs/Web/CSS/position) to specify exactly where to move the positioned element to. To try this out, add the following declarations to the ***.positioned*** rule in your CSS:
+
+```
+top: 30px;
+left: 30px;
+```
+
+## Absolute positioning
+
+setting position: absolute. 
+Let's try changing the position declaration in your code as follows:
+
+```
+position: absolute;
+```
+
+If you now save and refresh, you should see something like so:
+
+![absoluteEX](/images/absoluteEX.png)
+
+First of all, note that the gap where the positioned element should be in the document flow is no longer there — the first and third elements have closed together like it no longer exists! Well, in a way, this is true. An absolutely positioned element no longer exists in the normal document flow. Instead, it sits on its own layer separate from everything else. This is very useful: it means that we can create isolated UI features that don't interfere with the layout of other elements on the page. For example, popup information boxes, control menus, rollover panels, UI features that can be dragged and dropped anywhere on the page, and so on.
+
+Second, notice that the position of the element has changed. This is because top, bottom, left and right behave in a different way with absolute positioning. Rather than positioning the element based on its relative position within the normal document flow, they specify the distance the element should be from each of the containing element's sides. So in this case, we are saying that the absolutely positioned element should site 30px from the top of the "containing element" and 30px from the left. (In this case, the "containing element" is the ***initial containing block***)
+
+## Positioning contexts
+
+Which element is the "containing element" of an absolutely positioned element? This is very much dependent on the position property of the ancestors of the positioned element (See [Identifying the containing block](https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#identifying_the_containing_block)).
+
+If no ancestor elements have their position property explicitly defined, then by default all ancestor elements will have a static position. The result of this is the absolutely positioned element will be contained in the initial containing block. The initial containing block has the dimensions of the viewport and is also the block that contains the html element. In other words, the absolutely positioned element will be displayed outside of the html element and be positioned relative to the initial viewport.
+
+The positioned element is nested inside the body in the HTML source, but in the final layout it's 30px away from the top and the left edges of the page. We can change the ***positioning context***, that is, which element the absolutely positioned element is positioned relative to. This is done by setting positioning on one of the element's ancestors: to one of the elements it's nested inside of (you can't position it relative to an element it's not nested inside of). To see this, add the following declaration to your ***body*** rule:
+
+```
+position: relative;
+```
+
+This should give the followin result:
+
+![](/images/positionedEX.png)
+
+The positioned element now sits relative to the body element.
