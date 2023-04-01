@@ -3277,3 +3277,36 @@ This should give the followin result:
 ![](/images/positionedEX.png)
 
 The positioned element now sits relative to the body element.
+
+## Introducing z-index
+
+When elements start to overlap, what determines which elements appear over others and which elements appear under others? In the example we've seen so far, we only have one positioned element in the positioning context, and it appears on the top since positioned elements win over non-positioned elements. What about when we have more than one?
+
+Try adding the following to your CSS to make the first paragraph absolutely positioned too:
+
+```
+p:nth-of-type(1) {
+  position: absolute;
+  background: lime;
+  top: 10px;
+  right: 30px;
+}
+```
+
+At this point you'll see the first paragraph colored lime, moved out of the document flow, and positioned a bit above from where it originally was. It's also stacked below the original ***.positioned*** paragraph where the two overlap. This is because the ***.positioned*** paragraph is the second paragraph in the source order, and positioned elements later in the source order win over positioned elements earlier in the source order.
+
+Can you change the stacking order? Yes, you can, by using the [z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index) property. "z-index" is a reference to the z-axis. You may recall from previous points in the course where we discussed web pages using horizontal (x-axis) and vertical (y-axis) coordinates to work out positioning for things like background images and drop shadow offsets. For languages that run left to right, (0,0) is at the top left of the page (or element), and the x- and y-axes run across to the right and down the page.
+
+Web pages also have a z-axis: an imaginary line that runs from the surface of your screen towards your face (or whatever else you like to have in front of the screen). [z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index) values affect where positioned elements sit on that axis; positive values move them higher up the stack, negative values move them lower down the stack. By default, positioned elements all have a ***z-index*** of ***auto***, which is effectively 0.
+
+To change the stacking order, try adding the following declaration to your ***p:nth-of-type(1)*** rule:
+
+```
+z-index: 1;
+```
+
+You should now see the lime paragraph on top:
+
+![](/images/zindex.png)
+
+Note that ***z-index*** only accepts unitless index values; you can't specify that you want one element to be 23 pixels up the Z-axis — it doesn't work like that. Higher values will go above lower values and it's up to you what values you use. Using values of 2 or 3 would give the same effect as values of 300 or 40000.
