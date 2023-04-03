@@ -3351,3 +3351,75 @@ p:nth-of-type(1) {
 You should now see the finished example:
 
 ![fixedPositioning](/images/fixedPositioning.png)
+
+## Sticky positioning
+
+There is another position value available called ***position: sticky***, which is somewhat newer than the others. This is basically a hybrid between relative and fixed position. It allows a positioned element to act like it's relatively positioned until it's scrolled to a certain threshold (e.g., 10px from the top of the viewport), after which it becomes fixed.
+
+### Basic example
+
+Sticky positioning can be used, for example, to cause a navigation bar to scroll with the page until a certain point and then stick to the top of the page.
+
+```
+.positioned {
+ position: sticky;
+ top: 30px;
+ left: 30px;
+}
+```
+
+![stickyEX](/images/stickyEX.png)
+
+### Scrolling index
+
+An interesting and common use of ***position: sticky*** is to create a scrolling index page where different headings stick to the top of the page as they react it. The markup for such an example might look like so:
+
+```
+<h1>Sticky positioning</h1>
+
+<dl>
+  <dt>A</dt>
+  <dd>Apple</dd>
+  <dd>Ant</dd>
+  <dd>Altimeter</dd>
+  <dd>Airplane</dd>
+  <dt>B</dt>
+  <dd>Bird</dd>
+  <dd>Buzzard</dd>
+  <dd>Bee</dd>
+  <dd>Banana</dd>
+  <dd>Beanstalk</dd>
+  <dt>C</dt>
+  <dd>Calculator</dd>
+  <dd>Cane</dd>
+  <dd>Camera</dd>
+  <dd>Camel</dd>
+  <dt>D</dt>
+  <dd>Duck</dd>
+  <dd>Dime</dd>
+  <dd>Dipstick</dd>
+  <dd>Drone</dd>
+  <dt>E</dt>
+  <dd>Egg</dd>
+  <dd>Elephant</dd>
+  <dd>Egret</dd>
+</dl>
+```
+
+The CSS might look as follows. In normal flow the ***dt*** elements will scroll with the content. When we add ***position: sticky*** to the ***dt*** element, along with a ***top*** value of 0, supporting browsers will stick the headings to the top of the viewport as they react that position. Each subsequent header will then replace the previous one as it scrolls up to that position.
+
+```
+dt {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  margin: 1em 0;
+}
+```
+
+![stickyEX2](/images/stickyEX2.png)
+
+Sticky elements are "sticky" relative to the nearest ancestor with a "scrolling mechanism", which is determined by its ancestor's position property.
