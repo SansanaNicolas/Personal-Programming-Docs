@@ -3423,3 +3423,37 @@ dt {
 ![stickyEX2](/images/stickyEX2.png)
 
 Sticky elements are "sticky" relative to the nearest ancestor with a "scrolling mechanism", which is determined by its ancestor's position property.
+
+## Multiple-column layout
+
+The multiple-column layout specification provides you with a method for laying content out in columns, as you might see in a newspaper. This article explains how to use this feature.
+
+### A three-column layout
+
+Our starting point file contains some very simple HTML: a wrapper with a class of ***container***, inside of which is a heading and some paragraphs.
+
+The ***div*** with a class of ***container*** will become our multicol container. We enable multicol by using one of two properties: [column-count](https://developer.mozilla.org/en-US/docs/Web/CSS/column-count) or [column-width](https://developer.mozilla.org/en-US/docs/Web/CSS/column-width). The ***column-count*** property takes a number as its value and creates that number of columns. If you add the following CSS to your stylesheet and reload the page, you'll get three columns:
+
+```
+.container {
+  column-count: 3;
+}
+```
+
+The columns that you create have flexible widths -the browser works out how much space to assign each column.
+
+![](/images/multicolumns.png)
+
+### Setting column-width
+
+Change your CSS to use ***column-width*** as follows:
+
+```
+.container {
+  column-width: 200px;
+}
+```
+
+The browser will now give you as many columns as it can of the size that you specify; any remaining space is then shared between the existing columns. This means that you won't get exactly the width that you specify unless your container is exactly divisible by that width.
+
+![](/images/multicolumns2.png)
