@@ -3457,3 +3457,34 @@ Change your CSS to use ***column-width*** as follows:
 The browser will now give you as many columns as it can of the size that you specify; any remaining space is then shared between the existing columns. This means that you won't get exactly the width that you specify unless your container is exactly divisible by that width.
 
 ![](/images/multicolumns2.png)
+
+## Styling the columns
+
+The columns created by multicol cannot be styled individually. There's no way to make one column bigger than other columns or to change the background or text color of a single column. You have two opportunities to change the way that columns display:
+
+- Changing the size of the gap between columns using the [column-gap](https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap).
+- Adding a rule between columns with [column-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule).
+
+Using your example above, change the size of the gap by adding a ***column-gap*** property. You can play around with different values -the property accepts any length unit.
+
+Now add a rule between the columns with ***column-rule***. In a similar way to [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border) property that you encountered in previous lessons, ***column-rule*** is a shorthand for [column-rule-color](https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-color), [column-rule-style](https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-style), and [column-rule-width](https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-width) and accepts the same values as ***border***.
+
+```
+.container {
+  column-count: 3;
+  column-gap: 20px;
+  column-rule: 4px dotted rgb(79, 185, 227);
+}
+```
+
+![](/images/multicolumns3.png)
+
+Something to take note of is that the rule doesn't take up any width of its own. It lies across the gap you created with ***column-gap***. To make more space on either side of the rule, you'll need to increase the ***column-gap*** size.
+
+## Spanning columns
+
+You can cause an element to span across all the columns. In this case, the content breaks where the spanning element's introduced and then continues below the element, creating a new set of columns. To cause an element to span all the columns, specify the value of ***all*** for the [column-span](https://developer.mozilla.org/en-US/docs/Web/CSS/column-span) property.
+
+Note: It isn't possible to cause an element to span just some columns. The property can only have the values of none (which is the default) or all.
+
+![](/images/multicolumns4.png)
