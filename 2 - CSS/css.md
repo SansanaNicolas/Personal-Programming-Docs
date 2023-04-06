@@ -3488,3 +3488,81 @@ You can cause an element to span across all the columns. In this case, the conte
 Note: It isn't possible to cause an element to span just some columns. The property can only have the values of none (which is the default) or all.
 
 ![](/images/multicolumns4.png)
+
+## Columns and fragmentation
+
+The content of a multi-column layout is fragmented. It essentially behaves the same way as content behaves in paged media, such as when you print a webpage. When you turn your content into a multicol container, it fragments into columns. In order for the content to do this, it must break.
+
+### Fragmented boxes
+
+Sometimes, this breaking will happen in places that lead to a poor reading experience. In the example below, I have used multicol to lay out a series of boxes, each of which has a heading and some text inside. The heading becomes separated from the text if the columns fragment between the two.
+
+```
+<div class="container">
+  <div class="card">
+    <h2>I am the heading</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+      aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+      pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+      at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+      Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>I am the heading</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+      aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+      pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+      at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+      Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>I am the heading</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+      aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+      pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+      at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+      Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.
+    </p>
+  </div>
+```
+
+´´´
+.container {
+  column-width: 250px;
+  column-gap: 20px;
+}
+
+.card {
+  background-color: rgb(207, 232, 220);
+  border: 2px solid rgb(79, 185, 227);
+  padding: 10px;
+  margin: 0 0 1em 0;
+}
+´´´
+
+![](/images/multicolumns5.png)
+
+## Setting break-inside
+
+To control this behavior, we can use properties from the [CSS Fragmentation](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fragmentation) specification. This specification gives us properties to control the breaking of content in multicol and in paged media. For example, by adding the property [break-inside](https://developer.mozilla.org/en-US/docs/Web/CSS/break-inside) with a value of ***value*** to the rules for ***.card***. This is the container of the heading and text, so we don't want it fragmented.
+
+```
+.card {
+  break-inside: avoid;
+  background-color: rgb(207, 232, 220);
+  border: 2px solid rgb(79, 185, 227);
+  padding: 10px;
+  margin: 0 0 1em 0;
+}
+```
+
+The addition of this property causes the boxes to stay in one piece -they now do not fragment across the columns.
+
+![](/images/multicolumns6.png)
