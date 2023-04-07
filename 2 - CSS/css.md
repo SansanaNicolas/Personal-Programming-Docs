@@ -3566,3 +3566,48 @@ To control this behavior, we can use properties from the [CSS Fragmentation](htt
 The addition of this property causes the boxes to stay in one piece -they now do not fragment across the columns.
 
 ![](/images/multicolumns6.png)
+
+## Responsive design
+
+Responsive web design (RWD) is a web design approach to make web pages render well on all screen sizes and resolutions while ensuring good usability. It is the way to design for a multi-device web. 
+
+HTML is fundamentally responsive, or fluid. If you create a web page containing only HTML, with no CSS, and resize the windows, the browser will automatically reflow the text to fit the viewport.
+
+While the default responsive behavior may sound like no solution is needed, long lines of text displayed full screen on a wide monitor can be difficult to read. If wide screen line length is reduced with CSS, such as by creating columns or adding significant padding, the site may look squashed for the user who narrows their browser window or opens the site on a mobile device.
+
+![](/images/responsiveEx1.png)
+
+Creating a non-resizable web page by setting a fixed width doesn't work either; that leads to scroll bars on narrow devices and too much empty space on wide screens.
+
+Responsive web design, or RWD, is a design approach that addresses the range of devices and device sizes, enabling automatic adaption to the screen, whether the content is viewed on a tablet, phone, television, or watch.
+
+Responsive web design isn't a separate technology — it is an approach. It is a term used to describe a set of best practices used to create a layout that can respond to any device being used to view the content.
+
+Modern CSS layout methods are inherently responsive, and, since the publication of Gillenwater's book and Marcotte's article, we have a multitude of features built into the web platform to make designing responsive sites easier.
+
+The rest of this article will point you to the various web platform features you might want to use when creating a responsive site.
+
+## Media Queries
+
+[Media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) allow us to run a series of test (e.g. whether the user's screen is greater than a certain width, or a certain resolution) and apply CSS selectively to style the page appropriately for the user's needs.
+
+For example, the followin media query tests to see if the current web page is being displayed as screen media (therefore not a printed document) and the viewport is at least ***80rem*** wide. The CSS for the ***.container*** selector will only be applied if these two things are true.
+
+```
+@media screen and (min-width: 80rem) {
+  .container {
+    margin: 1em 2em;
+  }
+}
+```
+
+You can add multiple media queries within a stylesheet, tweaking your whole layout or parts of it to best suit the various screen sizes. The points at which a media query is introduced, and the layout changed, are known as breakpoints.
+
+A common approach when using Media Queries is to create a simple single-column layout for narrow-screen devices (e.g. mobile phones), then check for wider screens and implement a multiple-column layout when you know that you have enough screen width to handle it. Designing for mobile first is known as mobile first design.
+
+If using breakpoints, best practices encourage defining media query breakpoints with [relative units](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#relative_length_units) rather than absolute sizes of an individual device.
+
+There are different approaches to the styles defined within a media query block; ranging from using media queries to [link](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link) style sheets based on browser size ranges to only including custom properties variables to store values associated with each breakpoint.
+
+Media queries can help with RWD, but are not a requirement. Flexible grids, relative units, and minimum and maximum unit values can be used without queries.
+Find out more in the MDN documentation for [Media Queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries).
