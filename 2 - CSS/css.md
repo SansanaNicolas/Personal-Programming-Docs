@@ -3611,3 +3611,47 @@ There are different approaches to the styles defined within a media query block;
 
 Media queries can help with RWD, but are not a requirement. Flexible grids, relative units, and minimum and maximum unit values can be used without queries.
 Find out more in the MDN documentation for [Media Queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries).
+
+## Responsive layout technologies
+
+Responsive sites are built on flexible grids, meaning you don't need to target every possible device size with pixel perfect layouts.
+
+By using a flexible grid, you can change a feature or add in a breakpoint and change the design at the point where the content starts to look bad. For example, to ensure line lengths don't become unreadably long as the screen size increases you can use [columns](https://developer.mozilla.org/en-US/docs/Web/CSS/columns); If a box becomes squashed with two words on each line as it narrows you can set a breakpoint.
+
+Several layout methods, including [multiple-column-layout](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Multiple-column_Layout), [Flexbox](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox), and [Grid](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids) are responsive by default. They all assume that you are trying to create a flexible grid and give you easier ways to do so.
+
+## Multicol
+
+With multicol, you specify a ***column-count*** to indicate the maximum number of columns you want your content to be split into. The browser then works out the size of these, a size that will change according to the screen size.
+
+```
+.container [
+  column-count: 3;
+]
+```
+
+If you instead specify a ***column-width***, you are specifying a minimum width. The browser will create as many columns of that width as will comfortably fit into the container, then share out the remaining space between all the columns. Therefore the number of columns will change according to how much space there is.
+
+```
+.container {
+  column-width: 10em;
+}
+```
+
+You can use the [columns](https://developer.mozilla.org/en-US/docs/Web/CSS/columns) shorthand to provide a maximum number of columns and a minimum column width. This can ensure line lengths don't become unreadably long as the screen size increases or too narrow as the screen size decreases.
+
+## Flexbox
+
+In flexbox, flex items shrink or grow, distributing space between the items according to the space in their container. By changing the values for ***flex-grow*** and ***flex-shrink*** you can indicate how you want the items to behave when they encounter more or less space around them.
+
+In the example below the flex items will each take an equal amount of space in the flex container, using the shorthand of ***flex: 1*** as described in the layout epic [Flexbox: flexible sizing of flex items](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox#flexible_sizing_of_flex_items).
+
+```
+.container {
+  display: flex;
+}
+
+.item {
+  flex: 1;
+}
+```
