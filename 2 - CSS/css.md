@@ -3655,3 +3655,103 @@ In the example below the flex items will each take an equal amount of space in t
   flex: 1;
 }
 ```
+
+## CSS grid
+
+In CSS Grid Layout the ***fr*** unit allows the distribution of available space across grid tracks. The next example creates a grid container with three tracks sized at ***1fr***. This will create three column tracks, each taking one part of the available space in the container. You can find out more about this approach to create a grid in the Learn Layout Grids topic, under [flexible grids with the fr unit](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids#flexible_grids_with_the_fr_unit).
+
+## Responsive images
+
+To ensure media is never larger than its responsive container, the following approach can be used:
+
+```
+img,
+picture,
+video {
+  max-width: 100%;
+}
+```
+
+This scales media to ensure they never overflow their containers. Using a single large image and scaling it down to fit small devices wastes bandwidth by downloading images larger than what is needed.
+
+Responsive images, using the ***picture*** element and the ***img srcset*** and ***sizes*** attributes enables serving images targeted to the user's viewport and the device's resolution. For example, you can include a square image for mobile, but show the same scene as a landscape image on desktop.
+
+The ***picture*** element enables providing multiple sizes along "hints" (metadata that describes the screen size and resolution the image is best suited for), and the browser will choose the most appropiate image for each device, ensuring that a user will download an image size appropiate for the device they are using. Using ***picture*** along with ***max-width*** removes the need for sizing images with media queries. It enables targeting miages with different aspect ratios to different viewport sizes.
+
+You can also art direct images used at different sizes, thus providing a different crop or completely different image to different screen sizes.
+
+## Responsive typography
+
+Responsive typography describes changing font sizes within media queries or using viewport units to reflect lesser or greater amounts of screen real estate.
+
+### Using media queries for responsive typography
+
+In this example, we want to set our level 1 heading to be ***4rem***, meaning it will be four times our base font size. That's a really large heading! We only want this jumbo heading on larger screen sizes, therefore we first create a smaller heading then use media queries to overwrite it with the larger size if we know that the user has a screen size of at least ***1200px***.
+
+```
+html {
+  font-size: 1em;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+@media (min-width: 1200px) {
+  h1 {
+    font-size: 4rem;
+  }
+}
+```
+
+We have edited our responsive grid example above to also include responsive type using the method outlined. You can see how the heading switches sizes as the layout goes to the two column version.
+
+On mobile the heading is smaller:
+
+![](/images/responsiveEx2.png)
+
+On desktop, however, we see the larger heading size:
+
+![](/images/responsiveEx3.png)
+
+As this approach to typography shows, you do not need to restrict media queries to only changing the layout of the page. They can be used to tweak any element to make it more usable or attractive at alternate screen sizes.
+
+### Using viewport units for responsive typography
+
+Viewport units ***vw*** can also be used to enable responsive typography, without the need for setting breakpoints with media queries. ***1vw*** is equal to one percent of the viewport width, meaning that if you set your font size using ***vw***, it will always relate to the size of the viewport.
+
+```
+h1 {
+  font-size: 6vw;
+}
+```
+
+The problem with doing the above is that the user loses the ability to zoom any text set using the ***vw*** unit, as that text is always related to the size of the viewport. **Therefore you should never set text using viewport units alone.**
+
+There is a solution, and it involves using ***calc()***. If you add the ***vw*** unit to a value set using a fixed size such as ***em*** or ***rem*** then the text will still be zoomable. Essentially, the ***vw*** unit adds on top of that zoomed value:
+
+```
+h1 {
+  font-size: calc(1.5rem + 3vw);
+}
+```
+
+This means that we only need to specify the font size for the heading once, rather than set it up for mobile and redefine it in the media queries. The font then gradually increases as you increase the size of the viewport.
+
+## The viewport meta tag
+
+If you look at the HTML source of a responsive page, you will usually see the following ***meta*** tag in the ***head*** of the document.
+
+```
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+```
+
+This [Viewport](https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag) meta tag tells mobile browsers that they should set the width of the viewport to the device width, and scale the document to 100% of its intended size, which shows the document at the mobile-optimized size that you intended.
+
+Why is this needed? Because mobile browsers tend to lie about their viewport width.
+
+This meta tag exists because when smartphones first arrived, most sites were not mobile optimized. The mobile browser would, therefore, set the viewport width to 980 pixels, render the page at that width, and show the result as a zoomed-out version of the desktop layout. Users could zoom in and pan around the website to view the bits they were interested in, but it looked bad.
+
+By setting ***width=device-width*** you are overriding a mobile device's default, like Apple's default ***width=980px***, with the actual width of the device. Without it, your responsive design with breakpoints and media queries may not work as intended on mobile browsers. If you've got a narrow screen layout that kicks in at 480px viewport width or less, but the device is saying it is 980px wide, that user will not see your narrow screen layout.
+
+**So you should always include the viewport meta tag in the head of your documents.**
