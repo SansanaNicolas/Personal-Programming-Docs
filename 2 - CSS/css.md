@@ -3755,3 +3755,115 @@ This meta tag exists because when smartphones first arrived, most sites were not
 By setting ***width=device-width*** you are overriding a mobile device's default, like Apple's default ***width=980px***, with the actual width of the device. Without it, your responsive design with breakpoints and media queries may not work as intended on mobile browsers. If you've got a narrow screen layout that kicks in at 480px viewport width or less, but the device is saying it is 980px wide, that user will not see your narrow screen layout.
 
 **So you should always include the viewport meta tag in the head of your documents.**
+
+## Beginner's guide to media queries
+
+The CSS Media Query gives you a way to apply CSS only when the browser and device environment matches a rule that you specify, for example "viewport is wider than 480 pixels". Media queries are a key part of responsive web design, as they allow you to create different layouts depending on the size of the viewport, but they can also be used to detect other things about the environment your site is running on, for example whether the user is using a touchscreen rather than a mouse.
+
+## Media Query Basics
+
+The simplest media query syntax looks like this:
+
+```
+@media media-type and (media-feature-rule) {
+  /* CSS rules go here */
+}
+```
+
+It consists of:
+
+- A media type, which tells the browser what kind of media this code is for (e.g. print, or screen).
+
+- A media expression, which is a rule, or test that must be passed for the contained CSS to be applied.
+
+- A set of CSS rules that will be applied if the test passes and the media type is correct.
+
+### Media types
+
+The possible types of media you can specify are:
+
+- all
+- print
+- screen
+
+The following media query will only set the body to 12pt if the page is printed. It will not apply when the page is loaded in a browser.
+
+```
+@media print {
+  body {
+    font-size: 12pt;
+  }
+}
+```
+
+### Media feature rules
+
+After specifying the type, you can then target a media feature with a rule.
+
+#### Width and height
+
+The feature we tend to detect most often in order to create responsive designs (and that has widespread browser support) is viewport width, and we can apply CSS if the viewport is above or below a certain width — or an exact width — using the ***min-width***, ***max-width***, and ***width*** media features.
+
+These features are used to create layouts that respond to different screen sizes. For example, to change the body text color to red if the viewport is exactly 600 pixels, you would use the following media query.
+
+```
+@media screen and (width: 600px) {
+  body {
+    color: red;
+  }
+}
+```
+
+[Open this example](https://mdn.github.io/css-examples/learn/media-queries/width.html) in the browser or [view the source](https://github.com/mdn/css-examples/blob/main/learn/media-queries/width.html).
+
+The ***width*** (and ***height***) media features can be used as ranges, and therefore be prefixed with ***min-*** or ***max-*** to indicate that the given value is a minimun, or a maximum. For example, to make the color blue if the viewport is 600 pixels or narrower, use ***max-width***:
+
+```
+@media screen and (max-width: 600px) {
+  body {
+    color: blue;
+  }
+}
+```
+
+[Open this example](https://mdn.github.io/css-examples/learn/media-queries/max-width.html) in the browser, or [view the source](https://github.com/mdn/css-examples/blob/main/learn/media-queries/max-width.html).
+
+In practice, using minimum or maximum values is much more useful for responsive design so you will rarely see ***width*** or ***height*** used alone.
+
+There are many other media features that you can test for, although some of the newer features introduced in Levels 4 and 5 of the media queries specification have limited browser support. Each feature is documented on MDN along with browser support information, and you can find a complete list at [Using Media Queries: Syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#syntax).
+
+#### Orientation
+
+One well-supported media feature is ***orientation***, which allows us to test for portrait or landscape mode. To change the body text color if the device is in landscape orientation, use the following media query.
+
+```
+@media (orientation: landscape) {
+  body {
+    color: rebeccapurple;
+  }
+}
+```
+
+[Open this example](https://mdn.github.io/css-examples/learn/media-queries/orientation.html) in the browser, or [view the source](https://github.com/mdn/css-examples/blob/main/learn/media-queries/orientation.html).
+
+A standard desktop view has a landscape orientation, and a design that works well in this orientation may not work as well when viewed on a phone or tablet in portrait mode. Testing for orientation can help you to create a layout which is optimized for devices in portrait mode.
+
+#### Use of pointing devices
+
+As part of the Level 4 specification, the ***hover*** media feature was introduced. This feature means you can test if the user has the ability to hover over an element, which essentially means they are using some kind of pointing device; touchscreen and keyboard navigation does not hover.
+
+```
+@media (hover: hover) {
+  body {
+    color: rebeccapurple;
+  }
+}
+```
+
+[Open this example](https://mdn.github.io/css-examples/learn/media-queries/hover.html) in the browser, or [view the source](https://github.com/mdn/css-examples/blob/main/learn/media-queries/hover.html).
+
+If we know the user cannot hover, we could display some interactive features by default. For users who can hover, we might choose to make them available when a link is hovered over.
+
+Also in Level 4 is the ***pointer*** media feature. This takes three possible values, ***none***, ***fine*** and ***coarse***. A ***fine*** pointer is something like a mouse or trackpad. It enables the user to precisely target a small area. A ***coarse*** pointer is your finger on a touchscreen. The value ***none***means the user has no pointing device; perhaps they are navigating with the keyboard only or with voice commands.
+
+Using ***pointer*** can help you to design better interfaces that respond to the type of interaction a user is having with a screen. For example, you could create larger hit areas if you know that the user is interacting with the device as a touchscreen.
