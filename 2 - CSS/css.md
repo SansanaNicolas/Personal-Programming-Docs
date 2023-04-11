@@ -3867,3 +3867,53 @@ If we know the user cannot hover, we could display some interactive features by 
 Also in Level 4 is the ***pointer*** media feature. This takes three possible values, ***none***, ***fine*** and ***coarse***. A ***fine*** pointer is something like a mouse or trackpad. It enables the user to precisely target a small area. A ***coarse*** pointer is your finger on a touchscreen. The value ***none***means the user has no pointing device; perhaps they are navigating with the keyboard only or with voice commands.
 
 Using ***pointer*** can help you to design better interfaces that respond to the type of interaction a user is having with a screen. For example, you could create larger hit areas if you know that the user is interacting with the device as a touchscreen.
+
+## More complex media queries
+
+With all of the different possible media queries, you may want to combine them, or create lists of queries — any of which could be matched.
+
+### "and" logic in media queries
+
+To combine media features you can use ***and*** in much the same way as we have used ***and*** above to combine a media type and feature. For example, we might want to test for a ***min-width*** and ***orientation***. The body text will only be blue if the viewport is at least 600 pixels wide and the device is in landscape mode.
+
+```
+@media screen and (min-width: 600px) and (orientation: landscape) {
+  body {
+    color: blue;
+  }
+}
+```
+
+### "or" logic in media queries
+
+If you have a set of queries, any of which could match, then you can comma separate these queries. In the below example the text will be blue if the viewport is at least 600 pixels wide OR the device is in landscape orientation. If either of these things are true the query matches.
+
+```
+@media screen and (min-width: 600px), screen and (orientation: landscape) {
+  body {
+    color: blue;
+  }
+}
+```
+
+### "not" logic in media queries
+
+You can negate an entire media query by using the ***not*** operator. This reverses the meaning of the entire media query. Therefore in this next example the text will only be blue if the orientation is portrait.
+
+```
+@media not all and (orientation: landscape) {
+  body {
+    color: blue;
+  }
+}
+```
+
+## How to choose breakpoints
+
+In the early days of responsive design, many designers would attempt to target very specific screen sizes. Lists of the sizes of the screens of popular phones and tablets were published in order that designs could be created to neatly match those viewports.
+
+There are now far too many devices, with a huge variety of sizes, to make that feasible. This means that instead of targeting specific sizes for all designs, a better approach is to change the design at the size where the content starts to break in some way. Perhaps the line lengths become far too long, or a boxed out sidebar gets squashed and hard to read. That's the point at which you want to use a media query to change the design to a better one for the space you have available. This approach means that it doesn't matter what the exact dimensions are of the device being used, every range is catered for. The points at which a media query is introduced are known as **breakpoints**.
+
+The [Responsive Design Mode](https://firefox-source-docs.mozilla.org/devtools-user/responsive_design_mode/index.html) in Firefox DevTools is very useful for working out where these breakpoints should go. You can easily make the viewport smaller and larger to see where the content would be improved by adding a media query and tweaking the design.
+
+![](/images/breakpoints.png)
