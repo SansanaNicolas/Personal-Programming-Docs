@@ -3917,3 +3917,158 @@ There are now far too many devices, with a huge variety of sizes, to make that f
 The [Responsive Design Mode](https://firefox-source-docs.mozilla.org/devtools-user/responsive_design_mode/index.html) in Firefox DevTools is very useful for working out where these breakpoints should go. You can easily make the viewport smaller and larger to see where the content would be improved by adding a media query and tweaking the design.
 
 ![](/images/breakpoints.png)
+
+## Active learning: mobile first responsive design
+
+Broadly, you can take two approaches to a responsive design. You can start with your desktop or widest view and then add breakpoints to move things around as the viewport becomes smaller, or you can start with the smallest view and add layout as the viewport becomes larger. This second approach is described as mobile first responsive design and is quite often the best approach to follow.
+
+The view for the very smallest devices is quite often a simple single column of content, much as it appears in normal flow. This means that you probably don't need to do a lot of layout for small devices — order your source well and you will have a readable layout by default.
+
+The below walkthrough takes you through this approach with a very simple layout. In a production site you are likely to have more things to adjust within your media queries, however the approach would be exactly the same.
+
+### Walkthrough: a simple mobile-first layout
+
+Our starting point is an HTML document with some CSS applied to add background colors to the various parts of the layout.
+
+```
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 90%;
+  margin: 2em auto;
+  font: 1em/1.3 Arial, Helvetica, sans-serif;
+}
+
+a:link,
+a:visited {
+  color: #333;
+}
+
+nav ul,
+aside ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav a:link,
+nav a:visited {
+  background-color: rgba(207, 232, 220, 0.2);
+  border: 2px solid rgb(79, 185, 227);
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  color: #333;
+  font-weight: bold;
+}
+
+nav a:hover {
+  background-color: rgba(207, 232, 220, 0.7);
+}
+
+.related {
+  background-color: rgba(79, 185, 227, 0.3);
+  border: 1px solid rgb(79, 185, 227);
+  padding: 10px;
+}
+
+.sidebar {
+  background-color: rgba(207, 232, 220, 0.5);
+  padding: 10px;
+}
+
+article {
+  margin-bottom: 1em;
+}
+```
+
+We've made no layout changes, however the source of the document is ordered in a way that makes the content readable. This is an important first step and one which ensures that if the content were to be read out by a screen reader, it would be understandable.
+
+```
+<body>
+  <div class="wrapper">
+    <header>
+      <nav>
+        <ul>
+          <li><a href="">About</a></li>
+          <li><a href="">Contact</a></li>
+          <li><a href="">Meet the team</a></li>
+          <li><a href="">Blog</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <article>
+        <div class="content">
+          <h1>Veggies!</h1>
+          <p>…</p>
+        </div>
+        <aside class="related">
+          <p>…</p>
+        </aside>
+      </article>
+
+      <aside class="sidebar">
+        <h2>External vegetable-based links</h2>
+        <ul>
+          <li>…</li>
+        </ul>
+      </aside>
+    </main>
+
+    <footer><p>&copy;2019</p></footer>
+  </div>
+</body>
+```
+
+This simple layout also works well on mobile. If we view the layout in Responsive Design Mode in DevTools we can see that it works pretty well as a straightforward mobile view of the site.
+
+From this point, start to drag the Responsive Design Mode view wider until you can see that the line lengths are becoming quite long, and we have space for the navigation to display in a horizontal line. This is where we'll add our first media query. We'll use ems, as this will mean that if the user has increased their text size, the breakpoint will happen at a similar line-length but wider viewport, than someone with a smaller text size.
+
+**Add the below code into the bottom of your step1.html CSS.**
+
+```
+@media screen and (min-width: 40em) {
+  article {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    column-gap: 20px;
+  }
+
+  nav ul {
+    display: flex;
+  }
+
+  nav li {
+    flex: 1;
+  }
+}
+```
+
+This CSS gives us a two-column layout inside the article, of the article content and related information in the aside element. We have also used flexbox to put the navigation into a row.
+
+Let's continue to expand the width until we feel there is enough room for the sidebar to also form a new column. Inside a media query we'll make the main element into a two column grid. We then need to remove the margin-bottom on the article in order that the two sidebars align with each other, and we'll add a border to the top of the footer. Typically these small tweaks are the kind of thing you will do to make the design look good at each breakpoint.
+
+**Again, add the below code into the bottom of your step1.html CSS.**
+
+```
+@media screen and (min-width: 70em) {
+  main {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    column-gap: 20px;
+  }
+
+  article {
+    margin-bottom: 0;
+  }
+
+  footer {
+    border-top: 1px solid #ccc;
+    margin-top: 2em;
+  }
+}
+```
+
+If you look at the final example at different widths you can see how the design responds and works as a single column, two columns, or three columns, depending on the available width. This is a very simple example of a mobile first responsive design.
