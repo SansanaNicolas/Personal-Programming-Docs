@@ -4072,3 +4072,69 @@ Let's continue to expand the width until we feel there is enough room for the si
 ```
 
 If you look at the final example at different widths you can see how the design responds and works as a single column, two columns, or three columns, depending on the available width. This is a very simple example of a mobile first responsive design.
+
+## Do you really need a media query?
+
+Flexbox, Grid, and multi-column layout all give you ways to create flexible and even responsive components without the need for a media query. It's always worth considering whether these layout methods can achieve what you want without adding media queries. For example, you might want a set of cards that are at least 200 pixels wide, with as many of these 200 pixels as will fit into the main article. This can be achieved with grid layout, using no media queries at all.
+
+This could be achieved using the following:
+
+```
+<ul class="grid">
+  <li>
+    <h2>Card 1</h2>
+    <p>…</p>
+  </li>
+  <li>
+    <h2>Card 2</h2>
+    <p>…</p>
+  </li>
+  <li>
+    <h2>Card 3</h2>
+    <p>…</p>
+  </li>
+  <li>
+    <h2>Card 4</h2>
+    <p>…</p>
+  </li>
+  <li>
+    <h2>Card 5</h2>
+    <p>…</p>
+  </li>
+</ul>
+```
+
+```
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.grid li {
+  border: 1px solid #666;
+  padding: 10px;
+}
+```
+
+With the example open in your browser, make the screen wider and narrower to see the number of column tracks change. The nice thing about this method is that grid is not looking at the viewport width, but the width it has available for this component. It might seem strange to wrap up a section about media queries with a suggestion that you might not need one at all! However, in practice you will find that good use of modern layout methods, enhanced with media queries, will give the best results.
+
+## Legacy layout methods
+
+Grid systems are a very common feature used in CSS layouts, and before CSS grid layout they tended to be implemented using floats or other layout features. You imagine your layout as a set number of columns (e.g. 4, 6, or 12), and then fit your content columns inside these imaginary columns. 
+
+## Layout and grid systems before CSS Grid Layout
+
+It may seem surprising to anyone coming from a design background that CSS didn't have an inbuilt grid system until very recently, and instead we seemed to be using a variety of sub-optimal methods to create grid-like designs. We now refer to these as "legacy" methods.
+
+For new projects, in most cases CSS Grid Layout will be used in combination with one or more other modern layout methods to form the basis for any layout. You will however encounter "grid systems" using these legacy methods from time to time. It is worth understanding how they work, and why they are different to CSS Grid Layout.
+
+We will explain how grid systems and grid frameworks based on floats and flexbox work. Having studied Grid Layout you will probably be surprised how complicated this all seems! This knowledge will be helpful to you if you need to create fallback code for browsers that do not support newer methods, in addition to allowing you to work on existing projects which use these types of systems.
+
+It is worth bearing in mind, as we explore these systems, that none of them actually create a grid in the way that CSS Grid Layout creates a grid. They work by giving items a size, and pushing them around to line them up in a way that looks like a grid.
+
+## A two column layout
+
