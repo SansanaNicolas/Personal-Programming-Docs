@@ -4138,3 +4138,82 @@ It is worth bearing in mind, as we explore these systems, that none of them actu
 
 ## A two column layout
 
+Let's start with the simplest possible example — a two column layout. You can follow along by creating a new index.html file on your computer, filling it with a simple HTML template, and inserting the below code into it at the appropriate places. At the bottom of the section you can see a live example of what the final code should look like.
+
+First of all, we need some content to put into our columns. Replace whatever is inside the body currently with the following:
+
+```
+<h1>2 column layout example</h1>
+<div>
+  <h2>First column</h2>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+    aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+    pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc, at
+    ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta. Integer
+    ligula ipsum, tristique sit amet orci vel, viverra egestas ligula. Curabitur
+    vehicula tellus neque, ac ornare ex malesuada et. In vitae convallis lacus.
+    Aliquam erat volutpat. Suspendisse ac imperdiet turpis. Aenean finibus
+    sollicitudin eros pharetra congue. Duis ornare egestas augue ut luctus.
+    Proin blandit quam nec lacus varius commodo et a urna. Ut id ornare felis,
+    eget fermentum sapien.
+  </p>
+</div>
+
+<div>
+  <h2>Second column</h2>
+  <p>
+    Nam vulputate diam nec tempor bibendum. Donec luctus augue eget malesuada
+    ultrices. Phasellus turpis est, posuere sit amet dapibus ut, facilisis sed
+    est. Nam id risus quis ante semper consectetur eget aliquam lorem. Vivamus
+    tristique elit dolor, sed pretium metus suscipit vel. Mauris ultricies
+    lectus sed lobortis finibus. Vivamus eu urna eget velit cursus viverra quis
+    vestibulum sem. Aliquam tincidunt eget purus in interdum. Cum sociis natoque
+    penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+  </p>
+</div>
+```
+
+Each one of the columns needs an outer element to contain its content and let us manipulate all of it at once. In this example case we've chosen ***div's***, but you could choose something more semantically appropriate like ***article's***, ***section's***, and ***aside's***, or whatever.
+
+Now for the CSS. First, of all, apply the following to your HTML to provide some basic setup:
+
+```
+body {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+```
+
+The body will be 90% of the viewport wide until it gets to 900px wide, in which case it will stay fixed at this width and center itself in the viewport. By default, its children (the h1 and the two ***divs***) will span 100% of the width of the body. If we want the two ***divs*** to be floated alongside one another, we need to set their widths to total 100% of the width of their parent element or smaller so they can fit alongside one another. Add the following to the bottom of your CSS:
+
+```
+div:nth-of-type(1) {
+  width: 48%;
+}
+
+div:nth-of-type(2) {
+  width: 48%;
+}
+```
+
+Here we've set both to be 48% of their parent's width — this totals 96%, leaving us 4% free to act as a gutter between the two columns, giving the content some space to breathe. Now we just need to float the columns, like so:
+
+```
+div:nth-of-type(1) {
+  width: 48%;
+  float: left;
+}
+
+div:nth-of-type(2) {
+  width: 48%;
+  float: right;
+}
+```
+
+Putting this all together should give us a result like so:
+
+![](/images/2columnEX.png)
+
+You'll notice here that we are using percentages for all the widths — this is quite a good strategy, as it creates a ***liquid layout***, one that adjusts to different screen sizes and keeps the same proportions for the column widths at smaller screen sizes. Try adjusting the width of your browser window to see for yourself. This is a valuable tool for responsive web design.
