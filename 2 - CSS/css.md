@@ -4217,3 +4217,31 @@ Putting this all together should give us a result like so:
 ![](/images/2columnEX.png)
 
 You'll notice here that we are using percentages for all the widths — this is quite a good strategy, as it creates a ***liquid layout***, one that adjusts to different screen sizes and keeps the same proportions for the column widths at smaller screen sizes. Try adjusting the width of your browser window to see for yourself. This is a valuable tool for responsive web design.
+
+## Creating simple legacy grid frameworks
+
+The majority of legacy frameworks use the behavior of the [float](https://developer.mozilla.org/en-US/docs/Web/CSS/float) property to float one column up next to another in order to create something that looks like a grid. working through the process of creating a grid with floats shows you how this works and also introduces some more advanced concepts to build on the things you learned in the lesson on [floats and clearing](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Floats).
+
+The easiest type of grid framework to create is a fixed width one — we just need to work out how much total width we want our design to be, how many columns we want, and how wide the gutters and columns should be. If we instead decided to lay out our design on a grid with columns that grow and shrink according to browser width, we would need to calculate percentage widths for the columns and gutters between them.
+
+
+## Supporting older browsers
+
+There will be visitors to your site who use older browsers, or browsers which may not support the features you have used. This will always be the case on the web — as new features are developed, different browsers will prioritize different things. This article explains how to use modern web techniques without locking out users of older technology.
+
+### What is the browser landscape for your site?
+
+Every website is different in terms of target audience. Before deciding on the approach to take, find out the number of visitors coming to your site using older browsers. This is straightforward if you have an existing website which you are adding to or replacing, as you probably have analytics available which can tell you the technology people are using. If you have no analytics or this is a brand new site, then there are sites such as [Statcounter](https://gs.statcounter.com/) that can provide statistics filtered by location.
+
+You should also consider the type of devices and the way people use your site, for example, you may expect a higher than an average number of mobile devices. Accessibility and people using assistive technology should always be considered, but for some sites that may be even more critical. In my experience, developers are often very worried about the experience of 1% of users in an old version of Internet Explorer, while not considering at all the far greater number who have accessibility needs.
+
+
+### What is the support for the features you want to use?
+
+Once you know the browsers that come to your site, you can assess any technology that you want to use against how well it is supported and how easily you can provide an alternative for visitors who do not have that technology available. We are trying to make this easy for you at MDN, by providing browser compatibility information on each page detailing a CSS property. For example, take a look at the page for [grid-template-columns](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns). At the bottom of this page is a table, which lists major browsers along with the version they began supporting this property.
+
+![](/images/browser-table.png)
+
+Another popular way to find out about how well a feature is supported is the [Can I Use](https://caniuse.com/) website. This site lists the majority of Web Platform features with information about their browser support status. You can view usage statistics by location — useful if you work on a site that has users mostly for a specific area of the world. You can even link your Google Analytics account to get analysis based on your user data.
+
+Understanding the technology your users have, and the support for things you might want to use puts you in a good place to make all of your decisions and to know how best to support all of your users.
