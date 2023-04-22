@@ -4351,3 +4351,63 @@ In the floated layout, the percentage is calculated from the container — 33.33
 
 To deal with this issue we need to have a way to detect if Grid is supported and therefore if it will override the width. CSS has a solution for us here.
 
+## Feature queries
+
+Feature queries allow you to test whether a browser supports any particular CSS feature. This means that you can write some CSS for browsers that don't support a certain feature, then check to see if the browser has support and if so throw in your fancy layout.
+
+If we add a feature query to the above example, we can use it to set the widths of our items back to auto if we know that we have grid support.
+
+```
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  background-color: rgb(79, 185, 227);
+  padding: 10px;
+  max-width: 400px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.item {
+  float: left;
+  border-radius: 5px;
+  background-color: rgb(207, 232, 220);
+  padding: 1em;
+  width: 33.333%;
+}
+
+@supports (display: grid) {
+  .item {
+    width: auto;
+  }
+}
+```
+
+```
+<div class="wrapper">
+  <div class="item">Item One</div>
+  <div class="item">Item Two</div>
+  <div class="item">Item Three</div>
+</div>
+```
+
+![](/images/asd1.png)
+
+Support for feature queries is very good across modern browsers. However, you should note that browsers that do not support CSS Grid also tend not to support feature queries. This means that an approach as detailed above will work for those browsers. What we are doing is writing our old CSS first, outside of any feature query. Browsers that do not support Grid, and do not support the feature query will use that layout information they can understand and completely ignore everything else. The browsers that support the feature query also support CSS Grid and so will run the grid code and the code inside the feature query.
+
+The specification for feature queries also contains the ability to test if a browser does not support a feature — this is only helpful if the browser does support feature queries. In the future, an approach of checking for lack of support will work, as the browsers that don't have feature query support go away. For now, however, use the approach of doing the older CSS, then overwriting it, for the best support.
+
+## The IE10 and 11 prefixed version of Grid
+
+The CSS Grid specification was initially prototyped In Internet Explorer 10; this means that while IE10 and IE11 do not have modern grid support, they do have a version of Grid layout that is very usable, although different to the modern specification documented on this site. The IE10 and 11 implementations is -ms- prefixed, which means you can use it for these browsers and it will be ignored by non-Microsoft browsers. Edge does still understand the old syntax, however, so take care that everything is safely overwritten in your modern grid CSS.
+
+The guide to Progressive Enhancement in Grid Layout can help you understand the IE version of the grid, and we have included some additional useful links at the end of this lesson. However, unless you have a very high number of visitors in older IE versions, you may find it better to focus on creating a fallback that works for all non-supporting browsers.
+
+## Testing older browsers
+
+With the majority of browsers supporting Flexbox and Grid, it can be reasonably hard to test older browsers. One way is to use an online testing tool such as Sauce Labs, as detailed in the Cross browser testing module.
+
+You can also download and install virtual machines, and run older versions of browsers in a contained environment on your computer. If you are still required to support Internet Explorer, Microsoft provides a range of Virtual Machines available for free download. These are available for Mac, Windows and Linux operating systems and so are a great way to test in old and modern Windows browsers even if you are not using a Windows computer.
+
