@@ -110,3 +110,19 @@ function updateName() {
 Here we are selecting a text paragraph (line 1), then attaching an event listener to it (line 3) so that when the paragraph is clicked, the updateName() code block (lines 5–8) is run. The updateName() code block (these types of reusable code blocks are called "functions") asks the user for a new name, and then inserts that name into the paragraph to update the display.
 
 If you swapped the order of the first two lines of code, it would no longer work — instead, you'd get an error returned in the browser developer console — TypeError: para is undefined. This means that the para object does not exist yet, so we can't add an event listener to it.
+
+### Interpreted versus compiled code
+
+You might hear the terms ***interpreted*** and ***compiled*** in the context of programming. In interpreted languages, the code is run from top to bottom and the result of running the code is immediately returned. You don't have to transform the code into a different form before the browser runs it. The code is received in its programmer friendly text form and processed directly from that.
+
+Compiled languages on the other hand are transformed (compiled) into another form before they are run by the computed. For example, C/C++ are compiled into machine code that is then run by the computer. The program is executed from a binary format, which was generated from the original program source code.
+
+JavaScript is a lightweight interpreted programming language. The web browser receives the JavaScript code in tis original text form and runs the script from that. From a technical standpoint, most modern JavaScript interpreters actually use a technique called ***just-in-time compiling*** to improve performance; the JavaScript source code gets compiled into a faster, binary format while the script is being used, so that it can be run as quickly as possible. However, JavaScript is still considered an interpreted language, since the compilation is handled at run time, rather than ahead of time.
+
+The are advantages to both types of language, but we don't discuss them right now.
+
+### Server-side versus client-side code
+
+You might also hear the terms ***server-side*** and ***client-side*** code, especially in the context of web development. ***Client-side*** code is code that is run on the user's computer — when a web page is viewed, the page's client-side code is downloaded, then run and displayed by the browser. In this module we are explicitly talking about client-side JavaScript.
+
+***Server-side*** code on the other hand is run on the server, then its results are downloaded and displayed in the browser. Examples of popular server-side web languages include PHP, Python, Ruby, ASP.NET, and even JavaScript! JavaScript can also be used as a server-side language, for example in the popular Node.js environment.
