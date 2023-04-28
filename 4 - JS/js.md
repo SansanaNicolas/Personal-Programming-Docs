@@ -126,3 +126,74 @@ The are advantages to both types of language, but we don't discuss them right no
 You might also hear the terms ***server-side*** and ***client-side*** code, especially in the context of web development. ***Client-side*** code is code that is run on the user's computer — when a web page is viewed, the page's client-side code is downloaded, then run and displayed by the browser. In this module we are explicitly talking about client-side JavaScript.
 
 ***Server-side*** code on the other hand is run on the server, then its results are downloaded and displayed in the browser. Examples of popular server-side web languages include PHP, Python, Ruby, ASP.NET, and even JavaScript! JavaScript can also be used as a server-side language, for example in the popular Node.js environment.
+
+### Dynamic versus static code
+
+The word ***dynamic*** is used to describe both client-side JavaScript, and server-side languages -it refers to the ability to update the display of a web page/app to show different things in different circumstances, generating new content as required. Server-side code dynamically generates new content on the server, e.g. pulling data from a database, whereas client-side JavaScript dynamically generates new content inside the browser on the client, e.g. creating a new HTML table, filling it with data requested from the server, then displaying the table in a web page shown to the user. The meaning is slightly different in the two contexts, but related, and both approaches (server-side and client-side) usually work together.
+
+A web page with no dynamically updating content is referred to as ***static*** -it just shows the same content all the time.
+
+## How do you add JavaScript to your page?
+
+JavaScript is applied to your HTML page in a similar manner to CSS. Whereas CSS uses **link** elements to apply external stylesheets and **style** elements to apply internal stylesheets to HTML, JavaScript only needs one friend in the world of HTML -the **script** element.
+
+### Internal JavaScript
+
+1. First of all, make a local copy of our example file [apply-javascript.html](https://github.com/mdn/learning-area/blob/main/javascript/introduction-to-js-1/what-is-js/apply-javascript.html). Save it in a directory somewhere sensible.
+2. Open the file in your web browser and in your text editor. You'll see that the HTML creates a simple web page containing a clickable button.
+3. Next, go to your text editor and add the following in your head — just before your closing head tag:
+
+```
+<script>
+  // JavaScript goes here
+</script>
+```
+
+4. Now we'll add some JavaScript inside our script element to make the page do something more interesting — add the following code just below the "// JavaScript goes here" line:
+
+```
+document.addEventListener("DOMContentLoaded", () => {
+  function createParagraph() {
+    const para = document.createElement("p");
+    para.textContent = "You clicked the button!";
+    document.body.appendChild(para);
+  }
+
+  const buttons = document.querySelectorAll("button");
+
+  for (const button of buttons) {
+    button.addEventListener("click", createParagraph);
+  }
+});
+```
+
+5. Save your file and refresh the browser — now you should see that when you click the button, a new paragraph is generated and placed below.
+
+### External JavaScript
+
+This works great, but what if we wanter to put our JavaScript in an external file?
+
+1. First, create a new file in the same directory as your sample HTML file. Call it **script.js** -make sure it has that .js filename extension, as that's how it is recognized as JavaScript.
+2. Replace your current **script** element with the following:
+
+```
+<script src="script.js" defer></script>
+```
+
+3. Inside **script.js**, add the following script:
+
+```
+function createParagraph() {
+  const para = document.createElement("p");
+  para.textContent = "You clicked the button!";
+  document.body.appendChild(para);
+}
+
+const buttons = document.querySelectorAll("button");
+
+for (const button of buttons) {
+  button.addEventListener("click", createParagraph);
+}
+```
+
+4. Save and refresh your browser, and you should see the same thing! It works just the same, but now we've got our JavaScript in an external file. This is generally a good thing in terms of organizing your code and making it reusable across multiple HTML files. Plus, the HTML is easier to read without huge chunks of script dumped in it.
