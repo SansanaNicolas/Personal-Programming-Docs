@@ -197,3 +197,35 @@ for (const button of buttons) {
 ```
 
 4. Save and refresh your browser, and you should see the same thing! It works just the same, but now we've got our JavaScript in an external file. This is generally a good thing in terms of organizing your code and making it reusable across multiple HTML files. Plus, the HTML is easier to read without huge chunks of script dumped in it.
+
+## Inline JavaScript handlers
+
+Note that sometimes you'll come across bits of actual JavaScript code living inside HTML. It might look something like this:
+
+```
+function createParagraph() {
+  const para = document.createElement("p");
+  para.textContent = "You clicked the button!";
+  document.body.appendChild(para);
+}
+```
+
+```
+<button onclick="createParagraph()">Click me!</button>
+```
+
+**Please don't do this, however**. It's bad practice to pollute your HTML with JavaScript, and it is inefficient -you'd have to include the onclick="createParagraph()" attribute on every button you want the JavaScript apply to.
+
+## Using addEventListener instead
+
+Instead of including JavaScript in your HTML, use a pure JavaScript construct. The **querySelectorAll()** function allows you to select all the buttons on a page. You can then loop through the buttons, assigning a handler for each using **addEventListener()**. The code for this is shown below:
+
+```
+const buttons = document.querySelectorAll("button");
+
+for (const button of buttons) {
+  button.addEventListener("click", createParagraph);
+}
+```
+
+This might be a bit longer than the **onclick** attribute, but it will work for all buttons -no matter how many are on the page, nor how many are added or removed. The JavaScript does not need to be changed.
